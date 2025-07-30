@@ -97,7 +97,7 @@ const SmartLotMapScreen: React.FC = () => {
         {/* Custom Map Image */}
         <div className="absolute inset-0 flex items-center justify-center">
           <img 
-            src="/map-image.png" 
+            src="map-image.png" 
             alt="Smart Lots Map" 
             className="w-3/5 h-3/5 object-cover"
           />

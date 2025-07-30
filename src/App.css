@@ -1,0 +1,259 @@
+/* BroCabs Drivers App - Light Pink & Deep Violet Theme */
+
+:root {
+  --light-pink: #fdf2f8;
+  --pink: #fce7f3;
+  --deep-violet: #4c1d95;
+  --violet: #7c3aed;
+  --light-violet: #a855f7;
+  --lighter-violet: #c084fc;
+  --text-violet: #581c87;
+  --bg-pink: #fdf2f8;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, var(--bg-pink) 0%, var(--pink) 100%);
+  min-height: 100vh;
+  color: var(--deep-violet);
+}
+
+/* Logo Effects */
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+
+.logo:hover {
+  filter: drop-shadow(0 0 2em var(--light-violet));
+}
+
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em var(--lighter-violet));
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  color: var(--deep-violet);
+}
+
+.read-the-docs {
+  color: var(--text-violet);
+}
+
+/* Custom Theme Classes */
+.bg-pink-gradient {
+  background: linear-gradient(135deg, var(--bg-pink) 0%, var(--pink) 100%);
+}
+
+.text-deep-violet {
+  color: var(--deep-violet);
+}
+
+.text-violet {
+  color: var(--violet);
+}
+
+.bg-violet {
+  background-color: var(--violet);
+}
+
+.bg-light-violet {
+  background-color: var(--light-violet);
+}
+
+.border-violet {
+  border-color: var(--violet);
+}
+
+.shadow-violet {
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.3);
+}
+
+.hover-violet:hover {
+  background-color: var(--light-violet);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.4);
+}
+
+/* Button Styles */
+.btn-violet {
+  background: linear-gradient(45deg, var(--violet), var(--light-violet));
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+}
+
+.btn-violet:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.5);
+  background: linear-gradient(45deg, var(--light-violet), var(--violet));
+}
+
+/* Card Styles */
+.card-violet {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  backdrop-filter: blur(10px);
+  color: var(--deep-violet);
+}
+
+/* Input Styles */
+.input-violet {
+  border: 2px solid var(--lighter-violet);
+  border-radius: 8px;
+  padding: 12px 16px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--deep-violet);
+}
+
+.input-violet:focus {
+  border-color: var(--violet);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+  outline: none;
+}
+
+/* Status Indicators */
+.status-online {
+  background: linear-gradient(45deg, #10b981, #34d399);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.status-offline {
+  background: linear-gradient(45deg, #6b7280, #9ca3af);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(107, 114, 128, 0.3);
+}
+
+/* Navigation Styles */
+.nav-violet {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.1);
+  color: var(--deep-violet);
+}
+
+/* Map Container */
+.map-container {
+  background: linear-gradient(135deg, var(--pink) 0%, var(--lighter-violet) 100%);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+}
+
+/* Earnings Card */
+.earnings-card {
+  background: linear-gradient(135deg, var(--violet) 0%, var(--light-violet) 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.4);
+}
+
+/* Trip Alert Card */
+.trip-alert-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  border-left: 4px solid var(--violet);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.15);
+  backdrop-filter: blur(10px);
+  color: var(--deep-violet);
+}
+
+/* Text Colors */
+.text-gray-900 {
+  color: var(--deep-violet) !important;
+}
+
+.text-gray-500 {
+  color: var(--text-violet) !important;
+}
+
+.text-gray-600 {
+  color: var(--text-violet) !important;
+}
+
+.text-gray-700 {
+  color: var(--deep-violet) !important;
+}
+
+/* Background Colors */
+.bg-white {
+  background: rgba(255, 255, 255, 0.95) !important;
+  color: var(--deep-violet) !important;
+}
+
+.bg-gray-50 {
+  background: var(--bg-pink) !important;
+}
+
+.bg-gray-100 {
+  background: var(--pink) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+  
+  .card {
+    padding: 1.5em;
+  }
+}
+
+/* Button styling for light purple background */
+.bg-violet {
+  background-color: #7c3aed;
+}
+
+.bg-opacity-20 {
+  background-color: rgba(124, 58, 237, 0.2);
+}
+
+.hover\:bg-opacity-30:hover {
+  background-color: rgba(124, 58, 237, 0.3);
+}

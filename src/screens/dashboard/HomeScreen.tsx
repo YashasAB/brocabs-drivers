@@ -20,7 +20,7 @@ const HomeScreen: React.FC = () => {
     }
   };
 
-  
+
 
   const alertCarousel = [
     {
@@ -107,10 +107,10 @@ const HomeScreen: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <div className="card-violet p-8">
             <h3 className="text-lg sm:text-xl font-semibold text-deep-violet mb-4 sm:mb-6">Quick Actions</h3>
-            <div className="space-y-4">
+            <div className="space-y-6">
               <button
                 onClick={() => navigate('/smart-lot-map')}
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg p-6 border-2 border-gray-300"
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg p-6 border-2 border-gray-300 mb-4"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
@@ -183,14 +183,14 @@ const HomeScreen: React.FC = () => {
                 <p className="text-xs sm:text-sm text-deep-violet">{currentAlert.message}</p>
               </div>
             </div>
-            <div className="flex flex-col items-center space-y-3 ml-4">
+            <div className="flex flex-col items-center space-y-5 ml-4">
               <button
                 onClick={prevAlert}
                 className="w-10 h-10 bg-purple-500 hover:bg-purple-600 rounded-lg border-2 border-gray-300 flex items-center justify-center text-white"
               >
                 <span className="text-lg">←</span>
               </button>
-              <div className="flex space-x-1">
+              <div className="flex space-x-2">
                 {alertCarousel.map((_, index) => (
                   <div
                     key={index}
@@ -212,7 +212,7 @@ const HomeScreen: React.FC = () => {
           </div>
         </div>
 
-        
+
 
         {/* Stats Cards at Bottom */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">

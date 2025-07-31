@@ -120,7 +120,7 @@ const HomeScreen: React.FC = () => {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Quick Actions */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 my-8">
           <div className="card-violet p-8 min-h-[30vh] flex flex-col justify-center">
             <h3 className="text-lg sm:text-xl font-semibold text-deep-violet mb-6 sm:mb-8">
               Quick Actions
@@ -155,7 +155,7 @@ const HomeScreen: React.FC = () => {
         </div>
 
         {/* Current Trip Status */}
-        <div className="card-violet mb-8 p-6">
+        <div className="card-violet my-8 p-6">
           <h3 className="text-base sm:text-lg font-semibold text-deep-violet mb-3 sm:mb-4">
             Current Trip
           </h3>
@@ -176,7 +176,7 @@ const HomeScreen: React.FC = () => {
         </div>
 
         {/* Alert Carousel Card */}
-        <div className="card-violet mb-8 p-6">
+        <div className="card-violet my-8 p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center flex-1">
               <div className="flex-shrink-0 bg-gradient-to-r from-violet to-deep-violet p-3 rounded-xl">
@@ -223,7 +223,7 @@ const HomeScreen: React.FC = () => {
         </div>
 
         {/* Today's Shift */}
-        <div className="card-violet p-6 rounded-2xl mb-8">
+        <div className="card-violet p-6 rounded-2xl my-8">
           <h3 className="text-base sm:text-lg font-semibold text-deep-violet mb-3 sm:mb-4">
             Today's Shift
           </h3>
@@ -250,7 +250,7 @@ const HomeScreen: React.FC = () => {
         </div>
 
         {/* Stats Cards at Bottom */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-8">
           <div className="card-violet p-6">
             <div className="flex items-center">
               <div className="flex-shrink-0 bg-gradient-to-r from-violet to-deep-violet p-4 rounded-xl">

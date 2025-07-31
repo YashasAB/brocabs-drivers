@@ -27,13 +27,13 @@ const BookRideScreen: React.FC = () => {
   const [showPrice, setShowPrice] = useState(false);
   const [mapMode, setMapMode] = useState<'pickup' | 'dropoff' | 'normal'>('normal');
 
-  // NYC boundary coordinates (approximate)
+  // NYC boundary coordinates (adjusted to start near EWR)
   const nycBoundary = [
-    [40.477399, -74.259090], // Southwest
+    [40.477399, -74.170000], // Southwest (moved right to near EWR)
     [40.477399, -73.700009], // Southeast
     [40.917577, -73.700009], // Northeast
-    [40.917577, -74.259090], // Northwest
-    [40.477399, -74.259090]  // Close the polygon
+    [40.917577, -74.170000], // Northwest (moved right to near EWR)
+    [40.477399, -74.170000]  // Close the polygon
   ];
 
   // Generate time options (20 minutes to 120 minutes in 20-minute intervals)
@@ -94,8 +94,27 @@ const BookRideScreen: React.FC = () => {
         }
       }, 100);
 
-      // Handle map clicks
-      map.on('click', (e: L.LeafletMouseEvent) => {
+      console.log('Customer booking map initialized');
+    }
+
+    return () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+        pickupMarkerRef.current = null;
+        dropoffMarkerRef.current = null;
+        boundaryRef.current = null;
+      }
+    };
+  }, []);
+
+  // Handle map clicks
+  useEffect(() => {
+    if (mapInstanceRef.current && boundaryRef.current) {
+      const map = mapInstanceRef.current;
+      const boundary = boundaryRef.current;
+      
+      const handleMapClick = (e: L.LeafletMouseEvent) => {
         const { lat, lng } = e.latlng;
         
         // Check if click is within NYC boundary
@@ -107,8 +126,8 @@ const BookRideScreen: React.FC = () => {
           return;
         }
 
-        if (mapMode === 'pickup') {
-          // Set pickup location
+        if (!pickupLocation) {
+          // Set pickup location first
           if (pickupMarkerRef.current) {
             map.removeLayer(pickupMarkerRef.current);
           }
@@ -129,11 +148,8 @@ const BookRideScreen: React.FC = () => {
             address: `${lat.toFixed(4)}, ${lng.toFixed(4)}`
           });
           
-          // Automatically switch to dropoff mode
-          setMapMode('dropoff');
-          
-        } else if (mapMode === 'dropoff') {
-          // Set dropoff location
+        } else if (!dropoffLocation) {
+          // Set dropoff location second
           if (dropoffMarkerRef.current) {
             map.removeLayer(dropoffMarkerRef.current);
           }
@@ -153,52 +169,32 @@ const BookRideScreen: React.FC = () => {
             lng,
             address: `${lat.toFixed(4)}, ${lng.toFixed(4)}`
           });
-          
-          // Switch back to normal mode
-          setMapMode('normal');
         }
-      });
+      };
 
-      console.log('Customer booking map initialized');
+      map.on('click', handleMapClick);
+
+      return () => {
+        map.off('click', handleMapClick);
+      };
     }
+  }, [pickupLocation, dropoffLocation]);
 
-    return () => {
-      if (mapInstanceRef.current) {
-        mapInstanceRef.current.remove();
-        mapInstanceRef.current = null;
-        pickupMarkerRef.current = null;
-        dropoffMarkerRef.current = null;
-        boundaryRef.current = null;
-      }
-    };
-  }, []);
-
-  const handlePickupClick = () => {
-    if (mapMode === 'pickup') {
-      // Reset pickup if already in pickup mode
-      if (pickupMarkerRef.current && mapInstanceRef.current) {
-        mapInstanceRef.current.removeLayer(pickupMarkerRef.current);
-        pickupMarkerRef.current = null;
-      }
-      setPickupLocation(null);
-      setMapMode('normal');
-    } else {
-      setMapMode('pickup');
+  const handleResetLocations = () => {
+    // Reset pickup
+    if (pickupMarkerRef.current && mapInstanceRef.current) {
+      mapInstanceRef.current.removeLayer(pickupMarkerRef.current);
+      pickupMarkerRef.current = null;
     }
-  };
+    setPickupLocation(null);
 
-  const handleDropoffClick = () => {
-    if (mapMode === 'dropoff' || (dropoffLocation && mapMode === 'normal')) {
-      // Reset dropoff
-      if (dropoffMarkerRef.current && mapInstanceRef.current) {
-        mapInstanceRef.current.removeLayer(dropoffMarkerRef.current);
-        dropoffMarkerRef.current = null;
-      }
-      setDropoffLocation(null);
-      setMapMode('normal');
-    } else if (pickupLocation) {
-      setMapMode('dropoff');
+    // Reset dropoff
+    if (dropoffMarkerRef.current && mapInstanceRef.current) {
+      mapInstanceRef.current.removeLayer(dropoffMarkerRef.current);
+      dropoffMarkerRef.current = null;
     }
+    setDropoffLocation(null);
+    setMapMode('normal');
   };
 
   const handleBookRide = async () => {
@@ -246,63 +242,56 @@ const BookRideScreen: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Location Selection */}
         <div className="bg-white rounded-xl p-6 mb-6 shadow-lg">
-          <h2 className="text-lg font-semibold text-deep-violet mb-4">Select Locations</h2>
+          <div className="flex justify-between items-center mb-4">
+            <h2 className="text-lg font-semibold text-deep-violet">Select Locations</h2>
+            {(pickupLocation || dropoffLocation) && (
+              <button
+                onClick={handleResetLocations}
+                className="px-3 py-1 text-sm bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 transition-colors"
+              >
+                Reset
+              </button>
+            )}
+          </div>
           
           <div className="space-y-4">
             {/* Pickup Location */}
-            <div className="flex items-center space-x-3">
-              <button
-                onClick={handlePickupClick}
-                className={`flex items-center space-x-2 px-4 py-3 rounded-lg border-2 transition-all ${
-                  mapMode === 'pickup' 
-                    ? 'border-green-500 bg-green-50' 
-                    : pickupLocation 
-                    ? 'border-green-500 bg-green-50' 
-                    : 'border-gray-300 hover:border-green-500'
-                }`}
-              >
-                <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-                <span className="text-sm font-medium">
-                  {pickupLocation ? `Pickup: ${pickupLocation.address}` : 'Select Pickup Location'}
-                </span>
-              </button>
+            <div className="flex items-center space-x-2 p-3 rounded-lg border-2 border-green-500 bg-green-50">
+              <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+              <span className="text-sm font-medium flex-1">
+                {pickupLocation ? `Pickup: ${pickupLocation.address}` : 'Pickup Location'}
+              </span>
+              {!pickupLocation && <span className="text-xs text-green-600">✓ Set first</span>}
             </div>
 
             {/* Dropoff Location */}
-            <div className="flex items-center space-x-3">
-              <button
-                onClick={handleDropoffClick}
-                disabled={!pickupLocation && mapMode !== 'dropoff'}
-                className={`flex items-center space-x-2 px-4 py-3 rounded-lg border-2 transition-all ${
-                  mapMode === 'dropoff' 
-                    ? 'border-red-500 bg-red-50' 
-                    : dropoffLocation 
-                    ? 'border-red-500 bg-red-50' 
-                    : !pickupLocation 
-                    ? 'border-gray-200 bg-gray-50 cursor-not-allowed' 
-                    : 'border-gray-300 hover:border-red-500'
-                }`}
-              >
-                <div className={`w-4 h-4 rounded-full ${
-                  dropoffLocation || mapMode === 'dropoff' ? 'bg-red-500' : 'bg-gray-300'
-                }`}></div>
-                <span className="text-sm font-medium">
-                  {dropoffLocation ? `Dropoff: ${dropoffLocation.address}` : 'Select Dropoff Location'}
-                </span>
-              </button>
+            <div className={`flex items-center space-x-2 p-3 rounded-lg border-2 transition-all ${
+              dropoffLocation 
+                ? 'border-red-500 bg-red-50' 
+                : pickupLocation 
+                ? 'border-red-300 bg-red-25' 
+                : 'border-gray-200 bg-gray-50'
+            }`}>
+              <div className={`w-4 h-4 rounded-full ${
+                dropoffLocation ? 'bg-red-500' : pickupLocation ? 'bg-red-300' : 'bg-gray-300'
+              }`}></div>
+              <span className="text-sm font-medium flex-1">
+                {dropoffLocation ? `Dropoff: ${dropoffLocation.address}` : 'Dropoff Location'}
+              </span>
+              {!dropoffLocation && pickupLocation && <span className="text-xs text-red-600">✓ Set second</span>}
             </div>
           </div>
 
-          {/* Map Mode Indicator */}
-          {mapMode !== 'normal' && (
-            <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-              <p className="text-sm text-blue-800">
-                {mapMode === 'pickup' 
-                  ? '📍 Click on the map to set your pickup location (within NYC area)' 
-                  : '📍 Click on the map to set your dropoff location (within NYC area)'}
-              </p>
-            </div>
-          )}
+          {/* Map Instructions */}
+          <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+            <p className="text-sm text-blue-800">
+              {!pickupLocation 
+                ? '📍 Tap on the map to set your pickup location first' 
+                : !dropoffLocation 
+                ? '📍 Tap on the map again to set your dropoff location'
+                : '✓ Both locations selected. Choose your pickup time below.'}
+            </p>
+          </div>
         </div>
 
         {/* Map */}

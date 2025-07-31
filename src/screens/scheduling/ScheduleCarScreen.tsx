@@ -273,23 +273,9 @@ const ScheduleCarScreen: React.FC = () => {
           <div className="space-y-8">
             {/* Start Time */}
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <span className="text-xl mr-3">🕐</span>
-                  <label className="text-sm sm:text-base font-bold text-deep-violet">Start Time</label>
-                </div>
-                <span 
-                  className="text-xs cursor-pointer select-none"
-                  onClick={() => {
-                    const selectElement = document.getElementById('start-time-select') as HTMLSelectElement;
-                    if (selectElement && !selectElement.disabled) {
-                      selectElement.focus();
-                      selectElement.click();
-                    }
-                  }}
-                >
-                  ⬇️
-                </span>
+              <div className="flex items-center">
+                <span className="text-xl mr-3">🕐</span>
+                <label className="text-sm sm:text-base font-bold text-deep-violet">Start Time</label>
               </div>
               <div className="relative">
                 <select
@@ -300,15 +286,16 @@ const ScheduleCarScreen: React.FC = () => {
                     setEndTime(''); // Reset end time when start time changes
                   }}
                   disabled={!selectedVehicle}
-                  className={`w-full p-4 sm:p-5 text-sm sm:text-base bg-white border-2 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 ${
+                  className={`w-full p-4 sm:p-5 pr-12 text-sm sm:text-base bg-white border-2 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 cursor-pointer ${
                     !selectedVehicle 
                       ? 'opacity-50 cursor-not-allowed bg-gray-50 border-gray-200' 
                       : 'border-violet/30 hover:border-violet hover:shadow-xl'
                   }`}
                   style={{
-                    backgroundImage: 'none',
-                    WebkitAppearance: 'none',
-                    MozAppearance: 'none'
+                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                    backgroundPosition: 'right 12px center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: '16px'
                   }}
                 >
                   <option value="" style={{ backgroundColor: 'white', color: '#6b7280', fontSize: '14px' }}>
@@ -329,23 +316,9 @@ const ScheduleCarScreen: React.FC = () => {
 
             {/* End Time */}
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <span className="text-xl mr-3">🕕</span>
-                  <label className="text-sm sm:text-base font-bold text-deep-violet">End Time</label>
-                </div>
-                <span 
-                  className="text-xs cursor-pointer select-none"
-                  onClick={() => {
-                    const selectElement = document.getElementById('end-time-select') as HTMLSelectElement;
-                    if (selectElement && !selectElement.disabled) {
-                      selectElement.focus();
-                      selectElement.click();
-                    }
-                  }}
-                >
-                  ⬇️
-                </span>
+              <div className="flex items-center">
+                <span className="text-xl mr-3">🕕</span>
+                <label className="text-sm sm:text-base font-bold text-deep-violet">End Time</label>
               </div>
               <div className="relative">
                 <select
@@ -353,15 +326,16 @@ const ScheduleCarScreen: React.FC = () => {
                   value={endTime}
                   onChange={(e) => setEndTime(e.target.value)}
                   disabled={!startTime}
-                  className={`w-full p-4 sm:p-5 text-sm sm:text-base bg-white border-2 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 ${
+                  className={`w-full p-4 sm:p-5 pr-12 text-sm sm:text-base bg-white border-2 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 cursor-pointer ${
                     !startTime 
                       ? 'opacity-50 cursor-not-allowed bg-gray-50 border-gray-200' 
                       : 'border-violet/30 hover:border-violet hover:shadow-xl'
                   }`}
                   style={{
-                    backgroundImage: 'none',
-                    WebkitAppearance: 'none',
-                    MozAppearance: 'none'
+                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                    backgroundPosition: 'right 12px center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: '16px'
                   }}
                 >
                   <option value="" style={{ backgroundColor: 'white', color: '#6b7280', fontSize: '14px' }}>
@@ -382,34 +356,21 @@ const ScheduleCarScreen: React.FC = () => {
 
             {/* Dropoff Lot */}
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <span className="text-xl mr-3">📍</span>
-                  <label className="text-sm sm:text-base font-bold text-deep-violet">Preferred Dropoff Lot</label>
-                </div>
-                <span 
-                  className="text-xs cursor-pointer select-none"
-                  onClick={() => {
-                    const selectElement = document.getElementById('dropoff-lot-select') as HTMLSelectElement;
-                    if (selectElement) {
-                      selectElement.focus();
-                      selectElement.click();
-                    }
-                  }}
-                >
-                  ⬇️
-                </span>
+              <div className="flex items-center">
+                <span className="text-xl mr-3">📍</span>
+                <label className="text-sm sm:text-base font-bold text-deep-violet">Preferred Dropoff Lot</label>
               </div>
               <div className="relative">
                 <select
                   id="dropoff-lot-select"
                   value={dropoffLot}
                   onChange={(e) => setDropoffLot(e.target.value)}
-                  className="w-full p-4 sm:p-5 text-sm sm:text-base bg-white border-2 border-violet/30 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 hover:border-violet hover:shadow-xl"
+                  className="w-full p-4 sm:p-5 pr-12 text-sm sm:text-base bg-white border-2 border-violet/30 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 hover:border-violet hover:shadow-xl cursor-pointer"
                   style={{
-                    backgroundImage: 'none',
-                    WebkitAppearance: 'none',
-                    MozAppearance: 'none'
+                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                    backgroundPosition: 'right 12px center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: '16px'
                   }}
                 >
                   <option value="" style={{ backgroundColor: 'white', color: '#6b7280', fontSize: '14px' }}>

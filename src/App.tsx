@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './context/ThemeContext';
+import ErrorBoundary from './components/ErrorBoundary';
 import './App.css';
 
 // Authentication Screens
@@ -42,51 +43,53 @@ import MapViewScreen from './screens/navigation/MapViewScreen';
 
 function App() {
   return (
-    <ThemeProvider>
-      <Router>
-        <div className="App">
-        <Routes>
-          {/* Authentication Routes */}
-          <Route path="/login" element={<LoginScreen />} />
-          <Route path="/register" element={<RegistrationScreen />} />
-          <Route path="/forgot-password" element={<ForgotPasswordScreen />} />
-          
-          {/* Dashboard Routes */}
-          <Route path="/" element={<HomeScreen />} />
-          <Route path="/profile" element={<ProfileScreen />} />
-          <Route path="/earnings" element={<EarningsScreen />} />
-          
-          {/* Smart Lot Routes */}
-          <Route path="/smart-lot-map" element={<SmartLotMapScreen />} />
-          <Route path="/lot-details/:lotId" element={<LotDetailsScreen />} />
-          <Route path="/car-selection/:lotId" element={<CarSelectionScreen />} />
-          
-          {/* Scheduling Routes */}
-          <Route path="/schedule-shift" element={<ScheduleShiftScreen />} />
-          <Route path="/schedule-car/:lotId" element={<ScheduleCarScreen />} />
-          <Route path="/shift-calendar" element={<ShiftCalendarScreen />} />
-          <Route path="/drop-area-selection" element={<DropAreaSelectionScreen />} />
-          <Route path="/shift-details/:shiftId" element={<ShiftDetailsScreen />} />
-          
-          {/* Trip Management Routes */}
-          <Route path="/trip-alert" element={<TripAlertScreen />} />
-          <Route path="/trip-acceptance/:tripId" element={<TripAcceptanceScreen />} />
-          <Route path="/active-trip/:tripId" element={<ActiveTripScreen />} />
-          <Route path="/trip-history" element={<TripHistoryScreen />} />
-          
-          {/* Car Management Routes */}
-          <Route path="/car-drop-alert" element={<CarDropAlertScreen />} />
-          <Route path="/car-switch-alert" element={<CarSwitchAlertScreen />} />
-          <Route path="/car-management" element={<CarManagementScreen />} />
-          <Route path="/lot-navigation/:lotId" element={<LotNavigationScreen />} />
-          
-          {/* Navigation Routes */}
-          <Route path="/navigation/:tripId" element={<NavigationScreen />} />
-          <Route path="/map-view" element={<MapViewScreen />} />
-        </Routes>
-        </div>
-      </Router>
-    </ThemeProvider>
+    <ErrorBoundary>
+      <ThemeProvider>
+        <Router>
+          <div className="App">
+          <Routes>
+            {/* Authentication Routes */}
+            <Route path="/login" element={<LoginScreen />} />
+            <Route path="/register" element={<RegistrationScreen />} />
+            <Route path="/forgot-password" element={<ForgotPasswordScreen />} />
+            
+            {/* Dashboard Routes */}
+            <Route path="/" element={<HomeScreen />} />
+            <Route path="/profile" element={<ProfileScreen />} />
+            <Route path="/earnings" element={<EarningsScreen />} />
+            
+            {/* Smart Lot Routes */}
+            <Route path="/smart-lot-map" element={<SmartLotMapScreen />} />
+            <Route path="/lot-details/:lotId" element={<LotDetailsScreen />} />
+            <Route path="/car-selection/:lotId" element={<CarSelectionScreen />} />
+            
+            {/* Scheduling Routes */}
+            <Route path="/schedule-shift" element={<ScheduleShiftScreen />} />
+            <Route path="/schedule-car/:lotId" element={<ScheduleCarScreen />} />
+            <Route path="/shift-calendar" element={<ShiftCalendarScreen />} />
+            <Route path="/drop-area-selection" element={<DropAreaSelectionScreen />} />
+            <Route path="/shift-details/:shiftId" element={<ShiftDetailsScreen />} />
+            
+            {/* Trip Management Routes */}
+            <Route path="/trip-alert" element={<TripAlertScreen />} />
+            <Route path="/trip-acceptance/:tripId" element={<TripAcceptanceScreen />} />
+            <Route path="/active-trip/:tripId" element={<ActiveTripScreen />} />
+            <Route path="/trip-history" element={<TripHistoryScreen />} />
+            
+            {/* Car Management Routes */}
+            <Route path="/car-drop-alert" element={<CarDropAlertScreen />} />
+            <Route path="/car-switch-alert" element={<CarSwitchAlertScreen />} />
+            <Route path="/car-management" element={<CarManagementScreen />} />
+            <Route path="/lot-navigation/:lotId" element={<LotNavigationScreen />} />
+            
+            {/* Navigation Routes */}
+            <Route path="/navigation/:tripId" element={<NavigationScreen />} />
+            <Route path="/map-view" element={<MapViewScreen />} />
+          </Routes>
+          </div>
+        </Router>
+      </ThemeProvider>
+    </ErrorBoundary>
   );
 }
 

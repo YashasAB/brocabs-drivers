@@ -70,21 +70,21 @@ const HomeScreen: React.FC = () => {
             <div className="flex items-center space-x-3">
               <button
                 onClick={() => navigate('/profile')}
-                className="w-10 h-10 bg-gradient-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                className="w-12 h-12 bg-blue-500 hover:bg-blue-600 rounded-lg flex items-center justify-center text-white border-2 border-gray-300"
               >
-                <span className="text-sm">👤</span>
+                <span className="text-xl">👤</span>
               </button>
               <button
                 onClick={() => setIsOnline(!isOnline)}
-                className={`px-4 py-2 rounded-full text-sm font-medium shadow-md transition-all duration-300 transform hover:scale-105 ${
+                className={`px-4 py-2 rounded-lg text-sm font-medium border-2 border-gray-300 ${
                   !isOnline 
-                    ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700' 
-                    : 'bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700'
+                    ? 'bg-green-500 hover:bg-green-600 text-white' 
+                    : 'bg-red-500 hover:bg-red-600 text-white'
                 }`}
               >
                 <div className="flex items-center space-x-2">
-                  <div className={`w-2 h-2 rounded-full bg-white`}></div>
-                  <span className="text-xs sm:text-sm">{isOnline ? 'Go Offline' : 'Go Online'}</span>
+                  <span className="text-lg">{isOnline ? '🔴' : '🟢'}</span>
+                  <span className="text-sm">{isOnline ? 'Go Offline' : 'Go Online'}</span>
                 </div>
               </button>
             </div>
@@ -101,34 +101,26 @@ const HomeScreen: React.FC = () => {
             <div className="space-y-4">
               <button
                 onClick={() => navigate('/smart-lot-map')}
-                className="w-full rounded-xl bg-gradient-to-r from-violet via-purple-600 to-deep-violet hover:from-deep-violet hover:via-purple-700 hover:to-violet shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02]"
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg p-6 border-2 border-gray-300"
               >
-                <div className="flex items-center justify-between p-6">
+                <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                      <span className="text-2xl">🚗</span>
-                    </div>
-                    <span className="text-base sm:text-lg font-semibold text-white">Get a Car</span>
+                    <span className="text-3xl">🚗</span>
+                    <span className="text-lg font-semibold">Get a Car</span>
                   </div>
-                  <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                    <span className="text-white text-sm">→</span>
-                  </div>
+                  <span className="text-2xl">→</span>
                 </div>
               </button>
               <button
                 onClick={() => navigate('/earnings')}
-                className="w-full rounded-xl bg-gradient-to-r from-emerald-500 via-teal-600 to-cyan-600 hover:from-emerald-600 hover:via-teal-700 hover:to-cyan-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.02]"
+                className="w-full bg-green-500 hover:bg-green-600 text-white rounded-lg p-6 border-2 border-gray-300"
               >
-                <div className="flex items-center justify-between p-6">
+                <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
-                    <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                      <span className="text-2xl">💰</span>
-                    </div>
-                    <span className="text-base sm:text-lg font-semibold text-white">My Earnings</span>
+                    <span className="text-3xl">💰</span>
+                    <span className="text-lg font-semibold">My Earnings</span>
                   </div>
-                  <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                    <span className="text-white text-sm">→</span>
-                  </div>
+                  <span className="text-2xl">→</span>
                 </div>
               </button>
             </div>
@@ -185,17 +177,17 @@ const HomeScreen: React.FC = () => {
             <div className="flex flex-col items-center space-y-3 ml-4">
               <button
                 onClick={prevAlert}
-                className="w-8 h-8 bg-gradient-to-r from-violet to-purple-600 hover:from-purple-600 hover:to-violet rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                className="w-10 h-10 bg-purple-500 hover:bg-purple-600 rounded-lg border-2 border-gray-300 flex items-center justify-center text-white"
               >
-                <span className="text-white text-sm">←</span>
+                <span className="text-lg">←</span>
               </button>
               <div className="flex space-x-1">
                 {alertCarousel.map((_, index) => (
                   <div
                     key={index}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    className={`w-3 h-3 rounded-full ${
                       index === currentAlertIndex 
-                        ? 'bg-gradient-to-r from-violet to-purple-600' 
+                        ? 'bg-purple-500' 
                         : 'bg-gray-300'
                     }`}
                   />
@@ -203,9 +195,9 @@ const HomeScreen: React.FC = () => {
               </div>
               <button
                 onClick={nextAlert}
-                className="w-8 h-8 bg-gradient-to-r from-violet to-purple-600 hover:from-purple-600 hover:to-violet rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                className="w-10 h-10 bg-purple-500 hover:bg-purple-600 rounded-lg border-2 border-gray-300 flex items-center justify-center text-white"
               >
-                <span className="text-white text-sm">→</span>
+                <span className="text-lg">→</span>
               </button>
             </div>
           </div>

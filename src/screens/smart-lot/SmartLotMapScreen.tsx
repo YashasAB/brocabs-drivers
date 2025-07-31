@@ -75,11 +75,9 @@ const SmartLotMapScreen: React.FC = () => {
             <div className="flex items-center">
               <button
                 onClick={() => navigate('/')}
-                className="mr-3 sm:mr-4 w-10 h-10 bg-gradient-to-r from-violet via-purple-600 to-deep-violet hover:from-deep-violet hover:via-purple-700 hover:to-violet rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
+                className="mr-3 sm:mr-4 w-12 h-12 bg-blue-500 hover:bg-blue-600 rounded-lg border-2 border-gray-300 flex items-center justify-center text-white"
               >
-                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
+                <span className="text-xl">←</span>
               </button>
               <div>
                 <h1 className="text-lg sm:text-xl font-bold text-deep-violet">🗺️ Find Car</h1>
@@ -139,9 +137,9 @@ const SmartLotMapScreen: React.FC = () => {
                   </div>
                   <button
                     onClick={() => navigate(`/schedule-car/${lot.id}`)}
-                    className="mt-3 w-full px-3 sm:px-4 py-2 bg-gradient-to-r from-violet via-purple-600 to-deep-violet hover:from-deep-violet hover:via-purple-700 hover:to-violet text-white text-xs sm:text-sm font-semibold rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                    className="mt-3 w-full px-3 py-2 bg-purple-500 hover:bg-purple-600 text-white text-sm font-semibold rounded-lg border-2 border-gray-300"
                   >
-                    Schedule a Car
+                    🚗 Schedule Car
                   </button>
                 </div>
               </div>
@@ -207,9 +205,9 @@ const SmartLotMapScreen: React.FC = () => {
               <p className="text-sm sm:text-base text-violet mb-4">Choose a lot above and schedule your next car</p>
               <button
                 onClick={() => navigate('/')}
-                className="px-6 py-3 bg-gradient-to-r from-emerald-500 via-teal-600 to-cyan-600 hover:from-emerald-600 hover:via-teal-700 hover:to-cyan-700 text-white text-sm sm:text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+                className="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg border-2 border-gray-300"
               >
-                Back to Dashboard
+                🏠 Back to Dashboard
               </button>
             </div>
           </div>

@@ -142,11 +142,13 @@ const ScheduleCarScreen: React.FC = () => {
     return options;
   };
 
-  if (!selectedLot) {
+  if (!lotId || !selectedLot) {
     return (
       <div className="min-h-screen bg-pink-gradient flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-lg sm:text-xl font-semibold text-deep-violet mb-4">Lot not found</h1>
+          <h1 className="text-lg sm:text-xl font-semibold text-deep-violet mb-4">
+            {!lotId ? 'No lot selected' : 'Lot not found'}
+          </h1>
           <button
             onClick={() => navigate('/smart-lot-map')}
             className="px-4 py-2 sm:px-6 sm:py-3 bg-violet hover:bg-deep-violet text-white rounded-lg font-medium text-sm sm:text-base"

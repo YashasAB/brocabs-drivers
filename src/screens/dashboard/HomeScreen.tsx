@@ -18,9 +18,7 @@ const HomeScreen: React.FC = () => {
     }
   };
 
-  const recentAlerts = [
-    { id: 2, type: 'car', message: 'Drop current car to charge and pick up fresh car at Midtown Lot after dropping AB', time: '15 min ago' }
-  ];
+  
 
   const alertCarousel = [
     {

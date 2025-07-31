@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 // Mock data for smart lots with vehicles
@@ -77,7 +77,7 @@ const ScheduleCarScreen: React.FC = () => {
     
     const availableTime = selectedVehicle.availableTime;
     const [time, period] = availableTime.split(' ');
-    const [hours, minutes] = time.split(':').map(Number);
+    const [hours] = time.split(':').map(Number);
     
     let startHour = hours;
     if (period === 'PM' && hours !== 12) startHour += 12;

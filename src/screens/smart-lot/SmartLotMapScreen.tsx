@@ -46,7 +46,7 @@ const mockSmartLots = [
 
 const SmartLotMapScreen: React.FC = () => {
   const [selectedLot, setSelectedLot] = useState<any>(null);
-  const [driverLocation, setDriverLocation] = useState({ latitude: 37.7749, longitude: -122.4194 });
+  const [, setDriverLocation] = useState({ latitude: 37.7749, longitude: -122.4194 });
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -66,10 +66,7 @@ const SmartLotMapScreen: React.FC = () => {
     }
   }, []);
 
-  const handleLotSelect = (lot: any) => {
-    setSelectedLot(lot);
-    navigate(`/lot-details/${lot.id}`);
-  };
+  
 
   return (
     <div className="min-h-screen bg-pink-gradient">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 interface CarAlert {
@@ -12,7 +12,7 @@ interface CarAlert {
 }
 
 const CarManagementScreen: React.FC = () => {
-  const [currentCar, setCurrentCar] = useState({
+  const [currentCar] = useState({
     id: 'car-123',
     model: 'Tesla Model 3',
     licensePlate: 'ABC-123',

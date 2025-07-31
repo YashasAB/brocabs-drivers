@@ -7,7 +7,7 @@ channel = "stable-25_05"
 [deployment]
 deploymentTarget = "static"
 publicDir = "dist"
-run = ["sh", "-c", "npx serve -s dist -l 80"]
+run = ["sh", "-c", "npx serve -c serve.json -l 80"]
 build = ["sh", "-c", "npm run build"]
 
 [[ports]]

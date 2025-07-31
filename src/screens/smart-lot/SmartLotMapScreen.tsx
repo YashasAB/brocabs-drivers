@@ -114,6 +114,11 @@ const SmartLotMapScreen: React.FC = () => {
         `;
         
         marker.bindPopup(popupContent);
+        
+        // Open Flushing Lot popup by default
+        if (lot.name === 'Flushing Lot') {
+          marker.openPopup();
+        }
       });
 
       mapInstanceRef.current = map;

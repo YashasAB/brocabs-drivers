@@ -151,7 +151,19 @@ const LandingScreen: React.FC = () => {
         </div>
 
         {/* Features Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+          <div className="card-violet p-6 text-center">
+            <div className="w-16 h-16 mx-auto bg-gradient-to-r from-violet to-deep-violet rounded-full flex items-center justify-center mb-4">
+              <span className="text-2xl">🚗</span>
+            </div>
+            <h3 className="text-lg font-semibold text-deep-violet mb-2">
+              Driver Convenience
+            </h3>
+            <p className="text-sm text-violet">
+              Don't have to own a car or decide what trips to accept. Work small profitable shifts. Just choose where you want to start, end, and how long you want to drive.
+            </p>
+          </div>
+
           <div className="card-violet p-6 text-center">
             <div className="w-16 h-16 mx-auto bg-gradient-to-r from-violet to-deep-violet rounded-full flex items-center justify-center mb-4">
               <span className="text-2xl">💰</span>

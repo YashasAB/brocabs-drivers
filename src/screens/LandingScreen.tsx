@@ -112,39 +112,39 @@ const LandingScreen: React.FC = () => {
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl">⚡</span>
                 </div>
-                <div className="text-xl font-bold text-white mb-3 leading-tight">
+                <h4 className="text-xl font-bold text-white mb-3 leading-tight">
                   Choose When and Where to Start and End
-                </div>
-                <div className="text-white/90 text-sm mb-4">
+                </h4>
+                <p className="text-white/90 text-sm mb-4">
                   We take care of the rest!
-                </div>
-                <div className="text-2xl font-extrabold text-white">
+                </p>
+                <h4 className="text-2xl font-extrabold text-white">
                   100% Electric Fleet
-                </div>
+                </h4>
               </div>
               
               <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-8 border border-white/20 transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl">🛠️</span>
                 </div>
-                <div className="text-2xl font-extrabold text-white leading-tight">
+                <h4 className="text-2xl font-extrabold text-white leading-tight">
                   24/7 Support
-                </div>
-                <div className="text-white/90 text-sm mt-3">
+                </h4>
+                <p className="text-white/90 text-sm mt-3">
                   Always here when you need us
-                </div>
+                </p>
               </div>
               
               <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-8 border border-white/20 transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl">💰</span>
                 </div>
-                <div className="text-2xl font-extrabold text-white leading-tight mb-3">
+                <h4 className="text-2xl font-extrabold text-white leading-tight mb-3">
                   0% Commission!
-                </div>
-                <div className="text-xl font-bold text-white">
+                </h4>
+                <h4 className="text-xl font-bold text-white">
                   Keep 100% of Booking Fare!
-                </div>
+                </h4>
               </div>
             </div>
           </div>

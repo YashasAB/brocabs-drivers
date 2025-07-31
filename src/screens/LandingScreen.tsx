@@ -135,16 +135,13 @@ const LandingScreen: React.FC = () => {
           <h3 className="text-2xl font-bold text-deep-violet mb-8">Why Choose BroCabs?</h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             <div>
-              <div className="text-3xl font-bold text-deep-violet mb-2">100%</div>
-              <div className="text-sm text-violet">Electric Fleet</div>
+              <div className="text-3xl font-bold text-deep-violet mb-2">100% Electric Fleet</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-deep-violet mb-2">24/7</div>
-              <div className="text-sm text-violet">Support</div>
+              <div className="text-3xl font-bold text-deep-violet mb-2">24/7 Support</div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-deep-violet mb-2">0%</div>
-              <div className="text-sm text-violet">Commission on Tips</div>
+              <div className="text-3xl font-bold text-deep-violet mb-2">0% Commission! Keep 100% of Booking Fare!</div>
             </div>
           </div>
         </div>

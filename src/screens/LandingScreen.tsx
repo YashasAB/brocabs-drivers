@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
@@ -52,7 +51,7 @@ const LandingScreen: React.FC = () => {
                 An EV Network Designed to Maximize Driver Earnings and Convenience + Offer Lower Fare
               </p>
             </div>
-            
+
             {/* Main Action Buttons */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <button
@@ -69,7 +68,7 @@ const LandingScreen: React.FC = () => {
                   </div>
                 </div>
               </button>
-              
+
               <button
                 onClick={() => {
                   // This would typically navigate to a customer booking app

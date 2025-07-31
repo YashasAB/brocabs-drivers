@@ -77,9 +77,10 @@ const SmartLotMapScreen: React.FC = () => {
       // Initialize the map
       const map = L.map(mapRef.current).setView([40.7589, -73.9851], 10); // NYC center - zoomed out 10%
 
-      // Add tile layer
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
+      // Add tile layer (simplified grayscale style)
+      L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
+        attribution: '© Stadia Maps © OpenMapTiles © OpenStreetMap contributors',
+        maxZoom: 20
       }).addTo(map);
       
       console.log('Map initialized, adding markers...');

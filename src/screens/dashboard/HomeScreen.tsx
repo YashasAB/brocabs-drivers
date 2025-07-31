@@ -62,7 +62,7 @@ const HomeScreen: React.FC = () => {
   return (
     <div className="min-h-screen bg-pink-gradient">
       {/* Header */}
-      <div className="bg-white shadow nav-violet">
+      <div className="bg-white shadow nav-violet rounded-2xl mx-4 sm:mx-6 lg:mx-8 mt-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div>

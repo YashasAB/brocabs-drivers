@@ -87,46 +87,55 @@ const ScheduleCarScreen: React.FC = () => {
     return '⚠️';
   };
 
-  // Generate time options within 3 hours of available time
+  // Generate time options within 2 hours of available time with 30-minute intervals
   const generateStartTimeOptions = () => {
     if (!selectedVehicle) return [];
     
     const availableTime = selectedVehicle.availableTime;
     const [time, period] = availableTime.split(' ');
-    const [hours] = time.split(':').map(Number);
+    const [hours, minutes] = time.split(':').map(Number);
     
     let startHour = hours;
     if (period === 'PM' && hours !== 12) startHour += 12;
     if (period === 'AM' && hours === 12) startHour = 0;
     
     const options = [];
-    for (let i = 0; i <= 3; i++) {
-      const hour = startHour + i;
+    // Generate 30-minute intervals within 2 hours
+    for (let i = 0; i <= 4; i++) { // 0, 0.5, 1, 1.5, 2 hours
+      const totalMinutes = i * 30;
+      const hour = startHour + Math.floor(totalMinutes / 60);
+      const minute = totalMinutes % 60;
+      
       if (hour <= 18) { // Max 6 PM
         const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
         const period = hour >= 12 ? 'PM' : 'AM';
-        const value = `${hour.toString().padStart(2, '0')}:00`;
-        const display = `${displayHour}:00 ${period}`;
+        const value = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+        const display = `${displayHour}:${minute.toString().padStart(2, '0')} ${period}`;
         options.push({ value, display });
       }
     }
     return options;
   };
 
-  // Generate end time options (minimum 4 hours after start time)
+  // Generate end time options (minimum 4 hours after start time) with 30-minute intervals
   const generateEndTimeOptions = () => {
     if (!startTime) return [];
     
-    const startHour = parseInt(startTime.split(':')[0]);
+    const [startHour, startMinute] = startTime.split(':').map(Number);
+    const startTotalMinutes = startHour * 60 + startMinute;
     const options = [];
     
-    for (let i = 4; i <= 8; i++) { // 4-8 hours after start
-      const hour = startHour + i;
+    // Generate options from 4 to 8 hours after start time in 30-minute intervals
+    for (let i = 8; i <= 16; i++) { // 8 half-hours (4 hours) to 16 half-hours (8 hours)
+      const endTotalMinutes = startTotalMinutes + (i * 30);
+      const hour = Math.floor(endTotalMinutes / 60);
+      const minute = endTotalMinutes % 60;
+      
       if (hour <= 22) { // Max 10 PM
         const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
         const period = hour >= 12 ? 'PM' : 'AM';
-        const value = `${hour.toString().padStart(2, '0')}:00`;
-        const display = `${displayHour}:00 ${period}`;
+        const value = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;
+        const display = `${displayHour}:${minute.toString().padStart(2, '0')} ${period}`;
         options.push({ value, display });
       }
     }

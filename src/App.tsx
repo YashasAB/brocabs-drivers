@@ -67,7 +67,7 @@ function App() {
 
             {/* Scheduling Routes */}
             <Route path="/schedule-shift" element={<ScheduleShiftScreen />} />
-            <Route path="/schedule-car" element={<ScheduleCarScreen />} />
+            <Route path="/schedule-car/:lotId" element={<ScheduleCarScreen />} />
             <Route path="/shift-calendar" element={<ShiftCalendarScreen />} />
             <Route path="/drop-area-selection" element={<DropAreaSelectionScreen />} />
             <Route path="/shift-details/:shiftId" element={<ShiftDetailsScreen />} />

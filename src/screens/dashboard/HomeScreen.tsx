@@ -69,7 +69,7 @@ const HomeScreen: React.FC = () => {
               <h1 className="text-xl sm:text-2xl font-bold text-deep-violet">BroCabs Driver</h1>
               <p className="text-xs sm:text-sm text-violet">Welcome back, John</p>
             </div>
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-4">
               <button
                 onClick={toggleTheme}
                 className="theme-toggle w-12 h-12 flex items-center justify-center"
@@ -107,15 +107,15 @@ const HomeScreen: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <div className="card-violet p-8">
             <h3 className="text-lg sm:text-xl font-semibold text-deep-violet mb-4 sm:mb-6">Quick Actions</h3>
-            <div className="space-y-6">
+            <div className="space-y-4">
               <button
                 onClick={() => navigate('/smart-lot-map')}
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg p-6 border-2 border-gray-300 mb-4"
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg p-6 border-2 border-gray-300"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
                     <span className="text-3xl">🚗</span>
-                    <span className="text-lg font-semibold">Get a Car</span>
+                    <span className="text-lg font-semibold">Schedule Car</span>
                   </div>
                   <span className="text-2xl">→</span>
                 </div>
@@ -127,7 +127,7 @@ const HomeScreen: React.FC = () => {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
                     <span className="text-3xl">💰</span>
-                    <span className="text-lg font-semibold">My Earnings</span>
+                    <span className="text-lg font-semibold">Earnings</span>
                   </div>
                   <span className="text-2xl">→</span>
                 </div>
@@ -183,14 +183,14 @@ const HomeScreen: React.FC = () => {
                 <p className="text-xs sm:text-sm text-deep-violet">{currentAlert.message}</p>
               </div>
             </div>
-            <div className="flex flex-col items-center space-y-5 ml-4">
+            <div className="flex flex-col items-center space-y-4 ml-4">
               <button
                 onClick={prevAlert}
                 className="w-10 h-10 bg-purple-500 hover:bg-purple-600 rounded-lg border-2 border-gray-300 flex items-center justify-center text-white"
               >
                 <span className="text-lg">←</span>
               </button>
-              <div className="flex space-x-2">
+              <div className="flex space-x-2 my-3">
                 {alertCarousel.map((_, index) => (
                   <div
                     key={index}

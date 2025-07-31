@@ -87,7 +87,7 @@ const SmartLotMapScreen: React.FC = () => {
 
       // Custom icon for lots
       const lotIcon = L.divIcon({
-        html: `<div style="background: #7c3aed; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">🏢</div>`,
+        html: `<div style="background: #7c3aed; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">🚗</div>`,
         className: 'custom-div-icon',
         iconSize: [40, 40],
         iconAnchor: [20, 20]
@@ -143,7 +143,7 @@ const SmartLotMapScreen: React.FC = () => {
               </button>
               <div>
                 <h1 className="text-lg sm:text-xl font-bold text-deep-violet">🗺️ Find Car</h1>
-                <p className="text-xs sm:text-sm text-violet">Tap on available lots in the map to select your car</p>
+                <p className="text-xs sm:text-sm text-violet">Tap Lot to Schedule Car!</p>
               </div>
             </div>
             <button

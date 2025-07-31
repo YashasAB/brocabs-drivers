@@ -72,6 +72,8 @@ const SmartLotMapScreen: React.FC = () => {
 
   useEffect(() => {
     if (mapRef.current && !mapInstanceRef.current) {
+      console.log('Initializing map...');
+      
       // Initialize the map
       const map = L.map(mapRef.current).setView([40.7589, -73.9851], 11); // NYC center
 
@@ -79,6 +81,8 @@ const SmartLotMapScreen: React.FC = () => {
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
       }).addTo(map);
+      
+      console.log('Map initialized, adding markers...');
 
       // Custom icon for lots
       const lotIcon = L.divIcon({
@@ -90,6 +94,7 @@ const SmartLotMapScreen: React.FC = () => {
 
       // Add markers for each smart lot
       mockSmartLots.forEach((lot) => {
+        console.log(`Adding marker for ${lot.name} at [${lot.location.latitude}, ${lot.location.longitude}]`);
         const marker = L.marker([lot.location.latitude, lot.location.longitude], { icon: lotIcon })
           .addTo(map);
         
@@ -99,7 +104,7 @@ const SmartLotMapScreen: React.FC = () => {
             <p style="margin: 4px 0; color: #666;">🚗 ${lot.availableCars} cars available</p>
             <p style="margin: 4px 0; color: #666;">${lot.isChargingStation ? '⚡ Charging Station' : '🅿️ Standard Lot'}</p>
             <button 
-              onclick="window.location.href='/schedule-car/${lot.id}'" 
+              onclick="window.open('/schedule-car/${lot.id}', '_self')" 
               style="background: #7c3aed; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; margin-top: 8px; width: 100%;"
             >
               🚗 Schedule Car
@@ -111,6 +116,7 @@ const SmartLotMapScreen: React.FC = () => {
       });
 
       mapInstanceRef.current = map;
+      console.log(`Map setup complete with ${mockSmartLots.length} markers`);
     }
 
     return () => {
@@ -151,11 +157,11 @@ const SmartLotMapScreen: React.FC = () => {
       </div>
 
       {/* Interactive Map Container */}
-      <div className="mx-4 sm:mx-6 lg:mx-8 mt-6 rounded-2xl shadow-lg overflow-hidden">
+      <div className="mx-4 sm:mx-6 lg:mx-8 mt-6 rounded-2xl shadow-lg overflow-hidden bg-white">
         <div 
           ref={mapRef}
           className="h-80 sm:h-96 w-full rounded-2xl"
-          style={{ zIndex: 1 }}
+          style={{ zIndex: 1, minHeight: '400px' }}
         />
       </div>
 

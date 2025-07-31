@@ -5,14 +5,14 @@ run = "npm run dev"
 channel = "stable-25_05"
 
 [deployment]
-run = ["sh", "-c", "npm run build && npx http-server dist -p 80 --proxy http://localhost:80?"]
+deploymentTarget = "static"
+publicDir = "dist"
+run = ["sh", "-c", "npm run build && npm start"]
+build = ["sh", "-c", "npm run build"]
 
 [[deployment.rewrites]]
 from = "/*"
 to = "/index.html"
-
-publicDir = "dist"
-build = ["sh", "-c", "npm run build"]
 
 [[ports]]
 localPort = 3000

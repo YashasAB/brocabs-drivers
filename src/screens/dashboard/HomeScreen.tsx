@@ -64,8 +64,8 @@ const HomeScreen: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div>
-              <h1 className="text-2xl font-bold text-deep-violet">BroCabs Driver</h1>
-              <p className="text-sm text-violet">Welcome back, John</p>
+              <h1 className="text-xl sm:text-2xl font-bold text-deep-violet">BroCabs Driver</h1>
+              <p className="text-xs sm:text-sm text-violet">Welcome back, John</p>
             </div>
             <div className="flex items-center space-x-3">
               <button
@@ -84,7 +84,7 @@ const HomeScreen: React.FC = () => {
               >
                 <div className="flex items-center space-x-2">
                   <div className={`w-2 h-2 rounded-full bg-white`}></div>
-                  <span>{isOnline ? 'Go Offline' : 'Go Online'}</span>
+                  <span className="text-xs sm:text-sm">{isOnline ? 'Go Offline' : 'Go Online'}</span>
                 </div>
               </button>
             </div>
@@ -97,7 +97,7 @@ const HomeScreen: React.FC = () => {
         {/* Quick Actions */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <div className="card-violet p-8">
-            <h3 className="text-xl font-semibold text-deep-violet mb-6">Quick Actions</h3>
+            <h3 className="text-lg sm:text-xl font-semibold text-deep-violet mb-4 sm:mb-6">Quick Actions</h3>
             <div className="space-y-4">
               <button
                 onClick={() => navigate('/smart-lot-map')}
@@ -108,7 +108,7 @@ const HomeScreen: React.FC = () => {
                     <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
                       <span className="text-2xl">🚗</span>
                     </div>
-                    <span className="text-lg font-semibold text-white">Get a Car</span>
+                    <span className="text-base sm:text-lg font-semibold text-white">Get a Car</span>
                   </div>
                   <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                     <span className="text-white text-sm">→</span>
@@ -124,7 +124,7 @@ const HomeScreen: React.FC = () => {
                     <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
                       <span className="text-2xl">💰</span>
                     </div>
-                    <span className="text-lg font-semibold text-white">My Earnings</span>
+                    <span className="text-base sm:text-lg font-semibold text-white">My Earnings</span>
                   </div>
                   <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                     <span className="text-white text-sm">→</span>
@@ -135,19 +135,19 @@ const HomeScreen: React.FC = () => {
           </div>
 
           <div className="card-violet p-6">
-            <h3 className="text-lg font-semibold text-deep-violet mb-4">Today's Shift</h3>
+            <h3 className="text-base sm:text-lg font-semibold text-deep-violet mb-3 sm:mb-4">Today's Shift</h3>
             <div className="space-y-4">
               <div className="flex justify-between items-center py-2">
-                <span className="text-sm text-violet">Status</span>
-                <span className="text-sm font-medium text-green-600 bg-green-100 px-3 py-1 rounded-full">✅ Active</span>
+                <span className="text-xs sm:text-sm text-violet">Status</span>
+                <span className="text-xs sm:text-sm font-medium text-green-600 bg-green-100 px-2 sm:px-3 py-1 rounded-full">✅ Active</span>
               </div>
               <div className="flex justify-between items-center py-2">
-                <span className="text-sm text-violet">Started</span>
-                <span className="text-sm font-medium text-deep-violet">{driverStats.currentShift.startTime}</span>
+                <span className="text-xs sm:text-sm text-violet">Started</span>
+                <span className="text-xs sm:text-sm font-medium text-deep-violet">{driverStats.currentShift.startTime}</span>
               </div>
               <div className="flex justify-between items-center py-2">
-                <span className="text-sm text-violet">Ends</span>
-                <span className="text-sm font-medium text-deep-violet">{driverStats.currentShift.endTime}</span>
+                <span className="text-xs sm:text-sm text-violet">Ends</span>
+                <span className="text-xs sm:text-sm font-medium text-deep-violet">{driverStats.currentShift.endTime}</span>
               </div>
             </div>
           </div>
@@ -155,14 +155,14 @@ const HomeScreen: React.FC = () => {
 
         {/* Current Trip Status */}
         <div className="card-violet mb-8 p-6">
-          <h3 className="text-lg font-semibold text-deep-violet mb-4">Current Trip</h3>
+          <h3 className="text-base sm:text-lg font-semibold text-deep-violet mb-3 sm:mb-4">Current Trip</h3>
           <div className="flex items-center justify-between">
             <div className="space-y-1">
-              <p className="text-base font-medium text-deep-violet">🚶 Drop off AB</p>
-              <p className="text-sm text-violet">270 Park Avenue</p>
+              <p className="text-sm sm:text-base font-medium text-deep-violet">🚶 Drop off AB</p>
+              <p className="text-xs sm:text-sm text-violet">270 Park Avenue</p>
             </div>
             <div className="text-right space-y-1">
-              <span className="text-sm font-medium text-green-600 bg-green-100 px-3 py-1 rounded-full">🚗 On the way</span>
+              <span className="text-xs sm:text-sm font-medium text-green-600 bg-green-100 px-2 sm:px-3 py-1 rounded-full">🚗 On the way</span>
               <p className="text-xs text-violet">8 min away</p>
             </div>
           </div>
@@ -177,9 +177,9 @@ const HomeScreen: React.FC = () => {
                   {currentAlert.id === 1 ? '🚗' : '⏰'}
                 </span>
               </div>
-              <div className="ml-4 flex-1">
-                <p className="text-base font-medium text-violet mb-1">{currentAlert.title}</p>
-                <p className="text-sm text-deep-violet">{currentAlert.message}</p>
+              <div className="ml-3 sm:ml-4 flex-1">
+                <p className="text-sm sm:text-base font-medium text-violet mb-1">{currentAlert.title}</p>
+                <p className="text-xs sm:text-sm text-deep-violet">{currentAlert.message}</p>
               </div>
             </div>
             <div className="flex flex-col items-center space-y-3 ml-4">
@@ -220,9 +220,9 @@ const HomeScreen: React.FC = () => {
               <div className="flex-shrink-0 bg-gradient-to-r from-violet to-deep-violet p-4 rounded-xl">
                 <span className="text-2xl">🗺️</span>
               </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-violet mb-1">Today's Trips</p>
-                <p className="text-2xl font-bold text-deep-violet">{driverStats.totalTrips}</p>
+              <div className="ml-3 sm:ml-4">
+                <p className="text-xs sm:text-sm font-medium text-violet mb-1">Today's Trips</p>
+                <p className="text-xl sm:text-2xl font-bold text-deep-violet">{driverStats.totalTrips}</p>
               </div>
             </div>
           </div>
@@ -232,9 +232,9 @@ const HomeScreen: React.FC = () => {
               <div className="flex-shrink-0 bg-gradient-to-r from-violet to-deep-violet p-4 rounded-xl">
                 <span className="text-2xl">⭐</span>
               </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-violet mb-1">Your Rating</p>
-                <p className="text-2xl font-bold text-deep-violet">{driverStats.rating}</p>
+              <div className="ml-3 sm:ml-4">
+                <p className="text-xs sm:text-sm font-medium text-violet mb-1">Your Rating</p>
+                <p className="text-xl sm:text-2xl font-bold text-deep-violet">{driverStats.rating}</p>
               </div>
             </div>
           </div>

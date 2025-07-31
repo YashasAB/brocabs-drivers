@@ -60,12 +60,19 @@ const BookRideScreen: React.FC = () => {
   // Initialize map
   useEffect(() => {
     if (mapRef.current && !mapInstanceRef.current) {
-      console.log('Initializing map...');
+      console.log('Initializing customer booking map...');
       
-      const map = L.map(mapRef.current).setView([40.7128, -73.9352], 11);
+      // Clear any existing content
+      mapRef.current.innerHTML = '';
+      
+      const map = L.map(mapRef.current, {
+        zoomControl: true,
+        attributionControl: true
+      }).setView([40.7128, -73.9352], 11);
       
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19
       }).addTo(map);
 
       // Add NYC boundary
@@ -79,6 +86,13 @@ const BookRideScreen: React.FC = () => {
 
       boundaryRef.current = boundary;
       mapInstanceRef.current = map;
+      
+      // Force map to resize after a short delay
+      setTimeout(() => {
+        if (mapInstanceRef.current) {
+          mapInstanceRef.current.invalidateSize();
+        }
+      }, 100);
 
       // Handle map clicks
       map.on('click', (e: L.LeafletMouseEvent) => {
@@ -145,16 +159,19 @@ const BookRideScreen: React.FC = () => {
         }
       });
 
-      console.log('Map initialized');
+      console.log('Customer booking map initialized');
     }
 
     return () => {
       if (mapInstanceRef.current) {
         mapInstanceRef.current.remove();
         mapInstanceRef.current = null;
+        pickupMarkerRef.current = null;
+        dropoffMarkerRef.current = null;
+        boundaryRef.current = null;
       }
     };
-  }, [mapMode]);
+  }, []);
 
   const handlePickupClick = () => {
     if (mapMode === 'pickup') {
@@ -291,7 +308,15 @@ const BookRideScreen: React.FC = () => {
         {/* Map */}
         <div className="bg-white rounded-xl p-6 mb-6 shadow-lg">
           <h3 className="text-lg font-semibold text-deep-violet mb-4">Interactive Map</h3>
-          <div ref={mapRef} className="w-full h-96 rounded-lg"></div>
+          <div 
+            ref={mapRef} 
+            className="w-full h-96 rounded-lg border border-gray-200"
+            style={{ 
+              minHeight: '384px',
+              zIndex: 1,
+              position: 'relative'
+            }}
+          ></div>
           <p className="text-xs text-gray-500 mt-2">
             Purple highlighted area shows available service region (NYC area)
           </p>

@@ -79,13 +79,13 @@ const HomeScreen: React.FC = () => {
               <button
                 onClick={() => setIsOnline(!isOnline)}
                 className={`px-4 py-2 rounded-full text-sm font-medium shadow-md transition-all duration-300 transform hover:scale-105 ${
-                  isOnline 
-                    ? 'bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700' 
-                    : 'bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700'
+                  !isOnline 
+                    ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700' 
+                    : 'bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700'
                 }`}
               >
                 <div className="flex items-center space-x-2">
-                  <div className={`w-2 h-2 rounded-full ${isOnline ? 'bg-white' : 'bg-white'}`}></div>
+                  <div className={`w-2 h-2 rounded-full bg-white`}></div>
                   <span>{isOnline ? 'Go Offline' : 'Go Online'}</span>
                 </div>
               </button>

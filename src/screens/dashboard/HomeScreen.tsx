@@ -105,31 +105,31 @@ const HomeScreen: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Quick Actions */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          <div className="card-violet p-8">
-            <h3 className="text-lg sm:text-xl font-semibold text-deep-violet mb-4 sm:mb-6">Quick Actions</h3>
-            <div className="space-y-4">
+          <div className="card-violet p-8 min-h-[30vh] flex flex-col justify-center">
+            <h3 className="text-lg sm:text-xl font-semibold text-deep-violet mb-6 sm:mb-8">Quick Actions</h3>
+            <div className="space-y-6 flex-1 flex flex-col justify-center">
               <button
                 onClick={() => navigate('/smart-lot-map')}
-                className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg p-6 border-2 border-gray-300"
+                className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg p-8 border-2 border-gray-300"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
-                    <span className="text-3xl">🚗</span>
-                    <span className="text-lg font-semibold">Schedule Car</span>
+                    <span className="text-4xl">🚗</span>
+                    <span className="text-xl font-semibold">Schedule Car</span>
                   </div>
-                  <span className="text-2xl">→</span>
+                  <span className="text-3xl">→</span>
                 </div>
               </button>
               <button
                 onClick={() => navigate('/earnings')}
-                className="w-full bg-green-500 hover:bg-green-600 text-white rounded-lg p-6 border-2 border-gray-300"
+                className="w-full bg-green-500 hover:bg-green-600 text-white rounded-lg p-8 border-2 border-gray-300"
               >
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-4">
-                    <span className="text-3xl">💰</span>
-                    <span className="text-lg font-semibold">Earnings</span>
+                    <span className="text-4xl">💰</span>
+                    <span className="text-xl font-semibold">Earnings</span>
                   </div>
-                  <span className="text-2xl">→</span>
+                  <span className="text-3xl">→</span>
                 </div>
               </button>
             </div>

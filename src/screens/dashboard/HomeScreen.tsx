@@ -8,11 +8,28 @@ const HomeScreen: React.FC = () => {
   const navigate = useNavigate();
   const { isDarkMode, toggleTheme } = useTheme();
 
+  // Mock driver profile data
+  const driverProfile = {
+    name: "AB Kumar",
+    bloodGroup: "A+",
+    rating: 4.8,
+    totalEarnings: 45672.50,
+    totalTrips: 1247,
+    yearsExperience: 3,
+    phoneNumber: "+1 (555) 123-4567",
+    email: "ab.kumar@brocabs.com",
+    licenseNumber: "DL123456789",
+    carType: "Honda Civic",
+    joinDate: "March 2021",
+    completionRate: 98.5,
+    onTimeRate: 96.2
+  };
+
   // Mock data
   const driverStats = {
     todayEarnings: 125.5,
     totalTrips: 8,
-    rating: 4.8,
+    rating: driverProfile.rating,
     currentShift: {
       startTime: "09:00 AM",
       endTime: "05:00 PM",
@@ -78,7 +95,7 @@ const HomeScreen: React.FC = () => {
                 BroCabs Driver
               </h1>
               <p className="text-xs sm:text-sm text-violet">
-                Welcome back, John
+                Welcome back, {driverProfile.name}
               </p>
             </div>
             <div className="flex items-center space-x-4">

@@ -65,9 +65,7 @@ const LandingScreen: React.FC = () => {
                   </div>
                   <div className="flex-1 flex flex-col justify-center">
                     <h3 className="text-2xl font-bold mb-2">Drive with us</h3>
-                    <p className="text-sm opacity-90">
-                      Start earning as a BroCabs driver
-                    </p>
+                    <p className="text-sm opacity-90">Earn Now!</p>
                   </div>
                 </div>
               </button>
@@ -82,9 +80,7 @@ const LandingScreen: React.FC = () => {
                   </div>
                   <div className="flex-1 flex flex-col justify-center">
                     <h3 className="text-2xl font-bold mb-2">Book a ride</h3>
-                    <p className="text-sm opacity-90">
-                      Get a ride at lower fares
-                    </p>
+                    <p className="text-sm opacity-90">Ride Now!</p>
                   </div>
                 </div>
               </button>
@@ -97,7 +93,7 @@ const LandingScreen: React.FC = () => {
           {/* Background gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-violet to-deep-violet opacity-90"></div>
           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/20"></div>
-          
+
           {/* Content */}
           <div className="relative z-10 p-12 text-center">
             <div className="mb-12">
@@ -106,7 +102,7 @@ const LandingScreen: React.FC = () => {
               </h3>
               <div className="w-24 h-1 bg-white/60 mx-auto rounded-full"></div>
             </div>
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
               <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-8 border border-white/20 transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -122,7 +118,7 @@ const LandingScreen: React.FC = () => {
                   100% Electric Fleet
                 </h4>
               </div>
-              
+
               <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-8 border border-white/20 transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl">🛠️</span>
@@ -134,7 +130,7 @@ const LandingScreen: React.FC = () => {
                   Always here when you need us
                 </p>
               </div>
-              
+
               <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-8 border border-white/20 transform hover:scale-105 transition-all duration-300">
                 <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
                   <span className="text-3xl">💰</span>
@@ -160,7 +156,9 @@ const LandingScreen: React.FC = () => {
               Driver Convenience
             </h3>
             <p className="text-sm text-violet">
-              Don't have to own a car or decide what trips to accept. Work small profitable shifts. Just choose where you want to start, end, and how long you want to drive.
+              Don't have to own a car or decide what trips to accept. Work small
+              profitable shifts. Just choose where you want to start, end, and
+              how long you want to drive.
             </p>
           </div>
 

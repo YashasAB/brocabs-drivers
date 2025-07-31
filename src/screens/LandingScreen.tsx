@@ -1,6 +1,6 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useTheme } from '../context/ThemeContext';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
 
 const LandingScreen: React.FC = () => {
   const navigate = useNavigate();
@@ -48,14 +48,15 @@ const LandingScreen: React.FC = () => {
                 Welcome to BroCabs
               </h1>
               <p className="text-lg sm:text-xl text-violet mb-8 max-w-4xl mx-auto leading-relaxed">
-                An EV Network Designed to Maximize Driver Earnings and Convenience + Offer Lower Fare
+                An EV Network Designed to Maximize Driver Earnings and
+                Convenience + Offer Lower Fare
               </p>
             </div>
 
             {/* Main Action Buttons */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <button
-                onClick={() => navigate('/driver-home')}
+                onClick={() => navigate("/driver-home")}
                 className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-xl p-8 border-2 border-gray-300 transition-all duration-300 hover:shadow-xl transform hover:scale-105"
               >
                 <div className="flex flex-col items-center space-y-4">
@@ -64,13 +65,15 @@ const LandingScreen: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold mb-2">Drive with us</h3>
-                    <p className="text-sm opacity-90">Start earning as a BroCabs driver</p>
+                    <p className="text-sm opacity-90">
+                      Start earning as a BroCabs driver
+                    </p>
                   </div>
                 </div>
               </button>
 
               <button
-                onClick={() => navigate('/book-ride')}
+                onClick={() => navigate("/book-ride")}
                 className="w-full bg-green-500 hover:bg-green-600 text-white rounded-xl p-8 border-2 border-gray-300 transition-all duration-300 hover:shadow-xl transform hover:scale-105"
               >
                 <div className="flex flex-col items-center space-y-4">
@@ -79,7 +82,9 @@ const LandingScreen: React.FC = () => {
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold mb-2">Book a ride</h3>
-                    <p className="text-sm opacity-90">Get a ride at lower fares</p>
+                    <p className="text-sm opacity-90">
+                      Get a ride at lower fares
+                    </p>
                   </div>
                 </div>
               </button>
@@ -89,16 +94,28 @@ const LandingScreen: React.FC = () => {
 
         {/* Stats Section */}
         <div className="card-violet p-8 text-center mb-12">
-          <h3 className="text-2xl font-bold text-deep-violet mb-8">Why Choose BroCabs?</h3>
+          <h3 className="text-2xl font-bold text-deep-violet mb-8">
+            Why Choose BroCabs?
+          </h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             <div>
-              <div className="text-3xl font-bold text-deep-violet mb-2">100% Electric Fleet</div>
+              <div className="text-3xl font-bold text-deep-violet mb-2">
+                Choose When and Where to Start and End - We take care of the
+                rest!
+              </div>
+              <div className="text-3xl font-bold text-deep-violet mb-2">
+                100% Electric Fleet
+              </div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-deep-violet mb-2">24/7 Support</div>
+              <div className="text-3xl font-bold text-deep-violet mb-2">
+                24/7 Support
+              </div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-deep-violet mb-2">0% Commission! Keep 100% of Booking Fare!</div>
+              <div className="text-3xl font-bold text-deep-violet mb-2">
+                0% Commission! Keep 100% of Booking Fare!
+              </div>
             </div>
           </div>
         </div>
@@ -113,7 +130,8 @@ const LandingScreen: React.FC = () => {
               Maximize Earnings
             </h3>
             <p className="text-sm text-violet">
-              Smart algorithms to optimize your earnings with efficient routing and demand prediction
+              Smart algorithms to optimize your earnings with efficient routing
+              and demand prediction
             </p>
           </div>
 
@@ -125,7 +143,8 @@ const LandingScreen: React.FC = () => {
               EV Network
             </h3>
             <p className="text-sm text-violet">
-              Complete electric vehicle infrastructure with smart charging and fleet management
+              Complete electric vehicle infrastructure with smart charging and
+              fleet management
             </p>
           </div>
 
@@ -137,7 +156,8 @@ const LandingScreen: React.FC = () => {
               Lower Fares
             </h3>
             <p className="text-sm text-violet">
-              Competitive pricing that benefits both drivers and passengers through efficiency
+              Competitive pricing that benefits both drivers and passengers
+              through efficiency
             </p>
           </div>
         </div>

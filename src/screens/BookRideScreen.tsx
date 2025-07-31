@@ -35,9 +35,6 @@ const BookRideScreen: React.FC = () => {
   const [selectedTime, setSelectedTime] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
   const [showPrice, setShowPrice] = useState(false);
-  const [mapMode, setMapMode] = useState<"pickup" | "dropoff" | "normal">(
-    "normal",
-  );
 
   // NYC boundary coordinates (adjusted to start near EWR)
   const nycBoundary = [
@@ -216,7 +213,6 @@ const BookRideScreen: React.FC = () => {
       dropoffMarkerRef.current = null;
     }
     setDropoffLocation(null);
-    setMapMode("normal");
   };
 
   const handleTimeSelect = (e) => {

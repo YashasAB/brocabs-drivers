@@ -138,6 +138,21 @@ const HomeScreen: React.FC = () => {
           
         </div>
 
+        {/* Current Trip Status */}
+        <div className="card-violet mb-8 p-6">
+          <h3 className="text-base sm:text-lg font-semibold text-deep-violet mb-3 sm:mb-4">Current Trip</h3>
+          <div className="flex items-center justify-between">
+            <div className="space-y-1">
+              <p className="text-sm sm:text-base font-medium text-deep-violet">🚶 Drop off AB</p>
+              <p className="text-xs sm:text-sm text-violet">270 Park Avenue</p>
+            </div>
+            <div className="text-right space-y-1">
+              <span className="text-xs sm:text-sm font-medium text-green-600 bg-green-100 px-2 sm:px-3 py-1 rounded-full">🚗 On the way</span>
+              <p className="text-xs text-violet">8 min away</p>
+            </div>
+          </div>
+        </div>
+
         {/* Alert Carousel Card */}
         <div className="card-violet mb-8 p-6">
           <div className="flex items-center justify-between">
@@ -196,21 +211,6 @@ const HomeScreen: React.FC = () => {
             <div className="flex justify-between items-center py-3">
               <span className="text-xs sm:text-sm text-violet">Ends</span>
               <span className="text-xs sm:text-sm font-medium text-deep-violet">{driverStats.currentShift.endTime}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Current Trip Status */}
-        <div className="card-violet mb-8 p-6">
-          <h3 className="text-base sm:text-lg font-semibold text-deep-violet mb-3 sm:mb-4">Current Trip</h3>
-          <div className="flex items-center justify-between">
-            <div className="space-y-1">
-              <p className="text-sm sm:text-base font-medium text-deep-violet">🚶 Drop off AB</p>
-              <p className="text-xs sm:text-sm text-violet">270 Park Avenue</p>
-            </div>
-            <div className="text-right space-y-1">
-              <span className="text-xs sm:text-sm font-medium text-green-600 bg-green-100 px-2 sm:px-3 py-1 rounded-full">🚗 On the way</span>
-              <p className="text-xs text-violet">8 min away</p>
             </div>
           </div>
         </div>

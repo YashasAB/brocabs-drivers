@@ -273,12 +273,27 @@ const ScheduleCarScreen: React.FC = () => {
           <div className="space-y-8">
             {/* Start Time */}
             <div className="space-y-3">
-              <div className="flex items-center">
-                <span className="text-xl mr-3">🕐</span>
-                <label className="text-sm sm:text-base font-bold text-deep-violet">Start Time</label>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <span className="text-xl mr-3">🕐</span>
+                  <label className="text-sm sm:text-base font-bold text-deep-violet">Start Time</label>
+                </div>
+                <span 
+                  className="text-xs cursor-pointer select-none"
+                  onClick={() => {
+                    const selectElement = document.getElementById('start-time-select') as HTMLSelectElement;
+                    if (selectElement && !selectElement.disabled) {
+                      selectElement.focus();
+                      selectElement.click();
+                    }
+                  }}
+                >
+                  ⬇️
+                </span>
               </div>
               <div className="relative">
                 <select
+                  id="start-time-select"
                   value={startTime}
                   onChange={(e) => {
                     setStartTime(e.target.value);
@@ -309,24 +324,32 @@ const ScheduleCarScreen: React.FC = () => {
                     </option>
                   ))}
                 </select>
-                <div className="absolute right-4 sm:right-5 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <div className="bg-gradient-to-br from-violet to-deep-violet p-2 rounded-lg shadow-md">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                </div>
               </div>
             </div>
 
             {/* End Time */}
             <div className="space-y-3">
-              <div className="flex items-center">
-                <span className="text-xl mr-3">🕕</span>
-                <label className="text-sm sm:text-base font-bold text-deep-violet">End Time</label>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <span className="text-xl mr-3">🕕</span>
+                  <label className="text-sm sm:text-base font-bold text-deep-violet">End Time</label>
+                </div>
+                <span 
+                  className="text-xs cursor-pointer select-none"
+                  onClick={() => {
+                    const selectElement = document.getElementById('end-time-select') as HTMLSelectElement;
+                    if (selectElement && !selectElement.disabled) {
+                      selectElement.focus();
+                      selectElement.click();
+                    }
+                  }}
+                >
+                  ⬇️
+                </span>
               </div>
               <div className="relative">
                 <select
+                  id="end-time-select"
                   value={endTime}
                   onChange={(e) => setEndTime(e.target.value)}
                   disabled={!startTime}
@@ -354,24 +377,32 @@ const ScheduleCarScreen: React.FC = () => {
                     </option>
                   ))}
                 </select>
-                <div className="absolute right-4 sm:right-5 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <div className="bg-gradient-to-br from-violet to-deep-violet p-2 rounded-lg shadow-md">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                </div>
               </div>
             </div>
 
             {/* Dropoff Lot */}
             <div className="space-y-3">
-              <div className="flex items-center">
-                <span className="text-xl mr-3">📍</span>
-                <label className="text-sm sm:text-base font-bold text-deep-violet">Preferred Dropoff Lot</label>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <span className="text-xl mr-3">📍</span>
+                  <label className="text-sm sm:text-base font-bold text-deep-violet">Preferred Dropoff Lot</label>
+                </div>
+                <span 
+                  className="text-xs cursor-pointer select-none"
+                  onClick={() => {
+                    const selectElement = document.getElementById('dropoff-lot-select') as HTMLSelectElement;
+                    if (selectElement) {
+                      selectElement.focus();
+                      selectElement.click();
+                    }
+                  }}
+                >
+                  ⬇️
+                </span>
               </div>
               <div className="relative">
                 <select
+                  id="dropoff-lot-select"
                   value={dropoffLot}
                   onChange={(e) => setDropoffLot(e.target.value)}
                   className="w-full p-4 sm:p-5 text-sm sm:text-base bg-white border-2 border-violet/30 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 hover:border-violet hover:shadow-xl"
@@ -394,13 +425,6 @@ const ScheduleCarScreen: React.FC = () => {
                     Midtown Business Lot
                   </option>
                 </select>
-                <div className="absolute right-4 sm:right-5 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <div className="bg-gradient-to-br from-violet to-deep-violet p-2 rounded-lg shadow-md">
-                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

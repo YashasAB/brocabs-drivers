@@ -18,7 +18,7 @@ const ProfileScreen: React.FC = () => {
     phoneNumber: "+1 (555) 123-4567",
     email: "ab.kumar@brocabs.com",
     licenseNumber: "DL123456789",
-    carType: "Honda Civic",
+    carType: "Passenger Sedan",
     joinDate: "March 2021",
     completionRate: 98.5,
     onTimeRate: 96.2

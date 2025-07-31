@@ -261,13 +261,22 @@ const ScheduleCarScreen: React.FC = () => {
           </div>
         </div>
 
-        {/* Time Selection */}
+        {/* Book Car Section */}
         <div className="card-violet my-12 p-4 sm:p-6">
-          <h3 className="text-base sm:text-lg font-semibold text-deep-violet mb-4 sm:mb-6">Schedule Time</h3>
-          <div className="space-y-4 sm:space-y-6">
+          <div className="flex items-center mb-6">
+            <div className="flex-shrink-0 bg-gradient-to-r from-violet to-deep-violet p-3 rounded-xl mr-3">
+              <span className="text-2xl">📅</span>
+            </div>
+            <h3 className="text-base sm:text-lg font-semibold text-deep-violet">Book Car</h3>
+          </div>
+          
+          <div className="space-y-6">
             {/* Start Time */}
-            <div>
-              <label className="block text-sm sm:text-base font-medium text-deep-violet mb-2 sm:mb-3">Start Time</label>
+            <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 sm:p-6 rounded-2xl border border-purple-100">
+              <div className="flex items-center mb-3">
+                <span className="text-lg mr-2">🕐</span>
+                <label className="text-sm sm:text-base font-semibold text-deep-violet">Start Time</label>
+              </div>
               <div className="relative">
                 <select
                   value={startTime}
@@ -276,64 +285,80 @@ const ScheduleCarScreen: React.FC = () => {
                     setEndTime(''); // Reset end time when start time changes
                   }}
                   disabled={!selectedVehicle}
-                  className={`w-full p-3 sm:p-4 text-sm sm:text-base bg-white border-2 border-violet rounded-xl focus:ring-2 focus:ring-violet focus:border-transparent text-deep-violet font-medium appearance-none ${
-                    !selectedVehicle ? 'opacity-50 cursor-not-allowed' : ''
+                  className={`w-full p-4 sm:p-5 text-sm sm:text-base bg-white border-2 border-purple-200 rounded-2xl focus:ring-4 focus:ring-purple-100 focus:border-violet text-deep-violet font-semibold appearance-none shadow-sm transition-all duration-200 hover:border-violet ${
+                    !selectedVehicle ? 'opacity-50 cursor-not-allowed bg-gray-50' : 'hover:shadow-md'
                   }`}
                 >
-                  <option value="">{selectedVehicle ? 'Select start time' : 'Select a vehicle first'}</option>
+                  <option value="" className="text-gray-500">
+                    {selectedVehicle ? '⏰ Choose your start time' : '🚗 Select a vehicle first'}
+                  </option>
                   {generateStartTimeOptions().map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.display}
+                    <option key={option.value} value={option.value} className="text-deep-violet">
+                      ⏰ {option.display}
                     </option>
                   ))}
                 </select>
-                <div className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <span className="text-base sm:text-xl text-violet">⏰</span>
+                <div className="absolute right-4 sm:right-5 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <div className="bg-gradient-to-r from-violet to-deep-violet p-2 rounded-lg">
+                    <span className="text-white text-sm">▼</span>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* End Time */}
-            <div>
-              <label className="block text-sm sm:text-base font-medium text-deep-violet mb-2 sm:mb-3">End Time</label>
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 sm:p-6 rounded-2xl border border-blue-100">
+              <div className="flex items-center mb-3">
+                <span className="text-lg mr-2">🕕</span>
+                <label className="text-sm sm:text-base font-semibold text-deep-violet">End Time</label>
+              </div>
               <div className="relative">
                 <select
                   value={endTime}
                   onChange={(e) => setEndTime(e.target.value)}
                   disabled={!startTime}
-                  className={`w-full p-3 sm:p-4 text-sm sm:text-base bg-white border-2 border-violet rounded-xl focus:ring-2 focus:ring-violet focus:border-transparent text-deep-violet font-medium appearance-none ${
-                    !startTime ? 'opacity-50 cursor-not-allowed' : ''
+                  className={`w-full p-4 sm:p-5 text-sm sm:text-base bg-white border-2 border-blue-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-violet text-deep-violet font-semibold appearance-none shadow-sm transition-all duration-200 hover:border-violet ${
+                    !startTime ? 'opacity-50 cursor-not-allowed bg-gray-50' : 'hover:shadow-md'
                   }`}
                 >
-                  <option value="">{startTime ? 'Select end time' : 'Select start time first'}</option>
+                  <option value="" className="text-gray-500">
+                    {startTime ? '⏰ Choose your end time' : '🕐 Select start time first'}
+                  </option>
                   {generateEndTimeOptions().map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.display}
+                    <option key={option.value} value={option.value} className="text-deep-violet">
+                      ⏰ {option.display}
                     </option>
                   ))}
                 </select>
-                <div className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <span className="text-base sm:text-xl text-violet">⏰</span>
+                <div className="absolute right-4 sm:right-5 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <div className="bg-gradient-to-r from-violet to-deep-violet p-2 rounded-lg">
+                    <span className="text-white text-sm">▼</span>
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* Dropoff Lot */}
-            <div>
-              <label className="block text-sm sm:text-base font-medium text-deep-violet mb-2 sm:mb-3">Preferred Dropoff Lot</label>
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 sm:p-6 rounded-2xl border border-green-100">
+              <div className="flex items-center mb-3">
+                <span className="text-lg mr-2">📍</span>
+                <label className="text-sm sm:text-base font-semibold text-deep-violet">Preferred Dropoff Lot</label>
+              </div>
               <div className="relative">
                 <select
                   value={dropoffLot}
                   onChange={(e) => setDropoffLot(e.target.value)}
-                  className="w-full p-3 sm:p-4 text-sm sm:text-base bg-white border-2 border-violet rounded-xl focus:ring-2 focus:ring-violet focus:border-transparent text-deep-violet font-medium appearance-none"
+                  className="w-full p-4 sm:p-5 text-sm sm:text-base bg-white border-2 border-green-200 rounded-2xl focus:ring-4 focus:ring-green-100 focus:border-violet text-deep-violet font-semibold appearance-none shadow-sm transition-all duration-200 hover:border-violet hover:shadow-md"
                 >
-                  <option value="">Select dropoff lot</option>
-                  <option value="jfk">JFK Lot</option>
-                  <option value="flushing">Flushing Lot</option>
-                  <option value="midtown">Midtown Lot</option>
+                  <option value="" className="text-gray-500">📍 Choose your dropoff location</option>
+                  <option value="jfk" className="text-deep-violet">✈️ JFK Airport Lot</option>
+                  <option value="flushing" className="text-deep-violet">🏙️ Flushing Community Lot</option>
+                  <option value="midtown" className="text-deep-violet">🌆 Midtown Business Lot</option>
                 </select>
-                <div className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <span className="text-base sm:text-xl text-violet">📍</span>
+                <div className="absolute right-4 sm:right-5 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <div className="bg-gradient-to-r from-violet to-deep-violet p-2 rounded-lg">
+                    <span className="text-white text-sm">▼</span>
+                  </div>
                 </div>
               </div>
             </div>

@@ -8,7 +8,7 @@ const mockSmartLots = [
   {
     id: '1',
     name: 'JFK Lot',
-    location: { latitude: 40.6413, longitude: -73.7781 }, // JFK Airport area
+    location: { latitude: 40.6671, longitude: -73.8342 }, // Aqueduct Racetrack parking lot
     availableCars: 3,
     totalSpaces: 20,
     isChargingStation: true,

@@ -162,7 +162,7 @@ const HomeScreen: React.FC = () => {
           <div className="flex items-center justify-between">
             <div className="space-y-1">
               <p className="text-sm sm:text-base font-medium text-deep-violet">
-                🚶 Drop off AB
+                🚶 Drop off Daivik
               </p>
               <p className="text-xs sm:text-sm text-violet">270 Park Avenue</p>
             </div>

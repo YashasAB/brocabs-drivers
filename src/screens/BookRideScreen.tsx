@@ -257,7 +257,9 @@ const BookRideScreen: React.FC = () => {
               <div className="w-8 h-8 bg-violet rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-sm">D</span>
               </div>
-              <span className="text-sm font-medium text-gray-700">Daivik</span>
+              <span className="text-sm font-medium text-gray-700">
+                Welcome Back Daivik!
+              </span>
             </div>
           </div>
         </div>

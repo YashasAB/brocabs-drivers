@@ -77,20 +77,20 @@ const SmartLotMapScreen: React.FC = () => {
       // Initialize the map
       const map = L.map(mapRef.current).setView([40.7589, -73.9851], 10); // NYC center - zoomed out 10%
 
-      // Add tile layer (simplified grayscale style)
-      L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png', {
-        attribution: '© Stadia Maps © OpenMapTiles © OpenStreetMap contributors',
-        maxZoom: 20
+      // Add tile layer (standard OpenStreetMap)
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19
       }).addTo(map);
       
       console.log('Map initialized, adding markers...');
 
       // Custom icon for lots
       const lotIcon = L.divIcon({
-        html: `<div style="background: #7c3aed; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">🚗</div>`,
+        html: `<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 12px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 2px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-size: 18px;">🚗</div>`,
         className: 'custom-div-icon',
-        iconSize: [40, 40],
-        iconAnchor: [20, 20]
+        iconSize: [44, 44],
+        iconAnchor: [22, 22]
       });
 
       // Add markers for each smart lot
@@ -158,11 +158,11 @@ const SmartLotMapScreen: React.FC = () => {
       </div>
 
       {/* Interactive Map Container */}
-      <div className="mx-4 sm:mx-6 lg:mx-8 mt-6 rounded-2xl shadow-lg overflow-hidden bg-white">
+      <div className="mx-4 sm:mx-6 lg:mx-8 mt-6 rounded-2xl shadow-xl overflow-hidden bg-white border-2 border-gray-100">
         <div 
           ref={mapRef}
-          className="h-80 sm:h-96 w-full rounded-2xl"
-          style={{ zIndex: 1, minHeight: '400px' }}
+          className="h-96 sm:h-[500px] w-full rounded-2xl"
+          style={{ zIndex: 1, minHeight: '500px' }}
         />
       </div>
 

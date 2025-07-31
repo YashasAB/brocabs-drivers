@@ -93,28 +93,58 @@ const LandingScreen: React.FC = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="card-violet p-8 text-center mb-12">
-          <h3 className="text-2xl font-bold text-deep-violet mb-8">
-            Why Choose BroCabs?
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            <div>
-              <div className="text-3xl font-bold text-deep-violet mb-2">
-                Choose When and Where to Start and End - We take care of the
-                rest!
-              </div>
-              <div className="text-3xl font-bold text-deep-violet mb-2">
-                100% Electric Fleet
-              </div>
+        <div className="relative overflow-hidden rounded-3xl mb-12">
+          {/* Background gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-violet to-deep-violet opacity-90"></div>
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-white/20"></div>
+          
+          {/* Content */}
+          <div className="relative z-10 p-12 text-center">
+            <div className="mb-12">
+              <h3 className="text-4xl font-extrabold text-white mb-4 tracking-tight">
+                Why Choose BroCabs?
+              </h3>
+              <div className="w-24 h-1 bg-white/60 mx-auto rounded-full"></div>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-deep-violet mb-2">
-                24/7 Support
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-8 border border-white/20 transform hover:scale-105 transition-all duration-300">
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-3xl">⚡</span>
+                </div>
+                <div className="text-xl font-bold text-white mb-3 leading-tight">
+                  Choose When and Where to Start and End
+                </div>
+                <div className="text-white/90 text-sm mb-4">
+                  We take care of the rest!
+                </div>
+                <div className="text-2xl font-extrabold text-white">
+                  100% Electric Fleet
+                </div>
               </div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-deep-violet mb-2">
-                0% Commission! Keep 100% of Booking Fare!
+              
+              <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-8 border border-white/20 transform hover:scale-105 transition-all duration-300">
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-3xl">🛠️</span>
+                </div>
+                <div className="text-2xl font-extrabold text-white leading-tight">
+                  24/7 Support
+                </div>
+                <div className="text-white/90 text-sm mt-3">
+                  Always here when you need us
+                </div>
+              </div>
+              
+              <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-8 border border-white/20 transform hover:scale-105 transition-all duration-300">
+                <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-3xl">💰</span>
+                </div>
+                <div className="text-2xl font-extrabold text-white leading-tight mb-3">
+                  0% Commission!
+                </div>
+                <div className="text-xl font-bold text-white">
+                  Keep 100% of Booking Fare!
+                </div>
               </div>
             </div>
           </div>

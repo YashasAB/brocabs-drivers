@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './context/ThemeContext';
 import './App.css';
 
 // Authentication Screens
@@ -41,8 +42,9 @@ import MapViewScreen from './screens/navigation/MapViewScreen';
 
 function App() {
   return (
-    <Router>
-      <div className="App">
+    <ThemeProvider>
+      <Router>
+        <div className="App">
         <Routes>
           {/* Authentication Routes */}
           <Route path="/login" element={<LoginScreen />} />
@@ -82,8 +84,9 @@ function App() {
           <Route path="/navigation/:tripId" element={<NavigationScreen />} />
           <Route path="/map-view" element={<MapViewScreen />} />
         </Routes>
-      </div>
-    </Router>
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 

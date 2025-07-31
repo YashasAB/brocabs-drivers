@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 
 // Mock data for smart lots with vehicles
 const mockSmartLots = [
@@ -48,6 +49,7 @@ const mockSmartLots = [
 const SmartLotMapScreen: React.FC = () => {
   const [, setDriverLocation] = useState({ latitude: 37.7749, longitude: -122.4194 });
   const navigate = useNavigate();
+  const { isDarkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
     // Get driver's current location
@@ -84,6 +86,13 @@ const SmartLotMapScreen: React.FC = () => {
                 <p className="text-xs sm:text-sm text-violet">Choose from available lots</p>
               </div>
             </div>
+            <button
+              onClick={toggleTheme}
+              className="theme-toggle w-12 h-12 flex items-center justify-center"
+              title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+            >
+              <span className="text-xl">{isDarkMode ? '🌞' : '🌙'}</span>
+            </button>
           </div>
         </div>
       </div>

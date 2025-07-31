@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 
 const HomeScreen: React.FC = () => {
   const [isOnline, setIsOnline] = useState(false);
   const [currentAlertIndex, setCurrentAlertIndex] = useState(0);
   const navigate = useNavigate();
+  const { isDarkMode, toggleTheme } = useTheme();
 
   // Mock data
   const driverStats = {
@@ -68,6 +70,13 @@ const HomeScreen: React.FC = () => {
               <p className="text-xs sm:text-sm text-violet">Welcome back, John</p>
             </div>
             <div className="flex items-center space-x-3">
+              <button
+                onClick={toggleTheme}
+                className="theme-toggle w-12 h-12 flex items-center justify-center"
+                title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              >
+                <span className="text-xl">{isDarkMode ? '🌞' : '🌙'}</span>
+              </button>
               <button
                 onClick={() => navigate('/profile')}
                 className="w-12 h-12 bg-blue-500 hover:bg-blue-600 rounded-lg flex items-center justify-center text-white border-2 border-gray-300"

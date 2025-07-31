@@ -11,6 +11,18 @@
   --bg-pink: #fdf2f8;
 }
 
+/* Dark mode theme variables */
+[data-theme="dark"] {
+  --light-pink: #1a1a2e;
+  --pink: #16213e;
+  --deep-violet: #e4d4f4;
+  --violet: #c084fc;
+  --light-violet: #a855f7;
+  --lighter-violet: #7c3aed;
+  --text-violet: #c4b5fd;
+  --bg-pink: #0f0f23;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -283,12 +295,22 @@
 
 /* Custom gradient backgrounds */
 .bg-pink-gradient {
-  background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 50%, #f9a8d4 100%);
+  background: linear-gradient(135deg, var(--light-pink) 0%, var(--pink) 50%, #f9a8d4 100%);
+}
+
+[data-theme="dark"] .bg-pink-gradient {
+  background: linear-gradient(135deg, var(--bg-pink) 0%, var(--light-pink) 50%, var(--pink) 100%);
 }
 
 /* Navigation styles */
 .nav-violet {
   border-bottom: 2px solid #8b5cf6;
+}
+
+[data-theme="dark"] .nav-violet {
+  background: rgba(22, 33, 62, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid #a855f7;
 }
 
 /* Text colors */
@@ -309,6 +331,13 @@
   box-shadow: 0 4px 6px -1px rgba(139, 92, 246, 0.1);
 }
 
+[data-theme="dark"] .card-violet {
+  background: rgba(22, 33, 62, 0.8);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  box-shadow: 0 4px 6px -1px rgba(139, 92, 246, 0.3);
+  backdrop-filter: blur(10px);
+}
+
 /* Status button styles */
 .status-online {
   background-color: #10b981;
@@ -318,6 +347,28 @@
 .status-offline {
   background-color: #6b7280;
   color: white;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  background: linear-gradient(45deg, var(--violet), var(--light-violet));
+  border: 2px solid var(--lighter-violet);
+  color: white;
+  border-radius: 12px;
+  padding: 8px 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.3);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(124, 58, 237, 0.5);
+}
+
+[data-theme="dark"] .theme-toggle {
+  background: linear-gradient(45deg, var(--deep-violet), var(--violet));
+  border: 2px solid var(--text-violet);
+  color: var(--bg-pink);
 }
 
 /* Additional utility classes */

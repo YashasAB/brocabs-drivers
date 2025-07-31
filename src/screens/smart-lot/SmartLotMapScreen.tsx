@@ -1,53 +1,110 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useTheme } from '../../context/ThemeContext';
-import L from 'leaflet';
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { useTheme } from "../../context/ThemeContext";
+import L from "leaflet";
 
 // Mock data for smart lots with vehicles (NYC locations)
 const mockSmartLots = [
   {
-    id: '1',
-    name: 'JFK Lot',
+    id: "1",
+    name: "JFK Lot",
     location: { latitude: 40.6671, longitude: -73.8342 }, // Aqueduct Racetrack parking lot
     availableCars: 3,
     totalSpaces: 20,
     isChargingStation: true,
     vehicles: [
-      { id: 'v1', model: 'Hyundai Kona Electric', availableTime: '09:00 AM', chargeLevel: 85, range: 219 },
-      { id: 'v2', model: 'Hyundai Kona Electric', availableTime: '10:30 AM', chargeLevel: 72, range: 186 },
-      { id: 'v3', model: 'Hyundai Kona Electric', availableTime: '11:15 AM', chargeLevel: 90, range: 232 }
-    ]
+      {
+        id: "v1",
+        model: "Hyundai Kona Electric",
+        availableTime: "09:00 AM",
+        chargeLevel: 85,
+        range: 219,
+      },
+      {
+        id: "v2",
+        model: "Hyundai Kona Electric",
+        availableTime: "10:30 AM",
+        chargeLevel: 72,
+        range: 186,
+      },
+      {
+        id: "v3",
+        model: "Hyundai Kona Electric",
+        availableTime: "11:15 AM",
+        chargeLevel: 90,
+        range: 232,
+      },
+    ],
   },
   {
-    id: '2',
-    name: 'Flushing Lot',
+    id: "2",
+    name: "Flushing Lot",
     location: { latitude: 40.7675, longitude: -73.8333 }, // Flushing, Queens
     availableCars: 3,
     totalSpaces: 15,
     isChargingStation: true,
     vehicles: [
-      { id: 'v6', model: 'Hyundai Kona Electric', availableTime: '08:45 AM', chargeLevel: 78, range: 201 },
-      { id: 'v7', model: 'Hyundai Kona Electric', availableTime: '09:20 AM', chargeLevel: 65, range: 168 },
-      { id: 'v8', model: 'Hyundai Kona Electric', availableTime: '10:00 AM', chargeLevel: 88, range: 227 }
-    ]
+      {
+        id: "v6",
+        model: "Hyundai Kona Electric",
+        availableTime: "08:45 AM",
+        chargeLevel: 78,
+        range: 201,
+      },
+      {
+        id: "v7",
+        model: "Hyundai Kona Electric",
+        availableTime: "09:20 AM",
+        chargeLevel: 65,
+        range: 168,
+      },
+      {
+        id: "v8",
+        model: "Hyundai Kona Electric",
+        availableTime: "10:00 AM",
+        chargeLevel: 88,
+        range: 227,
+      },
+    ],
   },
   {
-    id: '3',
-    name: 'Midtown Lot',
+    id: "3",
+    name: "Midtown Lot",
     location: { latitude: 40.7589, longitude: -73.9851 }, // Midtown Manhattan
     availableCars: 3,
     totalSpaces: 25,
-    isChargingStation: false,
+    isChargingStation: true,
     vehicles: [
-      { id: 'v9', model: 'Hyundai Kona Electric', availableTime: '09:30 AM', chargeLevel: 55, range: 142 },
-      { id: 'v10', model: 'Hyundai Kona Electric', availableTime: '10:15 AM', chargeLevel: 82, range: 211 },
-      { id: 'v11', model: 'Hyundai Kona Electric', availableTime: '11:00 AM', chargeLevel: 91, range: 235 }
-    ]
-  }
+      {
+        id: "v9",
+        model: "Hyundai Kona Electric",
+        availableTime: "09:30 AM",
+        chargeLevel: 55,
+        range: 142,
+      },
+      {
+        id: "v10",
+        model: "Hyundai Kona Electric",
+        availableTime: "10:15 AM",
+        chargeLevel: 82,
+        range: 211,
+      },
+      {
+        id: "v11",
+        model: "Hyundai Kona Electric",
+        availableTime: "11:00 AM",
+        chargeLevel: 91,
+        range: 235,
+      },
+    ],
+  },
 ];
 
 const SmartLotMapScreen: React.FC = () => {
-  const [, setDriverLocation] = useState({ latitude: 40.7589, longitude: -73.9851 }); // NYC coordinates
+  const [, setDriverLocation] = useState({
+    latitude: 40.7589,
+    longitude: -73.9851,
+  }); // NYC coordinates
   const navigate = useNavigate();
   const { isDarkMode, toggleTheme } = useTheme();
   const mapRef = useRef<HTMLDivElement>(null);
@@ -60,50 +117,54 @@ const SmartLotMapScreen: React.FC = () => {
         (position) => {
           setDriverLocation({
             latitude: position.coords.latitude,
-            longitude: position.coords.longitude
+            longitude: position.coords.longitude,
           });
         },
         (error) => {
-          console.error('Error getting location:', error);
-        }
+          console.error("Error getting location:", error);
+        },
       );
     }
   }, []);
 
   useEffect(() => {
     if (mapRef.current && !mapInstanceRef.current) {
-      console.log('Initializing map...');
-      
+      console.log("Initializing map...");
+
       // Initialize the map
       const map = L.map(mapRef.current).setView([40.7589, -73.9851], 10); // NYC center - zoomed out 10%
 
       // Add tile layer (standard OpenStreetMap)
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors',
-        maxZoom: 19
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors",
+        maxZoom: 19,
       }).addTo(map);
-      
-      console.log('Map initialized, adding markers...');
+
+      console.log("Map initialized, adding markers...");
 
       // Custom icon for lots
       const lotIcon = L.divIcon({
         html: `<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 12px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; border: 2px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.2); font-size: 18px;">🚗</div>`,
-        className: 'custom-div-icon',
+        className: "custom-div-icon",
         iconSize: [44, 44],
-        iconAnchor: [22, 22]
+        iconAnchor: [22, 22],
       });
 
       // Add markers for each smart lot
       mockSmartLots.forEach((lot) => {
-        console.log(`Adding marker for ${lot.name} at [${lot.location.latitude}, ${lot.location.longitude}]`);
-        const marker = L.marker([lot.location.latitude, lot.location.longitude], { icon: lotIcon })
-          .addTo(map);
-        
+        console.log(
+          `Adding marker for ${lot.name} at [${lot.location.latitude}, ${lot.location.longitude}]`,
+        );
+        const marker = L.marker(
+          [lot.location.latitude, lot.location.longitude],
+          { icon: lotIcon },
+        ).addTo(map);
+
         const popupContent = `
           <div style="min-width: 200px;">
             <h3 style="margin: 0 0 8px 0; color: #7c3aed; font-weight: bold;">${lot.name}</h3>
             <p style="margin: 4px 0; color: #666;">🚗 ${lot.availableCars} cars available</p>
-            <p style="margin: 4px 0; color: #666;">${lot.isChargingStation ? '⚡ Charging Station' : '🅿️ Standard Lot'}</p>
+            <p style="margin: 4px 0; color: #666;">${lot.isChargingStation ? "⚡ Charging Station" : "🅿️ Standard Lot"}</p>
             <button 
               onclick="window.open('/schedule-car/${lot.id}', '_self')" 
               style="background: #7c3aed; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; margin-top: 8px; width: 100%;"
@@ -112,11 +173,11 @@ const SmartLotMapScreen: React.FC = () => {
             </button>
           </div>
         `;
-        
+
         marker.bindPopup(popupContent);
-        
+
         // Open Flushing Lot popup by default
-        if (lot.name === 'Flushing Lot') {
+        if (lot.name === "Flushing Lot") {
           marker.openPopup();
         }
       });
@@ -141,22 +202,28 @@ const SmartLotMapScreen: React.FC = () => {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
               <button
-                onClick={() => navigate('/')}
+                onClick={() => navigate("/")}
                 className="mr-4 w-12 h-12 bg-blue-500 hover:bg-blue-600 rounded-lg border-2 border-gray-300 flex items-center justify-center text-white"
               >
                 <span className="text-xl">←</span>
               </button>
               <div>
-                <h1 className="text-lg sm:text-xl font-bold text-deep-violet">🗺️ Find Car</h1>
-                <p className="text-xs sm:text-sm text-violet">Tap Lot to Schedule Car!</p>
+                <h1 className="text-lg sm:text-xl font-bold text-deep-violet">
+                  🗺️ Find Car
+                </h1>
+                <p className="text-xs sm:text-sm text-violet">
+                  Tap Lot to Schedule Car!
+                </p>
               </div>
             </div>
             <button
               onClick={toggleTheme}
               className="theme-toggle w-12 h-12 flex items-center justify-center"
-              title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+              title={
+                isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"
+              }
             >
-              <span className="text-xl">{isDarkMode ? '🌞' : '🌙'}</span>
+              <span className="text-xl">{isDarkMode ? "🌞" : "🌙"}</span>
             </button>
           </div>
         </div>
@@ -164,10 +231,10 @@ const SmartLotMapScreen: React.FC = () => {
 
       {/* Interactive Map Container */}
       <div className="mx-4 sm:mx-6 lg:mx-8 mt-6 rounded-2xl shadow-xl overflow-hidden bg-white border-2 border-gray-100">
-        <div 
+        <div
           ref={mapRef}
           className="h-96 sm:h-[500px] w-full rounded-2xl"
-          style={{ zIndex: 1, minHeight: '500px' }}
+          style={{ zIndex: 1, minHeight: "500px" }}
         />
       </div>
 
@@ -180,8 +247,12 @@ const SmartLotMapScreen: React.FC = () => {
                 <span className="text-lg sm:text-2xl">🏢</span>
               </div>
               <div className="ml-3 sm:ml-4">
-                <p className="text-xs sm:text-sm font-medium text-violet mb-1">Available Lots</p>
-                <p className="text-lg sm:text-2xl font-bold text-deep-violet">{mockSmartLots.length}</p>
+                <p className="text-xs sm:text-sm font-medium text-violet mb-1">
+                  Available Lots
+                </p>
+                <p className="text-lg sm:text-2xl font-bold text-deep-violet">
+                  {mockSmartLots.length}
+                </p>
               </div>
             </div>
           </div>
@@ -192,9 +263,14 @@ const SmartLotMapScreen: React.FC = () => {
                 <span className="text-lg sm:text-2xl">🚗</span>
               </div>
               <div className="ml-3 sm:ml-4">
-                <p className="text-xs sm:text-sm font-medium text-violet mb-1">Total Cars</p>
+                <p className="text-xs sm:text-sm font-medium text-violet mb-1">
+                  Total Cars
+                </p>
                 <p className="text-lg sm:text-2xl font-bold text-deep-violet">
-                  {mockSmartLots.reduce((sum, lot) => sum + lot.availableCars, 0)}
+                  {mockSmartLots.reduce(
+                    (sum, lot) => sum + lot.availableCars,
+                    0,
+                  )}
                 </p>
               </div>
             </div>
@@ -206,9 +282,11 @@ const SmartLotMapScreen: React.FC = () => {
                 <span className="text-lg sm:text-2xl">⚡</span>
               </div>
               <div className="ml-3 sm:ml-4">
-                <p className="text-xs sm:text-sm font-medium text-violet mb-1">Charging Lots</p>
+                <p className="text-xs sm:text-sm font-medium text-violet mb-1">
+                  Charging Lots
+                </p>
                 <p className="text-lg sm:text-2xl font-bold text-deep-violet">
-                  {mockSmartLots.filter(lot => lot.isChargingStation).length}
+                  {mockSmartLots.filter((lot) => lot.isChargingStation).length}
                 </p>
               </div>
             </div>
@@ -224,10 +302,14 @@ const SmartLotMapScreen: React.FC = () => {
                   <span className="text-3xl">🎯</span>
                 </div>
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-deep-violet mb-2">Ready to Drive?</h3>
-              <p className="text-sm sm:text-base text-violet mb-4">Choose a lot above and schedule your next car</p>
+              <h3 className="text-lg sm:text-xl font-bold text-deep-violet mb-2">
+                Ready to Drive?
+              </h3>
+              <p className="text-sm sm:text-base text-violet mb-4">
+                Choose a lot above and schedule your next car
+              </p>
               <button
-                onClick={() => navigate('/')}
+                onClick={() => navigate("/")}
                 className="px-6 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg border-2 border-gray-300"
               >
                 🏠 Back to Dashboard

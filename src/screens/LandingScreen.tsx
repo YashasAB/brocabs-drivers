@@ -28,7 +28,9 @@ const LandingScreen: React.FC = () => {
                   isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"
                 }
               >
-                <span className="text-lg sm:text-xl">{isDarkMode ? "🌞" : "🌙"}</span>
+                <span className="text-lg sm:text-xl">
+                  {isDarkMode ? "🌞" : "🌙"}
+                </span>
               </button>
             </div>
           </div>
@@ -64,8 +66,12 @@ const LandingScreen: React.FC = () => {
                     <span className="text-2xl sm:text-3xl lg:text-4xl">🚕</span>
                   </div>
                   <div className="flex-1 flex flex-col justify-center">
-                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-1 sm:mb-2">Drive with us</h3>
-                    <p className="text-xs sm:text-sm opacity-90">Earn Now!</p>
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-1 sm:mb-2">
+                      Drive with us
+                    </h3>
+                    <p className="text-xs sm:text-sm opacity-90">
+                      Reserve Car Now!
+                    </p>
                   </div>
                 </div>
               </button>
@@ -79,7 +85,9 @@ const LandingScreen: React.FC = () => {
                     <span className="text-2xl sm:text-3xl lg:text-4xl">📱</span>
                   </div>
                   <div className="flex-1 flex flex-col justify-center">
-                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-1 sm:mb-2">Book a ride</h3>
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-1 sm:mb-2">
+                      Book a ride
+                    </h3>
                     <p className="text-xs sm:text-sm opacity-90">Ride Now!</p>
                   </div>
                 </div>
@@ -109,11 +117,31 @@ const LandingScreen: React.FC = () => {
                   <span className="text-xl sm:text-2xl lg:text-3xl">⚡</span>
                 </div>
                 <h4 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-2 sm:mb-3 leading-tight px-1">
-                  Choose When and Where to Start and End
+                  Choose When and Where to Start/End Your Shift
                 </h4>
+                <p className="text-white/90 text-xs sm:text-sm mb-3 sm:mb-4">
+                  Select Time and Location to drop the Car
+                </p>
                 <p className="text-white/90 text-xs sm:text-sm mb-3 sm:mb-4">
                   We take care of the rest!
                 </p>
+              </div>
+
+              <div className="bg-white/15 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-white/20 transform hover:scale-105 transition-all duration-300 sm:col-span-2 lg:col-span-1">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <span className="text-xl sm:text-2xl lg:text-3xl">💰</span>
+                </div>
+                <h4 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-white leading-tight mb-2 sm:mb-3">
+                  0% Commission!
+                </h4>
+                <h4 className="text-base sm:text-lg lg:text-xl font-bold text-white">
+                  Keep 100% of Booking Fare!
+                </h4>
+                <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
+                  <span className="text-xl sm:text-2xl lg:text-3xl">
+                    🚗🍃⚡
+                  </span>
+                </div>
                 <h4 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-white">
                   100% Electric Fleet
                 </h4>
@@ -129,18 +157,6 @@ const LandingScreen: React.FC = () => {
                 <p className="text-white/90 text-xs sm:text-sm mt-2 sm:mt-3">
                   Always here when you need us
                 </p>
-              </div>
-
-              <div className="bg-white/15 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-white/20 transform hover:scale-105 transition-all duration-300 sm:col-span-2 lg:col-span-1">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                  <span className="text-xl sm:text-2xl lg:text-3xl">💰</span>
-                </div>
-                <h4 className="text-lg sm:text-xl lg:text-2xl font-extrabold text-white leading-tight mb-2 sm:mb-3">
-                  0% Commission!
-                </h4>
-                <h4 className="text-base sm:text-lg lg:text-xl font-bold text-white">
-                  Keep 100% of Booking Fare!
-                </h4>
               </div>
             </div>
           </div>

@@ -90,8 +90,24 @@ const LandingScreen: React.FC = () => {
           </div>
         </div>
 
+        {/* Stats Section */}
+        <div className="card-violet p-8 text-center mb-12">
+          <h3 className="text-2xl font-bold text-deep-violet mb-8">Why Choose BroCabs?</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <div>
+              <div className="text-3xl font-bold text-deep-violet mb-2">100% Electric Fleet</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-deep-violet mb-2">24/7 Support</div>
+            </div>
+            <div>
+              <div className="text-3xl font-bold text-deep-violet mb-2">0% Commission! Keep 100% of Booking Fare!</div>
+            </div>
+          </div>
+        </div>
+
         {/* Features Section */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"></div>
           <div className="card-violet p-6 text-center">
             <div className="w-16 h-16 mx-auto bg-gradient-to-r from-violet to-deep-violet rounded-full flex items-center justify-center mb-4">
               <span className="text-2xl">💰</span>
@@ -126,22 +142,6 @@ const LandingScreen: React.FC = () => {
             <p className="text-sm text-violet">
               Competitive pricing that benefits both drivers and passengers through efficiency
             </p>
-          </div>
-        </div>
-
-        {/* Stats Section */}
-        <div className="card-violet p-8 text-center">
-          <h3 className="text-2xl font-bold text-deep-violet mb-8">Why Choose BroCabs?</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            <div>
-              <div className="text-3xl font-bold text-deep-violet mb-2">100% Electric Fleet</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-deep-violet mb-2">24/7 Support</div>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-deep-violet mb-2">0% Commission! Keep 100% of Booking Fare!</div>
-            </div>
           </div>
         </div>
       </div>

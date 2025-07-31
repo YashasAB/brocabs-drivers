@@ -239,21 +239,9 @@ const BookRideScreen: React.FC = () => {
             <div className="flex items-center">
               <button
                 onClick={() => navigate("/")}
-                className="mr-4 p-2 rounded-lg bg-violet/10 text-violet hover:bg-violet/20 transition-colors"
+                className="mr-4 w-12 h-12 bg-blue-500 hover:bg-blue-600 rounded-lg border-2 border-gray-300 flex items-center justify-center text-white"
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M15 19l-7-7 7-7"
-                  />
-                </svg>
+                <span className="text-xl">←</span>
               </button>
               <h1 className="text-xl font-semibold text-deep-violet">
                 Book a Ride

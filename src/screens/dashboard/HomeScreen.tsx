@@ -109,6 +109,12 @@ const HomeScreen: React.FC = () => {
                 <span className="text-xl">{isDarkMode ? "🌞" : "🌙"}</span>
               </button>
               <button
+                onClick={() => navigate("/")}
+                className="mr-4 w-12 h-12 bg-gray-500 hover:bg-gray-600 rounded-lg border-2 border-gray-300 flex items-center justify-center text-white"
+              >
+                <span className="text-xl">🏠</span>
+              </button>
+              <button
                 onClick={() => navigate("/profile")}
                 className="w-12 h-12 bg-blue-500 hover:bg-blue-600 rounded-lg flex items-center justify-center text-white border-2 border-gray-300"
               >

@@ -32,7 +32,7 @@ const ProfileScreen: React.FC = () => {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
               <button
-                onClick={() => navigate('/')}
+                onClick={() => navigate('/driver-home')}
                 className="mr-4 w-12 h-12 bg-blue-500 hover:bg-blue-600 rounded-lg border-2 border-gray-300 flex items-center justify-center text-white"
               >
                 <span className="text-xl">←</span>

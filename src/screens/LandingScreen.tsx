@@ -59,11 +59,11 @@ const LandingScreen: React.FC = () => {
                 onClick={() => navigate("/driver-home")}
                 className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-xl p-8 border-2 border-gray-300 transition-all duration-300 hover:shadow-xl transform hover:scale-105"
               >
-                <div className="flex flex-col items-center space-y-4">
+                <div className="flex flex-col items-center space-y-4 h-full">
                   <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
                     <span className="text-4xl">🚕</span>
                   </div>
-                  <div>
+                  <div className="flex-1 flex flex-col justify-center">
                     <h3 className="text-2xl font-bold mb-2">Drive with us</h3>
                     <p className="text-sm opacity-90">
                       Start earning as a BroCabs driver
@@ -76,11 +76,11 @@ const LandingScreen: React.FC = () => {
                 onClick={() => navigate("/book-ride")}
                 className="w-full bg-green-500 hover:bg-green-600 text-white rounded-xl p-8 border-2 border-gray-300 transition-all duration-300 hover:shadow-xl transform hover:scale-105"
               >
-                <div className="flex flex-col items-center space-y-4">
+                <div className="flex flex-col items-center space-y-4 h-full">
                   <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
                     <span className="text-4xl">📱</span>
                   </div>
-                  <div>
+                  <div className="flex-1 flex flex-col justify-center">
                     <h3 className="text-2xl font-bold mb-2">Book a ride</h3>
                     <p className="text-sm opacity-90">
                       Get a ride at lower fares

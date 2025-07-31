@@ -114,14 +114,16 @@ const LandingScreen: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
               <div className="bg-white/15 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 border border-white/20 transform hover:scale-105 transition-all duration-300">
                 <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                  <span className="text-xl sm:text-2xl lg:text-3xl">⚡</span>
+                  <span className="text-xl sm:text-2xl lg:text-3xl">
+                    🕒📍🚗
+                  </span>
                 </div>
                 <h4 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-2 sm:mb-3 leading-tight px-1">
                   Choose When and Where to Start/End Your Shift
                 </h4>
-                <p className="text-white/90 text-xs sm:text-sm mb-3 sm:mb-4">
-                  Select Time and Location to drop the Car
-                </p>
+                <h4 className="text-base sm:text-lg lg:text-xl font-bold text-white mb-2 sm:mb-3 leading-tight px-1">
+                  Select where to drop the Car
+                </h4>
                 <p className="text-white/90 text-xs sm:text-sm mb-3 sm:mb-4">
                   We take care of the rest!
                 </p>

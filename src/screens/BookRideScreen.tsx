@@ -69,6 +69,15 @@ const BookRideScreen: React.FC = () => {
     return options;
   };
 
+  const formatToTime = (dateStr) => {
+    const date = new Date(dateStr);
+    return date.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+  };
+
   // Initialize map
   useEffect(() => {
     if (mapRef.current && !mapInstanceRef.current) {
@@ -211,7 +220,8 @@ const BookRideScreen: React.FC = () => {
   };
 
   const handleTimeSelect = (e) => {
-    setSelectedTime(e.target.value);
+    setSelectedTime(formatToTime(e.target.value));
+    console.log("Selected time:", formatToTime(e.target.value));
     setIsLoading(true);
 
     // Mock loading delay
@@ -366,7 +376,7 @@ const BookRideScreen: React.FC = () => {
           {selectedTime && (
             <div className="mt-3 p-3 bg-violet/10 rounded-lg">
               <p className="text-sm text-deep-violet font-medium">
-                Selected:{" "}
+                Selected: {selectedTime}
                 {
                   generateTimeOptions().find(
                     (opt) => opt.value === selectedTime,

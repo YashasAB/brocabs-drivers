@@ -75,7 +75,7 @@ const SmartLotMapScreen: React.FC = () => {
       console.log('Initializing map...');
       
       // Initialize the map
-      const map = L.map(mapRef.current).setView([40.7589, -73.9851], 11); // NYC center
+      const map = L.map(mapRef.current).setView([40.7589, -73.9851], 10); // NYC center - zoomed out 10%
 
       // Add tile layer
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

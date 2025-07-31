@@ -286,10 +286,10 @@ const ScheduleCarScreen: React.FC = () => {
                     setEndTime(''); // Reset end time when start time changes
                   }}
                   disabled={!selectedVehicle}
-                  className={`w-full p-4 sm:p-5 pr-12 text-sm sm:text-base bg-white border-2 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 cursor-pointer ${
+                  className={`w-full p-4 sm:p-5 pr-12 text-sm sm:text-base border-2 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 cursor-pointer ${
                     !selectedVehicle 
-                      ? 'opacity-50 cursor-not-allowed bg-gray-50 border-gray-200' 
-                      : 'border-violet/30 hover:border-violet hover:shadow-xl'
+                      ? 'opacity-50 cursor-not-allowed bg-white border-gray-200' 
+                      : 'bg-white border-violet/30 hover:border-violet hover:shadow-xl'
                   }`}
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
@@ -326,10 +326,10 @@ const ScheduleCarScreen: React.FC = () => {
                   value={endTime}
                   onChange={(e) => setEndTime(e.target.value)}
                   disabled={!startTime}
-                  className={`w-full p-4 sm:p-5 pr-12 text-sm sm:text-base bg-white border-2 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 cursor-pointer ${
+                  className={`w-full p-4 sm:p-5 pr-12 text-sm sm:text-base border-2 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 cursor-pointer ${
                     !startTime 
-                      ? 'opacity-50 cursor-not-allowed bg-gray-50 border-gray-200' 
-                      : 'border-violet/30 hover:border-violet hover:shadow-xl'
+                      ? 'opacity-50 cursor-not-allowed bg-white border-gray-200' 
+                      : 'bg-white border-violet/30 hover:border-violet hover:shadow-xl'
                   }`}
                   style={{
                     backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,

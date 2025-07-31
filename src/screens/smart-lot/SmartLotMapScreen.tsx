@@ -142,7 +142,7 @@ const SmartLotMapScreen: React.FC = () => {
               </button>
               <div>
                 <h1 className="text-lg sm:text-xl font-bold text-deep-violet">🗺️ Find Car</h1>
-                <p className="text-xs sm:text-sm text-violet">Choose from available lots</p>
+                <p className="text-xs sm:text-sm text-violet">Tap on available lots in the map to select your car</p>
               </div>
             </div>
             <button

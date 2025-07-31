@@ -135,7 +135,7 @@ const HomeScreen: React.FC = () => {
             </div>
           </div>
 
-          <div className="card-violet p-6">
+          <div className="card-violet p-6 rounded-2xl">
             <h3 className="text-base sm:text-lg font-semibold text-deep-violet mb-3 sm:mb-4">Today's Shift</h3>
             <div className="space-y-6">
               <div className="flex justify-between items-center py-3">

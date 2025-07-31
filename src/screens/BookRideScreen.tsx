@@ -215,7 +215,7 @@ const BookRideScreen: React.FC = () => {
     setDropoffLocation(null);
   };
 
-  const handleTimeSelect = (e) => {
+  const handleTimeSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedTime(formatToTime(e.target.value));
     console.log("Selected time:", formatToTime(e.target.value));
     setIsLoading(true);
@@ -373,11 +373,6 @@ const BookRideScreen: React.FC = () => {
             <div className="mt-3 p-3 bg-violet/10 rounded-lg">
               <p className="text-sm text-deep-violet font-medium">
                 Selected: {selectedTime}
-                {
-                  generateTimeOptions().find(
-                    (opt) => opt.value === selectedTime,
-                  )?.display
-                }
               </p>
             </div>
           )}

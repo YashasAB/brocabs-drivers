@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
+import L from 'leaflet';
 
-// Mock data for smart lots with vehicles
+// Mock data for smart lots with vehicles (NYC locations)
 const mockSmartLots = [
   {
     id: '1',
     name: 'JFK Lot',
-    location: { latitude: 37.7749, longitude: -122.4194 },
+    location: { latitude: 40.6413, longitude: -73.7781 }, // JFK Airport area
     availableCars: 3,
     totalSpaces: 20,
     isChargingStation: true,
@@ -20,7 +21,7 @@ const mockSmartLots = [
   {
     id: '2',
     name: 'Flushing Lot',
-    location: { latitude: 37.6213, longitude: -122.3790 },
+    location: { latitude: 40.7675, longitude: -73.8333 }, // Flushing, Queens
     availableCars: 3,
     totalSpaces: 15,
     isChargingStation: true,
@@ -33,7 +34,7 @@ const mockSmartLots = [
   {
     id: '3',
     name: 'Midtown Lot',
-    location: { latitude: 37.7849, longitude: -122.4094 },
+    location: { latitude: 40.7589, longitude: -73.9851 }, // Midtown Manhattan
     availableCars: 3,
     totalSpaces: 25,
     isChargingStation: false,
@@ -46,9 +47,11 @@ const mockSmartLots = [
 ];
 
 const SmartLotMapScreen: React.FC = () => {
-  const [, setDriverLocation] = useState({ latitude: 37.7749, longitude: -122.4194 });
+  const [, setDriverLocation] = useState({ latitude: 40.7589, longitude: -73.9851 }); // NYC coordinates
   const navigate = useNavigate();
   const { isDarkMode, toggleTheme } = useTheme();
+  const mapRef = useRef<HTMLDivElement>(null);
+  const mapInstanceRef = useRef<L.Map | null>(null);
 
   useEffect(() => {
     // Get driver's current location
@@ -66,6 +69,57 @@ const SmartLotMapScreen: React.FC = () => {
       );
     }
   }, []);
+
+  useEffect(() => {
+    if (mapRef.current && !mapInstanceRef.current) {
+      // Initialize the map
+      const map = L.map(mapRef.current).setView([40.7589, -73.9851], 11); // NYC center
+
+      // Add tile layer
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+
+      // Custom icon for lots
+      const lotIcon = L.divIcon({
+        html: `<div style="background: #7c3aed; color: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 3px solid white; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">🏢</div>`,
+        className: 'custom-div-icon',
+        iconSize: [40, 40],
+        iconAnchor: [20, 20]
+      });
+
+      // Add markers for each smart lot
+      mockSmartLots.forEach((lot) => {
+        const marker = L.marker([lot.location.latitude, lot.location.longitude], { icon: lotIcon })
+          .addTo(map);
+        
+        const popupContent = `
+          <div style="min-width: 200px;">
+            <h3 style="margin: 0 0 8px 0; color: #7c3aed; font-weight: bold;">${lot.name}</h3>
+            <p style="margin: 4px 0; color: #666;">🚗 ${lot.availableCars} cars available</p>
+            <p style="margin: 4px 0; color: #666;">${lot.isChargingStation ? '⚡ Charging Station' : '🅿️ Standard Lot'}</p>
+            <button 
+              onclick="window.location.href='/schedule-car/${lot.id}'" 
+              style="background: #7c3aed; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; margin-top: 8px; width: 100%;"
+            >
+              🚗 Schedule Car
+            </button>
+          </div>
+        `;
+        
+        marker.bindPopup(popupContent);
+      });
+
+      mapInstanceRef.current = map;
+    }
+
+    return () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
+    };
+  }, [navigate]);
 
   return (
     <div className="min-h-screen bg-pink-gradient">
@@ -96,64 +150,13 @@ const SmartLotMapScreen: React.FC = () => {
         </div>
       </div>
 
-      {/* Map Container */}
-      <div className="relative h-80 sm:h-96 bg-gradient-to-br from-blue-50 to-purple-50 mx-4 sm:mx-6 lg:mx-8 mt-6 rounded-2xl shadow-lg overflow-hidden">
-        {/* Custom Map Image */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <img 
-            src="map-image.png" 
-            alt="Smart Lots Map" 
-            className="w-3/5 h-3/5 object-cover opacity-80"
-          />
-        </div>
-
-        {/* Smart Lot Markers */}
-        {mockSmartLots.map((lot, index) => (
-          <div
-            key={lot.id}
-            className="absolute"
-            style={{
-              top: `${25 + index * 20}%`,
-              left: `${15 + index * 25}%`
-            }}
-          >
-            <div className="flex flex-col items-center transform hover:scale-105 transition-all duration-300">
-              <div className="card-violet p-3 sm:p-4 mb-2 min-w-0">
-                <div className="text-center">
-                  <div className="flex items-center justify-center mb-2">
-                    <span className="text-lg sm:text-xl mr-2">🏢</span>
-                    <h3 className="text-sm sm:text-base font-bold text-deep-violet">{lot.name}</h3>
-                  </div>
-                  <div className="space-y-1">
-                    <div className="flex items-center justify-center text-xs sm:text-sm text-violet">
-                      <span className="mr-1">🚗</span>
-                      <span>{lot.availableCars} cars available</span>
-                    </div>
-                    <div className="flex items-center justify-center text-xs text-violet">
-                      {lot.isChargingStation ? (
-                        <>
-                          <span className="mr-1">⚡</span>
-                          <span>Charging Station</span>
-                        </>
-                      ) : (
-                        <>
-                          <span className="mr-1">🅿️</span>
-                          <span>Standard Lot</span>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => navigate(`/schedule-car/${lot.id}`)}
-                    className="mt-3 w-full px-3 py-2 bg-purple-500 hover:bg-purple-600 text-white text-sm font-semibold rounded-lg border-2 border-gray-300"
-                  >
-                    🚗 Schedule Car
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+      {/* Interactive Map Container */}
+      <div className="mx-4 sm:mx-6 lg:mx-8 mt-6 rounded-2xl shadow-lg overflow-hidden">
+        <div 
+          ref={mapRef}
+          className="h-80 sm:h-96 w-full rounded-2xl"
+          style={{ zIndex: 1 }}
+        />
       </div>
 
       {/* Quick Stats */}

@@ -87,26 +87,26 @@ const ScheduleCarScreen: React.FC = () => {
     return '⚠️';
   };
 
-  // Generate time options within 2 hours of available time with 30-minute intervals
+  // Generate time options starting from car availability time with 30-minute intervals for 2 hours
   const generateStartTimeOptions = () => {
     if (!selectedVehicle) return [];
     
     const availableTime = selectedVehicle.availableTime;
     const [time, period] = availableTime.split(' ');
-    const [hours, minutes] = time.split(':').map(Number);
+    const [hours, minutes = 0] = time.split(':').map(Number);
     
     let startHour = hours;
     if (period === 'PM' && hours !== 12) startHour += 12;
     if (period === 'AM' && hours === 12) startHour = 0;
     
     const options = [];
-    // Generate 30-minute intervals within 2 hours
-    for (let i = 0; i <= 4; i++) { // 0, 0.5, 1, 1.5, 2 hours
-      const totalMinutes = i * 30;
+    // Generate 30-minute intervals starting from availability time for 2 hours
+    for (let i = 0; i <= 4; i++) { // 0, 0.5, 1, 1.5, 2 hours (5 options total)
+      const totalMinutes = minutes + (i * 30);
       const hour = startHour + Math.floor(totalMinutes / 60);
       const minute = totalMinutes % 60;
       
-      if (hour <= 18) { // Max 6 PM
+      if (hour <= 23) { // Max 11 PM
         const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
         const period = hour >= 12 ? 'PM' : 'AM';
         const value = `${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`;

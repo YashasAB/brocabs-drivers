@@ -80,13 +80,13 @@ const HomeScreen: React.FC = () => {
                 onClick={() => setIsOnline(!isOnline)}
                 className={`px-4 py-2 rounded-full text-sm font-medium shadow-md transition-all duration-300 transform hover:scale-105 ${
                   isOnline 
-                    ? 'bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700' 
-                    : 'bg-gradient-to-r from-gray-500 to-slate-600 text-white hover:from-gray-600 hover:to-slate-700'
+                    ? 'bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700' 
+                    : 'bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700'
                 }`}
               >
                 <div className="flex items-center space-x-2">
-                  <div className={`w-2 h-2 rounded-full ${isOnline ? 'bg-white' : 'bg-gray-300'}`}></div>
-                  <span>{isOnline ? 'Go Online' : 'Go Offline'}</span>
+                  <div className={`w-2 h-2 rounded-full ${isOnline ? 'bg-white' : 'bg-white'}`}></div>
+                  <span>{isOnline ? 'Go Offline' : 'Go Online'}</span>
                 </div>
               </button>
             </div>
@@ -213,25 +213,7 @@ const HomeScreen: React.FC = () => {
           </div>
         </div>
 
-        {/* Recent Alerts */}
-        <div className="card-violet mb-8 p-6">
-          <h3 className="text-lg font-semibold text-deep-violet mb-4">Recent Updates</h3>
-          <div className="space-y-4">
-            {recentAlerts.map((alert) => (
-              <div key={alert.id} className="border-b border-violet border-opacity-20 pb-4 last:border-b-0 last:pb-0">
-                <div className="flex items-center justify-between">
-                  <div className="flex-1 space-y-1">
-                    <p className="text-sm font-medium text-deep-violet leading-relaxed">🔄 {alert.message}</p>
-                    <p className="text-xs text-violet">{alert.time}</p>
-                  </div>
-                  <button className="bg-gradient-to-r from-violet to-purple-600 hover:from-purple-600 hover:to-violet text-white text-xs font-medium px-4 py-2 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 ml-4">
-                    View
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+        
 
         {/* Stats Cards at Bottom */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">

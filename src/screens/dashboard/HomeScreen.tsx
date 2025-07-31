@@ -70,7 +70,7 @@ const HomeScreen: React.FC = () => {
   return (
     <div className="min-h-screen bg-pink-gradient">
       {/* Header */}
-      <div className="bg-white shadow nav-violet rounded-2xl mx-4 sm:mx-6 lg:mx-8 mt-6">
+      <div className="bg-white shadow nav-violet rounded-2xl my-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div>
@@ -118,7 +118,7 @@ const HomeScreen: React.FC = () => {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 ml-8">
         {/* Quick Actions */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
           <div className="card-violet p-8 min-h-[30vh] flex flex-col justify-center">
@@ -155,7 +155,7 @@ const HomeScreen: React.FC = () => {
         </div>
 
         {/* Current Trip Status */}
-        <div className="card-violet mb-8 p-6">
+        <div className="card-violet mb-8 p-2">
           <h3 className="text-base sm:text-lg font-semibold text-deep-violet mb-3 sm:mb-4">
             Current Trip
           </h3>

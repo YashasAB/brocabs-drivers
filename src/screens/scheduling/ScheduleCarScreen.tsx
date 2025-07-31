@@ -263,19 +263,19 @@ const ScheduleCarScreen: React.FC = () => {
 
         {/* Book Car Section */}
         <div className="card-violet my-12 p-4 sm:p-6">
-          <div className="flex items-center mb-6">
+          <div className="flex items-center mb-8">
             <div className="flex-shrink-0 bg-gradient-to-r from-violet to-deep-violet p-3 rounded-xl mr-3">
               <span className="text-2xl">📅</span>
             </div>
             <h3 className="text-base sm:text-lg font-semibold text-deep-violet">Book Car</h3>
           </div>
           
-          <div className="space-y-6">
+          <div className="space-y-8">
             {/* Start Time */}
-            <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-4 sm:p-6 rounded-2xl border border-purple-100">
-              <div className="flex items-center mb-3">
-                <span className="text-lg mr-2">🕐</span>
-                <label className="text-sm sm:text-base font-semibold text-deep-violet">Start Time</label>
+            <div className="space-y-3">
+              <div className="flex items-center">
+                <span className="text-xl mr-3">🕐</span>
+                <label className="text-sm sm:text-base font-bold text-deep-violet">Start Time</label>
               </div>
               <div className="relative">
                 <select
@@ -285,79 +285,120 @@ const ScheduleCarScreen: React.FC = () => {
                     setEndTime(''); // Reset end time when start time changes
                   }}
                   disabled={!selectedVehicle}
-                  className={`w-full p-4 sm:p-5 text-sm sm:text-base bg-white border-2 border-purple-200 rounded-2xl focus:ring-4 focus:ring-purple-100 focus:border-violet text-deep-violet font-semibold appearance-none shadow-sm transition-all duration-200 hover:border-violet ${
-                    !selectedVehicle ? 'opacity-50 cursor-not-allowed bg-gray-50' : 'hover:shadow-md'
+                  className={`w-full p-4 sm:p-5 text-sm sm:text-base bg-white border-2 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 ${
+                    !selectedVehicle 
+                      ? 'opacity-50 cursor-not-allowed bg-gray-50 border-gray-200' 
+                      : 'border-violet/30 hover:border-violet hover:shadow-xl'
                   }`}
+                  style={{
+                    backgroundImage: 'none',
+                    WebkitAppearance: 'none',
+                    MozAppearance: 'none'
+                  }}
                 >
-                  <option value="" className="text-gray-500">
-                    {selectedVehicle ? '⏰ Choose your start time' : '🚗 Select a vehicle first'}
+                  <option value="" style={{ backgroundColor: 'white', color: '#6b7280', fontSize: '14px' }}>
+                    {selectedVehicle ? 'Choose your start time' : 'Select a vehicle first'}
                   </option>
                   {generateStartTimeOptions().map((option) => (
-                    <option key={option.value} value={option.value} className="text-deep-violet">
-                      ⏰ {option.display}
+                    <option 
+                      key={option.value} 
+                      value={option.value} 
+                      style={{ backgroundColor: 'white', color: '#4c1d95', fontSize: '14px', fontWeight: '500' }}
+                    >
+                      {option.display}
                     </option>
                   ))}
                 </select>
                 <div className="absolute right-4 sm:right-5 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <div className="bg-gradient-to-r from-violet to-deep-violet p-2 rounded-lg">
-                    <span className="text-white text-sm">▼</span>
+                  <div className="bg-gradient-to-br from-violet to-deep-violet p-2 rounded-lg shadow-md">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* End Time */}
-            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 sm:p-6 rounded-2xl border border-blue-100">
-              <div className="flex items-center mb-3">
-                <span className="text-lg mr-2">🕕</span>
-                <label className="text-sm sm:text-base font-semibold text-deep-violet">End Time</label>
+            <div className="space-y-3">
+              <div className="flex items-center">
+                <span className="text-xl mr-3">🕕</span>
+                <label className="text-sm sm:text-base font-bold text-deep-violet">End Time</label>
               </div>
               <div className="relative">
                 <select
                   value={endTime}
                   onChange={(e) => setEndTime(e.target.value)}
                   disabled={!startTime}
-                  className={`w-full p-4 sm:p-5 text-sm sm:text-base bg-white border-2 border-blue-200 rounded-2xl focus:ring-4 focus:ring-blue-100 focus:border-violet text-deep-violet font-semibold appearance-none shadow-sm transition-all duration-200 hover:border-violet ${
-                    !startTime ? 'opacity-50 cursor-not-allowed bg-gray-50' : 'hover:shadow-md'
+                  className={`w-full p-4 sm:p-5 text-sm sm:text-base bg-white border-2 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 ${
+                    !startTime 
+                      ? 'opacity-50 cursor-not-allowed bg-gray-50 border-gray-200' 
+                      : 'border-violet/30 hover:border-violet hover:shadow-xl'
                   }`}
+                  style={{
+                    backgroundImage: 'none',
+                    WebkitAppearance: 'none',
+                    MozAppearance: 'none'
+                  }}
                 >
-                  <option value="" className="text-gray-500">
-                    {startTime ? '⏰ Choose your end time' : '🕐 Select start time first'}
+                  <option value="" style={{ backgroundColor: 'white', color: '#6b7280', fontSize: '14px' }}>
+                    {startTime ? 'Choose your end time' : 'Select start time first'}
                   </option>
                   {generateEndTimeOptions().map((option) => (
-                    <option key={option.value} value={option.value} className="text-deep-violet">
-                      ⏰ {option.display}
+                    <option 
+                      key={option.value} 
+                      value={option.value} 
+                      style={{ backgroundColor: 'white', color: '#4c1d95', fontSize: '14px', fontWeight: '500' }}
+                    >
+                      {option.display}
                     </option>
                   ))}
                 </select>
                 <div className="absolute right-4 sm:right-5 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <div className="bg-gradient-to-r from-violet to-deep-violet p-2 rounded-lg">
-                    <span className="text-white text-sm">▼</span>
+                  <div className="bg-gradient-to-br from-violet to-deep-violet p-2 rounded-lg shadow-md">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Dropoff Lot */}
-            <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 sm:p-6 rounded-2xl border border-green-100">
-              <div className="flex items-center mb-3">
-                <span className="text-lg mr-2">📍</span>
-                <label className="text-sm sm:text-base font-semibold text-deep-violet">Preferred Dropoff Lot</label>
+            <div className="space-y-3">
+              <div className="flex items-center">
+                <span className="text-xl mr-3">📍</span>
+                <label className="text-sm sm:text-base font-bold text-deep-violet">Preferred Dropoff Lot</label>
               </div>
               <div className="relative">
                 <select
                   value={dropoffLot}
                   onChange={(e) => setDropoffLot(e.target.value)}
-                  className="w-full p-4 sm:p-5 text-sm sm:text-base bg-white border-2 border-green-200 rounded-2xl focus:ring-4 focus:ring-green-100 focus:border-violet text-deep-violet font-semibold appearance-none shadow-sm transition-all duration-200 hover:border-violet hover:shadow-md"
+                  className="w-full p-4 sm:p-5 text-sm sm:text-base bg-white border-2 border-violet/30 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 hover:border-violet hover:shadow-xl"
+                  style={{
+                    backgroundImage: 'none',
+                    WebkitAppearance: 'none',
+                    MozAppearance: 'none'
+                  }}
                 >
-                  <option value="" className="text-gray-500">📍 Choose your dropoff location</option>
-                  <option value="jfk" className="text-deep-violet">✈️ JFK Airport Lot</option>
-                  <option value="flushing" className="text-deep-violet">🏙️ Flushing Community Lot</option>
-                  <option value="midtown" className="text-deep-violet">🌆 Midtown Business Lot</option>
+                  <option value="" style={{ backgroundColor: 'white', color: '#6b7280', fontSize: '14px' }}>
+                    Choose your dropoff location
+                  </option>
+                  <option value="jfk" style={{ backgroundColor: 'white', color: '#4c1d95', fontSize: '14px', fontWeight: '500' }}>
+                    JFK Airport Lot
+                  </option>
+                  <option value="flushing" style={{ backgroundColor: 'white', color: '#4c1d95', fontSize: '14px', fontWeight: '500' }}>
+                    Flushing Community Lot
+                  </option>
+                  <option value="midtown" style={{ backgroundColor: 'white', color: '#4c1d95', fontSize: '14px', fontWeight: '500' }}>
+                    Midtown Business Lot
+                  </option>
                 </select>
                 <div className="absolute right-4 sm:right-5 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <div className="bg-gradient-to-r from-violet to-deep-violet p-2 rounded-lg">
-                    <span className="text-white text-sm">▼</span>
+                  <div className="bg-gradient-to-br from-violet to-deep-violet p-2 rounded-lg shadow-md">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                    </svg>
                   </div>
                 </div>
               </div>

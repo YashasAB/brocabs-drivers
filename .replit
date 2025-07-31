@@ -7,7 +7,7 @@ channel = "stable-25_05"
 [deployment]
 deploymentTarget = "static"
 publicDir = "dist"
-run = ["sh", "-c", "npm run build && npm start"]
+run = ["sh", "-c", "npm run build && npm run static"]
 build = ["sh", "-c", "npm run build"]
 
 [[deployment.rewrites]]

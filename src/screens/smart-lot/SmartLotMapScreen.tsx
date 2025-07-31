@@ -75,9 +75,9 @@ const SmartLotMapScreen: React.FC = () => {
             <div className="flex items-center">
               <button
                 onClick={() => navigate('/')}
-                className="mr-3 sm:mr-4 p-2 text-gray-400 hover:text-gray-500 transition-colors duration-200"
+                className="mr-3 sm:mr-4 w-10 h-10 bg-gradient-to-r from-violet via-purple-600 to-deep-violet hover:from-deep-violet hover:via-purple-700 hover:to-violet rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center"
               >
-                <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>

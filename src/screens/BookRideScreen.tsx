@@ -241,27 +241,16 @@ const BookRideScreen: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {/* Location Selection */}
-        <div className="bg-white rounded-xl p-6 mb-6 shadow-lg">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-lg font-semibold text-deep-violet">Select Locations</h2>
-            {(pickupLocation || dropoffLocation) && (
-              <button
-                onClick={handleResetLocations}
-                className="px-3 py-1 text-sm bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 transition-colors"
-              >
-                Reset
-              </button>
-            )}
-          </div>
+        <div className="bg-white rounded-xl p-4 mb-6 shadow-lg">
+          <h2 className="text-lg font-semibold text-deep-violet mb-4">Select Locations</h2>
           
-          <div className="space-y-4">
+          <div className="space-y-3">
             {/* Pickup Location */}
             <div className="flex items-center space-x-2 p-3 rounded-lg border-2 border-green-500 bg-green-50">
               <div className="w-4 h-4 bg-green-500 rounded-full"></div>
               <span className="text-sm font-medium flex-1">
                 {pickupLocation ? `Pickup: ${pickupLocation.address}` : 'Pickup Location'}
               </span>
-              {!pickupLocation && <span className="text-xs text-green-600">✓ Set first</span>}
             </div>
 
             {/* Dropoff Location */}
@@ -278,7 +267,6 @@ const BookRideScreen: React.FC = () => {
               <span className="text-sm font-medium flex-1">
                 {dropoffLocation ? `Dropoff: ${dropoffLocation.address}` : 'Dropoff Location'}
               </span>
-              {!dropoffLocation && pickupLocation && <span className="text-xs text-red-600">✓ Set second</span>}
             </div>
           </div>
 
@@ -295,13 +283,23 @@ const BookRideScreen: React.FC = () => {
         </div>
 
         {/* Map */}
-        <div className="bg-white rounded-xl p-6 mb-6 shadow-lg">
-          <h3 className="text-lg font-semibold text-deep-violet mb-4">Interactive Map</h3>
+        <div className="bg-white rounded-xl p-4 mb-6 shadow-lg">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-lg font-semibold text-deep-violet">Interactive Map</h3>
+            {(pickupLocation || dropoffLocation) && (
+              <button
+                onClick={handleResetLocations}
+                className="px-3 py-1 text-sm bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 transition-colors"
+              >
+                Reset
+              </button>
+            )}
+          </div>
           <div 
             ref={mapRef} 
-            className="w-full h-96 rounded-lg border border-gray-200"
+            className="w-full h-64 sm:h-80 rounded-lg border border-gray-200"
             style={{ 
-              minHeight: '384px',
+              minHeight: '256px',
               zIndex: 1,
               position: 'relative'
             }}
@@ -312,20 +310,34 @@ const BookRideScreen: React.FC = () => {
         </div>
 
         {/* Time Selection */}
-        <div className="bg-white rounded-xl p-6 mb-6 shadow-lg">
+        <div className="bg-white rounded-xl p-4 mb-6 shadow-lg">
           <h3 className="text-lg font-semibold text-deep-violet mb-4">Select Pickup Time</h3>
-          <select
-            value={selectedTime}
-            onChange={(e) => setSelectedTime(e.target.value)}
-            className="w-full p-4 border-2 border-violet/30 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium"
-          >
-            <option value="">Choose pickup time</option>
-            {generateTimeOptions().map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.display}
-              </option>
-            ))}
-          </select>
+          <div className="relative">
+            <select
+              value={selectedTime}
+              onChange={(e) => setSelectedTime(e.target.value)}
+              className="w-full p-4 pr-12 border-2 border-violet/30 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none bg-white cursor-pointer"
+            >
+              <option value="">Choose pickup time</option>
+              {generateTimeOptions().map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.display}
+                </option>
+              ))}
+            </select>
+            <div className="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+              <svg className="w-5 h-5 text-violet" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+          {selectedTime && (
+            <div className="mt-3 p-3 bg-violet/10 rounded-lg">
+              <p className="text-sm text-deep-violet font-medium">
+                Selected: {generateTimeOptions().find(opt => opt.value === selectedTime)?.display}
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Book Button and Price */}

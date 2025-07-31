@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
@@ -77,7 +76,7 @@ const SmartLotMapScreen: React.FC = () => {
             <div className="flex items-center">
               <button
                 onClick={() => navigate('/')}
-                className="mr-3 sm:mr-4 w-12 h-12 bg-blue-500 hover:bg-blue-600 rounded-lg border-2 border-gray-300 flex items-center justify-center text-white"
+                className="mr-4 w-12 h-12 bg-blue-500 hover:bg-blue-600 rounded-lg border-2 border-gray-300 flex items-center justify-center text-white"
               >
                 <span className="text-xl">←</span>
               </button>

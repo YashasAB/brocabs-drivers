@@ -352,7 +352,7 @@ const BookRideScreen: React.FC = () => {
             <select
               value={selectedTime}
               disabled={!pickupLocation || !dropoffLocation}
-              onChange={(e) => handleTimeSelect(e)}
+              onChange={handleTimeSelect}
               className="w-full p-4 pr-12 border-2 border-violet/30 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none bg-white cursor-pointer"
             >
               <option value="">Choose pickup time</option>

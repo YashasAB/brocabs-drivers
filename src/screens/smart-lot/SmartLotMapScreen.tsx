@@ -45,7 +45,6 @@ const mockSmartLots = [
 ];
 
 const SmartLotMapScreen: React.FC = () => {
-  const [selectedLot, setSelectedLot] = useState<any>(null);
   const [, setDriverLocation] = useState({ latitude: 37.7749, longitude: -122.4194 });
   const navigate = useNavigate();
 
@@ -125,27 +124,7 @@ const SmartLotMapScreen: React.FC = () => {
 
 
 
-      {/* Selected Lot Details */}
-      {selectedLot && (
-        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-lg font-medium text-gray-900">{selectedLot.name}</h3>
-                <p className="text-sm text-gray-500">
-                  {selectedLot.availableCars} cars available
-                </p>
-              </div>
-              <button
-                onClick={() => navigate(`/lot-details/${selectedLot.id}`)}
-                className="px-4 py-2 btn-violet text-sm font-medium"
-              >
-                View Details
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      
     </div>
   );
 };

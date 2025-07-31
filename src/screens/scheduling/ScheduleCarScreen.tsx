@@ -137,10 +137,10 @@ const ScheduleCarScreen: React.FC = () => {
     return (
       <div className="min-h-screen bg-pink-gradient flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-xl font-semibold text-deep-violet mb-4">Lot not found</h1>
+          <h1 className="text-lg sm:text-xl font-semibold text-deep-violet mb-4">Lot not found</h1>
           <button
             onClick={() => navigate('/smart-lot-map')}
-            className="px-6 py-3 bg-violet hover:bg-deep-violet text-white rounded-lg font-medium border-2 border-gray-300"
+            className="px-4 py-2 sm:px-6 sm:py-3 bg-violet hover:bg-deep-violet text-white rounded-lg font-medium text-sm sm:text-base"
           >
             Go Back
           </button>
@@ -154,18 +154,18 @@ const ScheduleCarScreen: React.FC = () => {
   return (
     <div className="min-h-screen bg-pink-gradient">
       {/* Header */}
-      <div className="bg-white shadow nav-violet rounded-2xl my-2">
+      <div className="bg-white shadow nav-violet rounded-2xl mx-2 my-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center">
               <button
                 onClick={() => navigate('/smart-lot-map')}
-                className="mr-4 w-10 h-10 bg-purple-500 hover:bg-purple-600 rounded-lg border-2 border-gray-300 flex items-center justify-center text-white"
+                className="mr-3 sm:mr-4 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-violet to-deep-violet hover:from-deep-violet hover:to-violet rounded-lg flex items-center justify-center text-white text-sm sm:text-lg"
               >
-                <span className="text-lg">←</span>
+                <span>←</span>
               </button>
               <div>
-                <h1 className="text-lg sm:text-xl font-bold text-deep-violet">Schedule a Car</h1>
+                <h1 className="text-base sm:text-lg lg:text-xl font-bold text-deep-violet">Schedule a Car</h1>
                 <p className="text-xs sm:text-sm text-violet">{selectedLot.name}</p>
               </div>
             </div>
@@ -177,20 +177,20 @@ const ScheduleCarScreen: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         
         {/* Lot Info */}
-        <div className="card-violet my-12 p-6">
+        <div className="card-violet my-12 p-4 sm:p-6">
           <h2 className="text-base sm:text-lg font-semibold text-deep-violet mb-2">{selectedLot.name}</h2>
           <p className="text-xs sm:text-sm text-violet">{selectedLot.vehicles.length} vehicles available</p>
         </div>
 
         {/* Vehicle Carousel */}
-        <div className="card-violet my-12 p-6">
-          <div className="flex items-center justify-between mb-4">
+        <div className="card-violet my-12 p-4 sm:p-6">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
             <h3 className="text-base sm:text-lg font-semibold text-deep-violet">Available Vehicles</h3>
-            <div className="flex space-x-2">
+            <div className="flex space-x-1 sm:space-x-2">
               {selectedLot.vehicles.map((_, index) => (
                 <div
                   key={index}
-                  className={`w-3 h-3 rounded-full ${
+                  className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${
                     index === currentCarIndex ? "bg-violet" : "bg-gray-300"
                   }`}
                 />
@@ -200,19 +200,21 @@ const ScheduleCarScreen: React.FC = () => {
           
           <div className="space-y-4">
             {/* Current Car Display */}
-            <div className="card-violet p-4 border-2 border-violet">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-3">
-                  <span className="text-purple-600 text-2xl">🚗</span>
-                  <div>
-                    <h4 className="text-base sm:text-lg font-semibold text-deep-violet">{currentCar.model}</h4>
-                    <div className="flex flex-wrap items-center gap-3 mt-2">
+            <div className="bg-white p-4 sm:p-6 rounded-xl border-2 border-violet shadow-sm">
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-start space-x-3">
+                  <div className="flex-shrink-0 bg-gradient-to-r from-violet to-deep-violet p-2 sm:p-3 rounded-xl">
+                    <span className="text-lg sm:text-2xl">🚗</span>
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h4 className="text-sm sm:text-base lg:text-lg font-semibold text-deep-violet truncate">{currentCar.model}</h4>
+                    <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-2 sm:gap-3 mt-2">
                       <div className="flex items-center space-x-1">
                         <span className="text-xs sm:text-sm text-violet">Available:</span>
                         <span className="text-xs sm:text-sm font-medium text-deep-violet">{currentCar.availableTime}</span>
                       </div>
                       <div className="flex items-center space-x-1">
-                        <span className={`text-lg ${getChargeColor(currentCar.chargeLevel)}`}>
+                        <span className={`text-base sm:text-lg ${getChargeColor(currentCar.chargeLevel)}`}>
                           {getChargeIcon(currentCar.chargeLevel)}
                         </span>
                         <span className={`text-xs sm:text-sm font-medium ${getChargeColor(currentCar.chargeLevel)}`}>
@@ -232,14 +234,14 @@ const ScheduleCarScreen: React.FC = () => {
               <div className="flex items-center justify-between">
                 <button
                   onClick={prevCar}
-                  className="w-12 h-12 bg-purple-500 hover:bg-purple-600 rounded-lg border-2 border-gray-300 flex items-center justify-center text-white"
+                  className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-violet to-deep-violet hover:from-deep-violet hover:to-violet rounded-lg flex items-center justify-center text-white text-sm sm:text-lg"
                 >
-                  <span className="text-lg">←</span>
+                  <span>←</span>
                 </button>
                 
                 <button
                   onClick={selectCurrentCar}
-                  className={`px-6 py-3 rounded-lg font-medium text-white border-2 border-gray-300 ${
+                  className={`px-4 py-2 sm:px-6 sm:py-3 rounded-lg font-medium text-white text-sm sm:text-base ${
                     selectedVehicles.includes(currentCar.id)
                       ? 'bg-green-500 hover:bg-green-600'
                       : 'bg-violet hover:bg-deep-violet'
@@ -250,9 +252,9 @@ const ScheduleCarScreen: React.FC = () => {
                 
                 <button
                   onClick={nextCar}
-                  className="w-12 h-12 bg-purple-500 hover:bg-purple-600 rounded-lg border-2 border-gray-300 flex items-center justify-center text-white"
+                  className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-violet to-deep-violet hover:from-deep-violet hover:to-violet rounded-lg flex items-center justify-center text-white text-sm sm:text-lg"
                 >
-                  <span className="text-lg">→</span>
+                  <span>→</span>
                 </button>
               </div>
             </div>
@@ -260,12 +262,12 @@ const ScheduleCarScreen: React.FC = () => {
         </div>
 
         {/* Time Selection */}
-        <div className="card-violet my-12 p-6">
-          <h3 className="text-base sm:text-lg font-semibold text-deep-violet mb-6">Schedule Time</h3>
-          <div className="space-y-6">
+        <div className="card-violet my-12 p-4 sm:p-6">
+          <h3 className="text-base sm:text-lg font-semibold text-deep-violet mb-4 sm:mb-6">Schedule Time</h3>
+          <div className="space-y-4 sm:space-y-6">
             {/* Start Time */}
             <div>
-              <label className="block text-sm font-medium text-deep-violet mb-3">Start Time</label>
+              <label className="block text-sm sm:text-base font-medium text-deep-violet mb-2 sm:mb-3">Start Time</label>
               <div className="relative">
                 <select
                   value={startTime}
@@ -274,7 +276,7 @@ const ScheduleCarScreen: React.FC = () => {
                     setEndTime(''); // Reset end time when start time changes
                   }}
                   disabled={!selectedVehicle}
-                  className={`w-full p-4 text-base bg-white border-2 border-violet rounded-xl focus:ring-2 focus:ring-violet focus:border-transparent text-deep-violet font-medium ${
+                  className={`w-full p-3 sm:p-4 text-sm sm:text-base bg-white border-2 border-violet rounded-xl focus:ring-2 focus:ring-violet focus:border-transparent text-deep-violet font-medium appearance-none ${
                     !selectedVehicle ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 >
@@ -285,21 +287,21 @@ const ScheduleCarScreen: React.FC = () => {
                     </option>
                   ))}
                 </select>
-                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <span className="text-xl text-violet">⏰</span>
+                <div className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <span className="text-base sm:text-xl text-violet">⏰</span>
                 </div>
               </div>
             </div>
 
             {/* End Time */}
             <div>
-              <label className="block text-sm font-medium text-deep-violet mb-3">End Time</label>
+              <label className="block text-sm sm:text-base font-medium text-deep-violet mb-2 sm:mb-3">End Time</label>
               <div className="relative">
                 <select
                   value={endTime}
                   onChange={(e) => setEndTime(e.target.value)}
                   disabled={!startTime}
-                  className={`w-full p-4 text-base bg-white border-2 border-violet rounded-xl focus:ring-2 focus:ring-violet focus:border-transparent text-deep-violet font-medium ${
+                  className={`w-full p-3 sm:p-4 text-sm sm:text-base bg-white border-2 border-violet rounded-xl focus:ring-2 focus:ring-violet focus:border-transparent text-deep-violet font-medium appearance-none ${
                     !startTime ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                 >
@@ -310,28 +312,28 @@ const ScheduleCarScreen: React.FC = () => {
                     </option>
                   ))}
                 </select>
-                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <span className="text-xl text-violet">⏰</span>
+                <div className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <span className="text-base sm:text-xl text-violet">⏰</span>
                 </div>
               </div>
             </div>
 
             {/* Dropoff Lot */}
             <div>
-              <label className="block text-sm font-medium text-deep-violet mb-3">Preferred Dropoff Lot</label>
+              <label className="block text-sm sm:text-base font-medium text-deep-violet mb-2 sm:mb-3">Preferred Dropoff Lot</label>
               <div className="relative">
                 <select
                   value={dropoffLot}
                   onChange={(e) => setDropoffLot(e.target.value)}
-                  className="w-full p-4 text-base bg-white border-2 border-violet rounded-xl focus:ring-2 focus:ring-violet focus:border-transparent text-deep-violet font-medium"
+                  className="w-full p-3 sm:p-4 text-sm sm:text-base bg-white border-2 border-violet rounded-xl focus:ring-2 focus:ring-violet focus:border-transparent text-deep-violet font-medium appearance-none"
                 >
                   <option value="">Select dropoff lot</option>
                   <option value="jfk">JFK Lot</option>
                   <option value="flushing">Flushing Lot</option>
                   <option value="midtown">Midtown Lot</option>
                 </select>
-                <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <span className="text-xl text-violet">📍</span>
+                <div className="absolute right-3 sm:right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                  <span className="text-base sm:text-xl text-violet">📍</span>
                 </div>
               </div>
             </div>
@@ -343,7 +345,7 @@ const ScheduleCarScreen: React.FC = () => {
           <button
             onClick={handleSchedule}
             disabled={selectedVehicles.length === 0 || !startTime || !endTime || !dropoffLot}
-            className="w-full px-8 py-4 bg-violet text-white rounded-xl font-semibold text-lg hover:bg-deep-violet disabled:opacity-50 disabled:cursor-not-allowed border-2 border-gray-300"
+            className="w-full px-6 py-3 sm:px-8 sm:py-4 bg-violet text-white rounded-xl font-semibold text-base sm:text-lg hover:bg-deep-violet disabled:opacity-50 disabled:cursor-not-allowed"
           >
             🚗 Book Now
           </button>

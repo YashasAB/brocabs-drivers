@@ -37,7 +37,7 @@ const BookRideScreen: React.FC = () => {
   const [showPrice, setShowPrice] = useState(false);
 
   // NYC boundary coordinates (adjusted to start near EWR)
-  const nycBoundary = [
+  const nycBoundary: L.LatLngExpression[] = [
     [40.477399, -74.17], // Southwest (moved right to near EWR)
     [40.477399, -73.700009], // Southeast
     [40.917577, -73.700009], // Northeast
@@ -66,7 +66,7 @@ const BookRideScreen: React.FC = () => {
     return options;
   };
 
-  const formatToTime = (dateStr) => {
+  const formatToTime = (dateStr: string) => {
     const date = new Date(dateStr);
     return date.toLocaleTimeString([], {
       hour: "2-digit",

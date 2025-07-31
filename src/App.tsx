@@ -10,6 +10,9 @@ import ForgotPasswordScreen from './screens/auth/ForgotPasswordScreen';
 
 // Dashboard Screens
 import LandingScreen from './screens/LandingScreen';
+import BookRideScreen from './screens/BookRideScreen';
+
+// Dashboard Screens
 import HomeScreen from './screens/dashboard/HomeScreen';
 import ProfileScreen from './screens/dashboard/ProfileScreen';
 import EarningsScreen from './screens/dashboard/EarningsScreen';
@@ -64,6 +67,9 @@ function App() {
             <Route path="/smart-lot-map" element={<SmartLotMapScreen />} />
             <Route path="/lot-details/:lotId" element={<LotDetailsScreen />} />
             <Route path="/car-selection/:lotId" element={<CarSelectionScreen />} />
+
+            {/* Customer Booking Route */}
+            <Route path="/book-ride" element={<BookRideScreen />} />
 
             {/* Scheduling Routes */}
             <Route path="/schedule-shift" element={<ScheduleShiftScreen />} />

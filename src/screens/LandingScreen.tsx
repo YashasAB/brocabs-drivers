@@ -70,10 +70,7 @@ const LandingScreen: React.FC = () => {
               </button>
 
               <button
-                onClick={() => {
-                  // This would typically navigate to a customer booking app
-                  alert('Customer booking app coming soon!');
-                }}
+                onClick={() => navigate('/book-ride')}
                 className="w-full bg-green-500 hover:bg-green-600 text-white rounded-xl p-8 border-2 border-gray-300 transition-all duration-300 hover:shadow-xl transform hover:scale-105"
               >
                 <div className="flex flex-col items-center space-y-4">

@@ -137,16 +137,16 @@ const HomeScreen: React.FC = () => {
 
           <div className="card-violet p-6">
             <h3 className="text-base sm:text-lg font-semibold text-deep-violet mb-3 sm:mb-4">Today's Shift</h3>
-            <div className="space-y-4">
-              <div className="flex justify-between items-center py-2">
+            <div className="space-y-6">
+              <div className="flex justify-between items-center py-3">
                 <span className="text-xs sm:text-sm text-violet">Status</span>
                 <span className="text-xs sm:text-sm font-medium text-green-600 bg-green-100 px-2 sm:px-3 py-1 rounded-full">✅ Active</span>
               </div>
-              <div className="flex justify-between items-center py-2">
+              <div className="flex justify-between items-center py-3">
                 <span className="text-xs sm:text-sm text-violet">Started</span>
                 <span className="text-xs sm:text-sm font-medium text-deep-violet">{driverStats.currentShift.startTime}</span>
               </div>
-              <div className="flex justify-between items-center py-2">
+              <div className="flex justify-between items-center py-3">
                 <span className="text-xs sm:text-sm text-violet">Ends</span>
                 <span className="text-xs sm:text-sm font-medium text-deep-violet">{driverStats.currentShift.endTime}</span>
               </div>

@@ -46,7 +46,7 @@ const HomeScreen: React.FC = () => {
       id: 1,
       type: "booking",
       title: "New Booking",
-      message: "370 Park Avenue to Williamsburg",
+      message: "370 Park Avenue -> Williamsburg",
       icon: (
         <svg
           className="w-8 h-8 text-white"
@@ -62,7 +62,7 @@ const HomeScreen: React.FC = () => {
       id: 2,
       type: "car_drop",
       title: "Car Drop Alert",
-      message: "Drop car at Williamsburg lot in 70 minutes",
+      message: "Switch to charged EV in Williamsburg ⏰ 70mins",
       icon: (
         <svg
           className="w-8 h-8 text-white"

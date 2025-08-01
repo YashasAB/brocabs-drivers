@@ -281,7 +281,7 @@ const ScheduleCarScreen: React.FC = () => {
             <h3 className="text-base sm:text-lg font-semibold text-deep-violet">Book Car</h3>
           </div>
           
-          <div className="space-y-8">
+          <div className="space-y-10">
             {/* Start Time */}
             <div className="space-y-3">
               <div className="flex items-center">
@@ -297,16 +297,16 @@ const ScheduleCarScreen: React.FC = () => {
                     setEndTime(''); // Reset end time when start time changes
                   }}
                   disabled={!selectedVehicle}
-                  className={`w-full p-4 sm:p-5 pr-12 text-sm sm:text-base border-2 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 cursor-pointer ${
+                  className={`w-full p-5 sm:p-6 pr-14 text-base sm:text-lg border-2 rounded-2xl focus:ring-4 focus:ring-violet/30 focus:border-violet text-deep-violet font-semibold appearance-none shadow-xl transition-all duration-300 cursor-pointer ${
                     !selectedVehicle 
                       ? 'opacity-50 cursor-not-allowed bg-white border-gray-200' 
-                      : 'bg-white border-violet/30 hover:border-violet hover:shadow-xl'
+                      : 'bg-white border-violet/40 hover:border-violet hover:shadow-2xl'
                   }`}
                   style={{
-                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
-                    backgroundPosition: 'right 12px center',
+                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%238b5cf6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                    backgroundPosition: 'right 16px center',
                     backgroundRepeat: 'no-repeat',
-                    backgroundSize: '16px'
+                    backgroundSize: '20px'
                   }}
                 >
                   <option value="" style={{ backgroundColor: 'white', color: '#6b7280', fontSize: '14px' }}>
@@ -337,16 +337,16 @@ const ScheduleCarScreen: React.FC = () => {
                   value={endTime}
                   onChange={(e) => setEndTime(e.target.value)}
                   disabled={!startTime}
-                  className={`w-full p-4 sm:p-5 pr-12 text-sm sm:text-base border-2 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 cursor-pointer ${
+                  className={`w-full p-5 sm:p-6 pr-14 text-base sm:text-lg border-2 rounded-2xl focus:ring-4 focus:ring-violet/30 focus:border-violet text-deep-violet font-semibold appearance-none shadow-xl transition-all duration-300 cursor-pointer ${
                     !startTime 
                       ? 'opacity-50 cursor-not-allowed bg-white border-gray-200' 
-                      : 'bg-white border-violet/30 hover:border-violet hover:shadow-xl'
+                      : 'bg-white border-violet/40 hover:border-violet hover:shadow-2xl'
                   }`}
                   style={{
-                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
-                    backgroundPosition: 'right 12px center',
+                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%238b5cf6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                    backgroundPosition: 'right 16px center',
                     backgroundRepeat: 'no-repeat',
-                    backgroundSize: '16px'
+                    backgroundSize: '20px'
                   }}
                 >
                   <option value="" style={{ backgroundColor: 'white', color: '#6b7280', fontSize: '14px' }}>
@@ -376,12 +376,12 @@ const ScheduleCarScreen: React.FC = () => {
                   id="dropoff-lot-select"
                   value={dropoffLot}
                   onChange={(e) => setDropoffLot(e.target.value)}
-                  className="w-full p-4 sm:p-5 pr-12 text-sm sm:text-base bg-white border-2 border-violet/30 rounded-xl focus:ring-3 focus:ring-violet/20 focus:border-violet text-deep-violet font-medium appearance-none shadow-lg transition-all duration-300 hover:border-violet hover:shadow-xl cursor-pointer"
+                  className="w-full p-5 sm:p-6 pr-14 text-base sm:text-lg bg-white border-2 border-violet/40 rounded-2xl focus:ring-4 focus:ring-violet/30 focus:border-violet text-deep-violet font-semibold appearance-none shadow-xl transition-all duration-300 hover:border-violet hover:shadow-2xl cursor-pointer"
                   style={{
-                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
-                    backgroundPosition: 'right 12px center',
+                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%238b5cf6' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                    backgroundPosition: 'right 16px center',
                     backgroundRepeat: 'no-repeat',
-                    backgroundSize: '16px'
+                    backgroundSize: '20px'
                   }}
                 >
                   <option value="" style={{ backgroundColor: 'white', color: '#6b7280', fontSize: '14px' }}>

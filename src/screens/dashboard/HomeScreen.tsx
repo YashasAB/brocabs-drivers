@@ -17,7 +17,7 @@ const HomeScreen: React.FC = () => {
     name: "AB Kumar",
     bloodGroup: "A+",
     rating: 4.8,
-    totalEarnings: 45672.50,
+    totalEarnings: 45672.5,
     totalTrips: 1247,
     yearsExperience: 3,
     phoneNumber: "+1 (555) 123-4567",
@@ -26,7 +26,7 @@ const HomeScreen: React.FC = () => {
     carType: "Honda Civic",
     joinDate: "March 2021",
     completionRate: 98.5,
-    onTimeRate: 96.2
+    onTimeRate: 96.2,
   };
 
   // Mock data
@@ -147,13 +147,13 @@ const HomeScreen: React.FC = () => {
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 ml-8">
         {/* Quick Actions */}
-        {!isOnline && (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            <div className="card-violet p-8 min-h-[30vh] flex flex-col justify-center">
-              <h3 className="text-lg sm:text-xl font-semibold text-deep-violet mb-6 sm:mb-8">
-                Quick Actions
-              </h3>
-              <div className="space-y-6 flex-1 flex flex-col justify-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          <div className="card-violet p-8 min-h-[30vh] flex flex-col justify-center">
+            <h3 className="text-lg sm:text-xl font-semibold text-deep-violet mb-6 sm:mb-8">
+              Quick Actions
+            </h3>
+            <div className="space-y-6 flex-1 flex flex-col justify-center">
+              {!isOnline && (
                 <button
                   onClick={() => navigate("/smart-lot-map")}
                   className="w-full bg-blue-500 hover:bg-blue-600 text-white rounded-lg p-8 border-2 border-gray-300"
@@ -161,51 +161,33 @@ const HomeScreen: React.FC = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-4">
                       <span className="text-4xl">🚗</span>
-                      <span className="text-xl font-semibold">Schedule Car</span>
+                      <span className="text-xl font-semibold">
+                        Schedule Car
+                      </span>
                     </div>
                     <span className="text-3xl">→</span>
                   </div>
                 </button>
-                <button
-                  onClick={() => navigate("/earnings")}
-                  className="w-full bg-green-500 hover:bg-green-600 text-white rounded-lg p-8 border-2 border-gray-300"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
-                      <span className="text-4xl">💰</span>
-                      <span className="text-xl font-semibold">Earnings</span>
-                    </div>
-                    <span className="text-3xl">→</span>
+              )}
+              <button
+                onClick={() => navigate("/earnings")}
+                className="w-full bg-green-500 hover:bg-green-600 text-white rounded-lg p-8 border-2 border-gray-300"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <span className="text-4xl">💰</span>
+                    <span className="text-xl font-semibold">Earnings</span>
                   </div>
-                </button>
-              </div>
+                  <span className="text-3xl">→</span>
+                </div>
+              </button>
             </div>
           </div>
-        )}
+        </div>
 
         {/* Current Trip Status - Only show when online */}
         {isOnline && (
           <>
-            <div className="card-violet mb-8 p-2">
-              <h3 className="text-base sm:text-lg font-semibold text-deep-violet mb-3 sm:mb-4">
-                Current Trip
-              </h3>
-              <div className="flex items-center justify-between">
-                <div className="space-y-1">
-                  <p className="text-sm sm:text-base font-medium text-deep-violet">
-                    🚶 Drop off Daivik
-                  </p>
-                  <p className="text-xs sm:text-sm text-violet">270 Park Avenue</p>
-                </div>
-                <div className="text-right space-y-1">
-                  <span className="text-xs sm:text-sm font-medium text-green-600 bg-green-100 px-2 sm:px-3 py-1 rounded-full">
-                    🚗 On the way
-                  </span>
-                  <p className="text-xs text-violet">8 min away</p>
-                </div>
-              </div>
-            </div>
-
             {/* Alert Carousel Card */}
             <div className="card-violet mb-8 p-6">
               <div className="flex items-center justify-between">
@@ -253,6 +235,28 @@ const HomeScreen: React.FC = () => {
               </div>
             </div>
 
+            <div className="card-violet mb-8 p-2">
+              <h3 className="text-base sm:text-lg font-semibold text-deep-violet mb-3 sm:mb-4">
+                Current Trip
+              </h3>
+              <div className="flex items-center justify-between">
+                <div className="space-y-1">
+                  <p className="text-sm sm:text-base font-medium text-deep-violet">
+                    🚶 Drop off Daivik
+                  </p>
+                  <p className="text-xs sm:text-sm text-violet">
+                    270 Park Avenue
+                  </p>
+                </div>
+                <div className="text-right space-y-1">
+                  <span className="text-xs sm:text-sm font-medium text-green-600 bg-green-100 px-2 sm:px-3 py-1 rounded-full">
+                    🚗 On the way
+                  </span>
+                  <p className="text-xs text-violet">8 min away</p>
+                </div>
+              </div>
+            </div>
+
             {/* Today's Shift */}
             <div className="card-violet p-6 rounded-2xl mb-8">
               <h3 className="text-base sm:text-lg font-semibold text-deep-violet mb-3 sm:mb-4">
@@ -266,7 +270,9 @@ const HomeScreen: React.FC = () => {
                   </span>
                 </div>
                 <div className="flex justify-between items-center py-3">
-                  <span className="text-xs sm:text-sm text-violet">Started</span>
+                  <span className="text-xs sm:text-sm text-violet">
+                    Started
+                  </span>
                   <span className="text-xs sm:text-sm font-medium text-deep-violet">
                     {driverStats.currentShift.startTime}
                   </span>

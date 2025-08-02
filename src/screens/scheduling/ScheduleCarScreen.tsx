@@ -387,6 +387,9 @@ const ScheduleCarScreen: React.FC = () => {
                   <option value="" style={{ backgroundColor: 'white', color: '#6b7280', fontSize: '14px' }}>
                     Choose your dropoff location
                   </option>
+                  <option value="any" style={{ backgroundColor: 'white', color: '#4c1d95', fontSize: '14px', fontWeight: '500' }}>
+                    Any Available Lot
+                  </option>
                   <option value="jfk" style={{ backgroundColor: 'white', color: '#4c1d95', fontSize: '14px', fontWeight: '500' }}>
                     JFK Airport Lot
                   </option>

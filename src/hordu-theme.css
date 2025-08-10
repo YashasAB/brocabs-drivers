@@ -55,12 +55,9 @@
 
 /* Utility Classes */
 .hordu-header {
-  position: sticky;
-  top: 0;
   backdrop-filter: blur(12px);
   background: rgb(255 255 255 / 0.7);
   border-bottom: 1px solid var(--neutralBorder-light);
-  z-index: 50;
 }
 
 [data-theme="dark"] .hordu-header {

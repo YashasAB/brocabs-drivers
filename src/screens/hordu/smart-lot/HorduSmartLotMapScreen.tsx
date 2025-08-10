@@ -1,13 +1,28 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../../context/ThemeContext";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 import "../../../hordu-theme.css";
+
+// Fix for default markers
+delete (L.Icon.Default.prototype as any)._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
+  iconUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
+  shadowUrl:
+    "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
+});
 
 const HorduSmartLotMapScreen: React.FC = () => {
   const navigate = useNavigate();
   const { isDarkMode, toggleTheme } = useTheme();
   const [selectedLot, setSelectedLot] = useState<string | null>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
+  const mapInstanceRef = useRef<L.Map | null>(null);
 
   const lots = [
     {
@@ -36,6 +51,24 @@ const HorduSmartLotMapScreen: React.FC = () => {
       total: 15,
       distance: "2.8",
       coordinates: { lat: 12.9352, lng: 77.6245 }
+    },
+    {
+      id: "whitefield",
+      name: "Whitefield Tech Hub",
+      location: "Whitefield Main Road",
+      available: 6,
+      total: 8,
+      distance: "8.5",
+      coordinates: { lat: 12.9698, lng: 77.7500 }
+    },
+    {
+      id: "jayanagar",
+      name: "Jayanagar Auto Stand",
+      location: "Jayanagar 4th Block",
+      available: 3,
+      total: 6,
+      distance: "4.2",
+      coordinates: { lat: 12.9279, lng: 77.5938 }
     }
   ];
 
@@ -43,6 +76,72 @@ const HorduSmartLotMapScreen: React.FC = () => {
     setSelectedLot(lotId);
     navigate(`/hordu/schedule-car/${lotId}`);
   };
+
+  // Initialize map
+  useEffect(() => {
+    if (mapRef.current && !mapInstanceRef.current) {
+      console.log("Initializing Bengaluru auto charging map...");
+
+      // Clear any existing content
+      mapRef.current.innerHTML = "";
+
+      // Create map centered on Bengaluru
+      const map = L.map(mapRef.current, {
+        zoomControl: true,
+        attributionControl: true,
+      }).setView([12.9716, 77.5946], 12); // Bengaluru center coordinates
+
+      // Add OpenStreetMap tiles
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors",
+        maxZoom: 19,
+      }).addTo(map);
+
+      // Add markers for each charging hub
+      lots.forEach((lot) => {
+        const marker = L.marker([lot.coordinates.lat, lot.coordinates.lng])
+          .addTo(map);
+
+        // Create custom popup content
+        const popupContent = `
+          <div style="min-width: 250px; font-family: system-ui;">
+            <h3 style="margin: 0 0 12px 0; color: #7c3aed; font-weight: bold; font-size: 16px;">${lot.name}</h3>
+            <p style="margin: 6px 0; color: #374151; font-size: 14px;">📍 ${lot.location}</p>
+            <p style="margin: 6px 0; color: #374151; font-size: 14px;">🛺 ${lot.available}/${lot.total} autos available</p>
+            <p style="margin: 6px 0; color: #374151; font-size: 14px;">📏 ${lot.distance} km away</p>
+            <div style="margin-top: 12px;">
+              <button 
+                onclick="window.location.href='/hordu/schedule-car/${lot.id}'" 
+                style="background: linear-gradient(135deg, #7c3aed, #ec4899); color: white; border: none; padding: 10px 16px; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 600; font-size: 14px;"
+                onmouseover="this.style.opacity='0.9'"
+                onmouseout="this.style.opacity='1'"
+              >
+                🛺 Reserve Auto
+              </button>
+            </div>
+          </div>
+        `;
+
+        marker.bindPopup(popupContent);
+
+        // Open Indiranagar popup by default (closest/most popular)
+        if (lot.id === "indiranagar") {
+          marker.openPopup();
+        }
+      });
+
+      mapInstanceRef.current = map;
+      console.log(`Bengaluru map setup complete with ${lots.length} charging hubs`);
+    }
+
+    // Cleanup function
+    return () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.remove();
+        mapInstanceRef.current = null;
+      }
+    };
+  }, [lots]); // Re-run if lots data changes
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 dark:from-purple-900/20 dark:via-pink-900/20 dark:to-blue-900/20">
@@ -75,31 +174,25 @@ const HorduSmartLotMapScreen: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6">
-        {/* Map Section */}
+        {/* Interactive Map Section */}
         <div className="hordu-card p-6 mb-6">
           <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">
             Bengaluru Auto Charging Map
           </h3>
-          <div className="bg-gradient-to-br from-green-100 to-blue-100 dark:from-green-900/20 dark:to-blue-900/20 rounded-lg h-64 flex items-center justify-center border-2 border-dashed border-gray-300 dark:border-gray-600 relative">
-            <div className="text-center">
-              <span className="text-4xl mb-2 block">🗺️</span>
-              <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">Interactive Bengaluru Map</p>
-              <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 font-medium">
-                Auto charging hubs across the city
-              </p>
-            </div>
-            
-            {/* Mock map markers */}
-            <div className="absolute top-6 left-12 bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-xs font-bold">
-              8
-            </div>
-            <div className="absolute top-12 right-16 bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-xs font-bold">
-              5
-            </div>
-            <div className="absolute bottom-8 left-20 bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center text-xs font-bold">
-              12
-            </div>
+          <div className="rounded-lg overflow-hidden border-2 border-gray-200 dark:border-gray-600 shadow-lg">
+            <div
+              ref={mapRef}
+              className="w-full h-80 sm:h-96"
+              style={{
+                minHeight: "320px",
+                zIndex: 1,
+                position: "relative",
+              }}
+            />
           </div>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mt-3 font-medium">
+            📍 Interactive map showing EV auto charging hubs across Bengaluru. Click markers for details.
+          </p>
         </div>
 
         {/* Available Lots */}
@@ -174,24 +267,24 @@ const HorduSmartLotMapScreen: React.FC = () => {
         {/* Quick Stats */}
         <div className="hordu-card p-6 mt-6">
           <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">
-            Network Overview
+            Bengaluru Network Overview
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div className="text-center">
-              <div className="text-2xl font-bold hordu-gradient-text">25</div>
+              <div className="text-2xl font-bold hordu-gradient-text">{lots.reduce((sum, lot) => sum + lot.total, 0)}</div>
               <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Total Autos</p>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold hordu-gradient-text">3</div>
+              <div className="text-2xl font-bold hordu-gradient-text">{lots.length}</div>
               <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Charging Hubs</p>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold hordu-gradient-text">92%</div>
+              <div className="text-2xl font-bold hordu-gradient-text">94%</div>
               <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Uptime</p>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold hordu-gradient-text">
-                <span className="hordu-distance">150</span>
+                <span className="hordu-distance">165</span>
               </div>
               <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Avg Range</p>
             </div>

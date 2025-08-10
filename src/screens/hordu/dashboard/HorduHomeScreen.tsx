@@ -64,29 +64,31 @@ const HorduHomeScreen: React.FC = () => {
             </button>
           </div>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 rounded-xl">
-              <div className="text-2xl font-bold hordu-gradient-text">
-                <span className="hordu-currency">850</span>
+          {/* Stats Grid - Only show when online */}
+          {isOnline && (
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 rounded-xl">
+                <div className="text-2xl font-bold hordu-gradient-text">
+                  <span className="hordu-currency">850</span>
+                </div>
+                <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Today's Earnings</p>
               </div>
-              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Today's Earnings</p>
-            </div>
-            <div className="text-center p-4 bg-gradient-to-br from-pink-50 to-blue-50 dark:from-pink-900/30 dark:to-blue-900/30 rounded-xl">
-              <div className="text-2xl font-bold hordu-gradient-text">12</div>
-              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Trips Completed</p>
-            </div>
-            <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-xl">
-              <div className="text-2xl font-bold hordu-gradient-text">
-                <span className="hordu-distance">45</span>
+              <div className="text-center p-4 bg-gradient-to-br from-pink-50 to-blue-50 dark:from-pink-900/30 dark:to-blue-900/30 rounded-xl">
+                <div className="text-2xl font-bold hordu-gradient-text">12</div>
+                <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Trips Completed</p>
               </div>
-              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Distance Covered</p>
+              <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-xl">
+                <div className="text-2xl font-bold hordu-gradient-text">
+                  <span className="hordu-distance">45</span>
+                </div>
+                <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Distance Covered</p>
+              </div>
+              <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 rounded-xl">
+                <div className="text-2xl font-bold hordu-gradient-text">4.8</div>
+                <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Rating</p>
+              </div>
             </div>
-            <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 rounded-xl">
-              <div className="text-2xl font-bold hordu-gradient-text">4.8</div>
-              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Rating</p>
-            </div>
-          </div>
+          )}
         </div>
 
         {/* Quick Actions */}

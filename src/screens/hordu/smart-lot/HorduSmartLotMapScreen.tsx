@@ -61,7 +61,7 @@ const HorduSmartLotMapScreen: React.FC = () => {
                 <h1 className="text-lg sm:text-xl lg:text-2xl font-bold hordu-gradient-text">
                   Auto Charging Hubs
                 </h1>
-                <p className="hordu-text-muted">Find available EV autos in Bengaluru</p>
+                <p className="text-sm text-purple-600 dark:text-purple-400 font-medium">Find available EV autos in Bengaluru</p>
               </div>
             </div>
             <button
@@ -83,8 +83,8 @@ const HorduSmartLotMapScreen: React.FC = () => {
           <div className="bg-gradient-to-br from-green-100 to-blue-100 dark:from-green-900/20 dark:to-blue-900/20 rounded-lg h-64 flex items-center justify-center border-2 border-dashed border-gray-300 dark:border-gray-600 relative">
             <div className="text-center">
               <span className="text-4xl mb-2 block">🗺️</span>
-              <p className="hordu-text-muted">Interactive Bengaluru Map</p>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-lg font-semibold text-gray-700 dark:text-gray-200">Interactive Bengaluru Map</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 font-medium">
                 Auto charging hubs across the city
               </p>
             </div>
@@ -115,10 +115,10 @@ const HorduSmartLotMapScreen: React.FC = () => {
                   <h4 className="text-lg font-bold text-gray-800 dark:text-gray-200 mb-2">
                     {lot.name}
                   </h4>
-                  <p className="hordu-text-muted mb-2">{lot.location}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 font-medium">{lot.location}</p>
                   <div className="flex items-center space-x-4">
-                    <span className="hordu-text-muted">
-                      📍 <span className="hordu-distance">{lot.distance}</span> away
+                    <span className="text-sm text-gray-700 dark:text-gray-200 font-medium">
+                      📍 <span className="hordu-distance font-semibold text-purple-600 dark:text-purple-400">{lot.distance}</span> away
                     </span>
                     <span
                       className={
@@ -135,7 +135,7 @@ const HorduSmartLotMapScreen: React.FC = () => {
                     <div className="text-2xl font-bold text-purple-600">
                       {lot.available}
                     </div>
-                    <p className="hordu-text-muted text-xs">Autos Ready</p>
+                    <p className="text-xs font-semibold text-gray-700 dark:text-gray-200">Autos Ready</p>
                   </div>
                   <button
                     onClick={() => handleLotSelect(lot.id)}
@@ -152,19 +152,19 @@ const HorduSmartLotMapScreen: React.FC = () => {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                 <div className="text-center">
                   <span className="text-lg">⚡</span>
-                  <p className="hordu-text-muted text-xs">Fast Charging</p>
+                  <p className="text-xs font-semibold text-gray-700 dark:text-gray-200">Fast Charging</p>
                 </div>
                 <div className="text-center">
                   <span className="text-lg">🛠️</span>
-                  <p className="hordu-text-muted text-xs">Maintenance</p>
+                  <p className="text-xs font-semibold text-gray-700 dark:text-gray-200">Maintenance</p>
                 </div>
                 <div className="text-center">
                   <span className="text-lg">📱</span>
-                  <p className="hordu-text-muted text-xs">App Unlock</p>
+                  <p className="text-xs font-semibold text-gray-700 dark:text-gray-200">App Unlock</p>
                 </div>
                 <div className="text-center">
                   <span className="text-lg">🎯</span>
-                  <p className="hordu-text-muted text-xs">GPS Tracking</p>
+                  <p className="text-xs font-semibold text-gray-700 dark:text-gray-200">GPS Tracking</p>
                 </div>
               </div>
             </div>
@@ -179,21 +179,21 @@ const HorduSmartLotMapScreen: React.FC = () => {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div className="text-center">
               <div className="text-2xl font-bold hordu-gradient-text">25</div>
-              <p className="hordu-text-muted">Total Autos</p>
+              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Total Autos</p>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold hordu-gradient-text">3</div>
-              <p className="hordu-text-muted">Charging Hubs</p>
+              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Charging Hubs</p>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold hordu-gradient-text">92%</div>
-              <p className="hordu-text-muted">Uptime</p>
+              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Uptime</p>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold hordu-gradient-text">
                 <span className="hordu-distance">150</span>
               </div>
-              <p className="hordu-text-muted">Avg Range</p>
+              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Avg Range</p>
             </div>
           </div>
         </div>

@@ -17,7 +17,7 @@ const LandingScreen: React.FC = () => {
                 BroCabs
               </h1>
               <p className="text-xs sm:text-sm text-violet">
-                EV Network for Everyone
+                EV Network for Everyone • Bengaluru Click here
               </p>
             </div>
             <div className="flex items-center">

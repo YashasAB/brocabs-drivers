@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTheme } from "../../../context/ThemeContext";
 import "../../../hordu-theme.css";
@@ -14,6 +14,8 @@ const HorduScheduleAutoScreen: React.FC = () => {
   const [startTime, setStartTime] = useState("");
   const [endTime, setEndTime] = useState("");
   const [dropoffLocation, setDropoffLocation] = useState("");
+  const [showEarnings, setShowEarnings] = useState(false);
+  const [isLoadingEarnings, setIsLoadingEarnings] = useState(false);
 
   const lotNames: { [key: string]: string } = {
     "indiranagar": "Indiranagar Charging Hub",
@@ -27,7 +29,6 @@ const HorduScheduleAutoScreen: React.FC = () => {
       name: "Hordu EV Auto",
       battery: 95,
       range: 142,
-      lastService: "2 days ago",
       status: "Ready",
       availableTime: "9:00 AM"
     },
@@ -36,7 +37,6 @@ const HorduScheduleAutoScreen: React.FC = () => {
       name: "Hordu EV Auto",
       battery: 87,
       range: 130,
-      lastService: "1 day ago",
       status: "Ready",
       availableTime: "8:30 AM"
     },
@@ -45,7 +45,6 @@ const HorduScheduleAutoScreen: React.FC = () => {
       name: "Hordu EV Auto", 
       battery: 45,
       range: 67,
-      lastService: "3 hours ago",
       status: "Charging",
       availableTime: "10:30 AM"
     }
@@ -53,6 +52,25 @@ const HorduScheduleAutoScreen: React.FC = () => {
 
   const currentAuto = availableAutos[currentAutoIndex];
   const selectedAutoData = availableAutos.find(auto => auto.id === selectedAuto);
+
+  // Effect to handle loading and showing earnings when dropoff location is selected
+  useEffect(() => {
+    if (dropoffLocation && selectedAuto && startTime && endTime) {
+      setIsLoadingEarnings(true);
+      setShowEarnings(false);
+      
+      // Simulate loading for 2 seconds
+      const timer = setTimeout(() => {
+        setIsLoadingEarnings(false);
+        setShowEarnings(true);
+      }, 2000);
+      
+      return () => clearTimeout(timer);
+    } else {
+      setShowEarnings(false);
+      setIsLoadingEarnings(false);
+    }
+  }, [dropoffLocation, selectedAuto, startTime, endTime]);
 
   const handleSchedule = () => {
     if (selectedAuto && startTime && endTime && dropoffLocation) {
@@ -166,7 +184,7 @@ const HorduScheduleAutoScreen: React.FC = () => {
                 </span>
               </div>
               
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-green-600">{currentAuto.battery}%</div>
                   <p className="text-sm hordu-text-muted">Battery</p>
@@ -176,10 +194,6 @@ const HorduScheduleAutoScreen: React.FC = () => {
                     <span className="hordu-distance">{currentAuto.range}</span>
                   </div>
                   <p className="text-sm hordu-text-muted">Range</p>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold hordu-gradient-text">{currentAuto.lastService}</div>
-                  <p className="text-sm hordu-text-muted">Last Service</p>
                 </div>
                 <div className="text-center">
                   <div className="text-2xl font-bold hordu-gradient-text">{currentAuto.availableTime}</div>
@@ -300,14 +314,27 @@ const HorduScheduleAutoScreen: React.FC = () => {
           </div>
         )}
 
-        {/* Estimated Earnings - Only show if auto is selected */}
-        {selectedAuto && (
+        {/* Loading Bar for Earnings Calculation */}
+        {isLoadingEarnings && (
+          <div className="hordu-card p-6 mb-6">
+            <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">
+              Calculating Earnings...
+            </h3>
+            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3 mb-4">
+              <div className="bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full animate-pulse" style={{width: '100%'}}></div>
+            </div>
+            <p className="text-center hordu-text-muted">Analyzing route and demand patterns...</p>
+          </div>
+        )}
+
+        {/* Estimated Earnings - Only show after loading is complete */}
+        {showEarnings && (
           <div className="hordu-card p-6 mb-6">
             <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 mb-4">
               Estimated Earnings
             </h3>
             
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="text-center">
                 <div className="text-2xl font-bold hordu-gradient-text">
                   <span className="hordu-currency">850</span>
@@ -317,16 +344,6 @@ const HorduScheduleAutoScreen: React.FC = () => {
               <div className="text-center">
                 <div className="text-2xl font-bold hordu-gradient-text">12</div>
                 <p className="hordu-text-muted">Estimated Trips</p>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold hordu-gradient-text">
-                  <span className="hordu-distance">75</span>
-                </div>
-                <p className="hordu-text-muted">Distance</p>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold hordu-gradient-text">8h</div>
-                <p className="hordu-text-muted">Shift Duration</p>
               </div>
             </div>
           </div>

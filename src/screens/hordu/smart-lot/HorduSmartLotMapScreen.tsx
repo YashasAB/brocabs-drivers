@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../../context/ThemeContext";
@@ -20,7 +19,7 @@ L.Icon.Default.mergeOptions({
 const HorduSmartLotMapScreen: React.FC = () => {
   const navigate = useNavigate();
   const { isDarkMode, toggleTheme } = useTheme();
-  
+
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
 
@@ -32,7 +31,7 @@ const HorduSmartLotMapScreen: React.FC = () => {
       available: 8,
       total: 12,
       distance: "0.5",
-      coordinates: { lat: 12.9719, lng: 77.6412 }
+      coordinates: { lat: 12.9719, lng: 77.6412 },
     },
     {
       id: "brigade-road",
@@ -41,7 +40,7 @@ const HorduSmartLotMapScreen: React.FC = () => {
       available: 5,
       total: 10,
       distance: "1.2",
-      coordinates: { lat: 12.9716, lng: 77.6099 }
+      coordinates: { lat: 12.9716, lng: 77.6099 },
     },
     {
       id: "koramangala",
@@ -50,7 +49,7 @@ const HorduSmartLotMapScreen: React.FC = () => {
       available: 12,
       total: 15,
       distance: "2.8",
-      coordinates: { lat: 12.9352, lng: 77.6245 }
+      coordinates: { lat: 12.9352, lng: 77.6245 },
     },
     {
       id: "whitefield",
@@ -59,7 +58,7 @@ const HorduSmartLotMapScreen: React.FC = () => {
       available: 6,
       total: 8,
       distance: "8.5",
-      coordinates: { lat: 12.9698, lng: 77.7500 }
+      coordinates: { lat: 12.9698, lng: 77.75 },
     },
     {
       id: "jayanagar",
@@ -68,8 +67,8 @@ const HorduSmartLotMapScreen: React.FC = () => {
       available: 3,
       total: 6,
       distance: "4.2",
-      coordinates: { lat: 12.9279, lng: 77.5938 }
-    }
+      coordinates: { lat: 12.9279, lng: 77.5938 },
+    },
   ];
 
   const handleLotSelect = (lotId: string) => {
@@ -98,8 +97,10 @@ const HorduSmartLotMapScreen: React.FC = () => {
 
       // Add markers for each charging hub
       lots.forEach((lot) => {
-        const marker = L.marker([lot.coordinates.lat, lot.coordinates.lng])
-          .addTo(map);
+        const marker = L.marker([
+          lot.coordinates.lat,
+          lot.coordinates.lng,
+        ]).addTo(map);
 
         // Create custom popup content
         const popupContent = `
@@ -130,7 +131,9 @@ const HorduSmartLotMapScreen: React.FC = () => {
       });
 
       mapInstanceRef.current = map;
-      console.log(`Bengaluru map setup complete with ${lots.length} charging hubs`);
+      console.log(
+        `Bengaluru map setup complete with ${lots.length} charging hubs`,
+      );
     }
 
     // Cleanup function
@@ -159,7 +162,9 @@ const HorduSmartLotMapScreen: React.FC = () => {
                 <h1 className="text-lg sm:text-xl lg:text-2xl font-bold hordu-gradient-text">
                   Auto Charging Hubs
                 </h1>
-                <p className="text-sm text-purple-600 dark:text-purple-400 font-medium">Find available EV autos in Bengaluru</p>
+                <p className="text-sm text-purple-600 dark:text-purple-400 font-medium">
+                  Find available EV autos in Bengaluru
+                </p>
               </div>
             </div>
             <button
@@ -190,7 +195,8 @@ const HorduSmartLotMapScreen: React.FC = () => {
             />
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-400 mt-3 font-medium">
-            📍 Interactive map showing EV auto charging hubs across Bengaluru. Click markers for details.
+            📍 Interactive map showing EV auto charging hubs across Bengaluru.
+            Click markers for details.
           </p>
         </div>
 
@@ -199,7 +205,7 @@ const HorduSmartLotMapScreen: React.FC = () => {
           <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200">
             Available Charging Hubs
           </h3>
-          
+
           {lots.map((lot) => (
             <div key={lot.id} className="hordu-card p-6">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
@@ -207,27 +213,39 @@ const HorduSmartLotMapScreen: React.FC = () => {
                   <h4 className="text-lg font-bold text-gray-800 dark:text-gray-200 mb-2">
                     {lot.name}
                   </h4>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 font-medium">{lot.location}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 font-medium">
+                    {lot.location}
+                  </p>
                   <div className="flex items-center space-x-4">
                     <span className="text-sm text-gray-700 dark:text-gray-200 font-medium">
-                      📍 <span className="hordu-distance font-semibold text-purple-600 dark:text-purple-400">{lot.distance}</span> away
+                      📍{" "}
+                      <span className="hordu-distance font-semibold text-purple-600 dark:text-purple-400">
+                        {lot.distance}
+                      </span>{" "}
+                      away
                     </span>
                     <span
                       className={
-                        lot.available > 5 ? "hordu-status-good" : lot.available > 0 ? "hordu-status-bad" : "hordu-status-bad"
+                        lot.available > 5
+                          ? "hordu-status-good"
+                          : lot.available > 0
+                            ? "hordu-status-bad"
+                            : "hordu-status-bad"
                       }
                     >
                       {lot.available} / {lot.total} available
                     </span>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center space-x-3 mt-4 sm:mt-0">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-purple-600">
                       {lot.available}
                     </div>
-                    <p className="text-xs font-semibold text-gray-700 dark:text-gray-200">Autos Ready</p>
+                    <p className="text-xs font-semibold text-gray-700 dark:text-gray-200">
+                      Autos Ready
+                    </p>
                   </div>
                   <button
                     onClick={() => handleLotSelect(lot.id)}
@@ -239,24 +257,20 @@ const HorduSmartLotMapScreen: React.FC = () => {
                   </button>
                 </div>
               </div>
-              
+
               {/* Lot Features */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                 <div className="text-center">
                   <span className="text-lg">⚡</span>
-                  <p className="text-xs font-semibold text-gray-700 dark:text-gray-200">Fast Charging</p>
-                </div>
-                <div className="text-center">
-                  <span className="text-lg">🛠️</span>
-                  <p className="text-xs font-semibold text-gray-700 dark:text-gray-200">Maintenance</p>
+                  <p className="text-xs font-semibold text-gray-700 dark:text-gray-200">
+                    Fast Charging
+                  </p>
                 </div>
                 <div className="text-center">
                   <span className="text-lg">📱</span>
-                  <p className="text-xs font-semibold text-gray-700 dark:text-gray-200">App Unlock</p>
-                </div>
-                <div className="text-center">
-                  <span className="text-lg">🎯</span>
-                  <p className="text-xs font-semibold text-gray-700 dark:text-gray-200">GPS Tracking</p>
+                  <p className="text-xs font-semibold text-gray-700 dark:text-gray-200">
+                    App Unlock
+                  </p>
                 </div>
               </div>
             </div>
@@ -270,22 +284,34 @@ const HorduSmartLotMapScreen: React.FC = () => {
           </h3>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div className="text-center">
-              <div className="text-2xl font-bold hordu-gradient-text">{lots.reduce((sum, lot) => sum + lot.total, 0)}</div>
-              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Total Autos</p>
+              <div className="text-2xl font-bold hordu-gradient-text">
+                {lots.reduce((sum, lot) => sum + lot.total, 0)}
+              </div>
+              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                Total Autos
+              </p>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold hordu-gradient-text">{lots.length}</div>
-              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Charging Hubs</p>
+              <div className="text-2xl font-bold hordu-gradient-text">
+                {lots.length}
+              </div>
+              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                Charging Hubs
+              </p>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold hordu-gradient-text">94%</div>
-              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Uptime</p>
+              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                Uptime
+              </p>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold hordu-gradient-text">
                 <span className="hordu-distance">165</span>
               </div>
-              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Avg Range</p>
+              <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                Avg Range
+              </p>
             </div>
           </div>
         </div>

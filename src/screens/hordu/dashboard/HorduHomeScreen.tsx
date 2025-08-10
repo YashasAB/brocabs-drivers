@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTheme } from "../../../context/ThemeContext";
@@ -22,12 +21,9 @@ const HorduHomeScreen: React.FC = () => {
             <div className="flex items-center">
               <button
                 onClick={() => navigate("/hordu")}
-                className="mr-3 p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-gray-200 dark:hover:bg-gray-800 transition-all duration-200"
-                aria-label="Go back"
+                className="hordu-btn-primary mr-4"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
+                ←
               </button>
               <div>
                 <h1 className="text-lg sm:text-xl lg:text-2xl font-bold hordu-gradient-text">
@@ -57,7 +53,12 @@ const HorduHomeScreen: React.FC = () => {
                 Driver Status
               </h2>
               <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">
-                Current status: <span className={isOnline ? "hordu-status-good" : "hordu-status-bad"}>
+                Current status:{" "}
+                <span
+                  className={
+                    isOnline ? "hordu-status-good" : "hordu-status-bad"
+                  }
+                >
                   {isOnline ? "Online" : "Offline"}
                 </span>
               </p>
@@ -65,8 +66,8 @@ const HorduHomeScreen: React.FC = () => {
             <button
               onClick={toggleOnlineStatus}
               className={`hordu-btn-primary mt-4 sm:mt-0 ${
-                isOnline 
-                  ? "!bg-red-600 hover:!bg-red-700" 
+                isOnline
+                  ? "!bg-red-600 hover:!bg-red-700"
                   : "!bg-green-600 hover:!bg-green-700"
               }`}
             >
@@ -82,21 +83,31 @@ const HorduHomeScreen: React.FC = () => {
                 <div className="text-2xl font-bold hordu-gradient-text">
                   <span className="hordu-currency">850</span>
                 </div>
-                <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Today's Earnings</p>
+                <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                  Today's Earnings
+                </p>
               </div>
               <div className="text-center p-4 bg-gradient-to-br from-pink-50 to-blue-50 dark:from-pink-900/30 dark:to-blue-900/30 rounded-xl">
                 <div className="text-2xl font-bold hordu-gradient-text">12</div>
-                <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Trips Completed</p>
+                <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                  Trips Completed
+                </p>
               </div>
               <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-xl">
                 <div className="text-2xl font-bold hordu-gradient-text">
                   <span className="hordu-distance">45</span>
                 </div>
-                <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Distance Covered</p>
+                <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                  Distance Covered
+                </p>
               </div>
               <div className="text-center p-4 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-900/30 dark:to-pink-900/30 rounded-xl">
-                <div className="text-2xl font-bold hordu-gradient-text">4.8</div>
-                <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">Rating</p>
+                <div className="text-2xl font-bold hordu-gradient-text">
+                  4.8
+                </div>
+                <p className="text-sm font-semibold text-gray-700 dark:text-gray-200">
+                  Rating
+                </p>
               </div>
             </div>
           )}
@@ -127,7 +138,7 @@ const HorduHomeScreen: React.FC = () => {
                 </div>
               </button>
             )}
-            
+
             <button
               onClick={() => navigate("/earnings")}
               className="group relative w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1"
@@ -164,7 +175,12 @@ const HorduHomeScreen: React.FC = () => {
                   Pickup: Brigade Road → Drop: Koramangala 5th Block
                 </p>
                 <p className="text-sm text-gray-600 dark:text-gray-400 font-medium">
-                  Estimated fare: <span className="hordu-currency font-bold text-green-600">120</span> • Distance: <span className="hordu-distance font-bold">3.2</span>
+                  Estimated fare:{" "}
+                  <span className="hordu-currency font-bold text-green-600">
+                    120
+                  </span>{" "}
+                  • Distance:{" "}
+                  <span className="hordu-distance font-bold">3.2</span>
                 </p>
               </div>
               <button className="hordu-btn-primary w-full py-3 text-lg font-semibold">
@@ -180,17 +196,25 @@ const HorduHomeScreen: React.FC = () => {
               <div className="space-y-4">
                 <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 border border-green-200 dark:border-green-700 rounded-2xl p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="font-bold text-gray-800 dark:text-gray-200 text-lg">Indiranagar to MG Road</span>
+                    <span className="font-bold text-gray-800 dark:text-gray-200 text-lg">
+                      Indiranagar to MG Road
+                    </span>
                     <span className="text-green-600 font-bold text-xl">
                       <span className="hordu-currency">95</span>
                     </span>
                   </div>
                   <p className="text-gray-700 dark:text-gray-300 mb-4 font-medium">
-                    Distance: <span className="hordu-distance font-bold">2.8</span> • ETA: 12 mins
+                    Distance:{" "}
+                    <span className="hordu-distance font-bold">2.8</span> • ETA:
+                    12 mins
                   </p>
                   <div className="flex gap-3">
-                    <button className="hordu-btn-primary !bg-green-600 hover:!bg-green-700 flex-1 py-2 font-semibold">Accept</button>
-                    <button className="hordu-btn-primary !bg-red-600 hover:!bg-red-700 flex-1 py-2 font-semibold">Decline</button>
+                    <button className="hordu-btn-primary !bg-green-600 hover:!bg-green-700 flex-1 py-2 font-semibold">
+                      Accept
+                    </button>
+                    <button className="hordu-btn-primary !bg-red-600 hover:!bg-red-700 flex-1 py-2 font-semibold">
+                      Decline
+                    </button>
                   </div>
                 </div>
               </div>
@@ -211,7 +235,8 @@ const HorduHomeScreen: React.FC = () => {
                   </div>
                   <p className="text-3xl font-bold text-green-600 mb-2">85%</p>
                   <p className="text-gray-700 dark:text-gray-300 font-medium">
-                    Range remaining: <span className="hordu-distance font-bold">42</span>
+                    Range remaining:{" "}
+                    <span className="hordu-distance font-bold">42</span>
                   </p>
                 </div>
                 <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-2xl p-6 border border-blue-200 dark:border-blue-700">
@@ -221,8 +246,12 @@ const HorduHomeScreen: React.FC = () => {
                     </span>
                     <span className="text-3xl">🛺</span>
                   </div>
-                  <p className="text-2xl font-bold text-blue-600 mb-2">Hordu EV Auto</p>
-                  <p className="text-gray-700 dark:text-gray-300 font-medium">ID: HDU-BLR-001</p>
+                  <p className="text-2xl font-bold text-blue-600 mb-2">
+                    Hordu EV Auto
+                  </p>
+                  <p className="text-gray-700 dark:text-gray-300 font-medium">
+                    ID: HDU-BLR-001
+                  </p>
                 </div>
               </div>
             </div>

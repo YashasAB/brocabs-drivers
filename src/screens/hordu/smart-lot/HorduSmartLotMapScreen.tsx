@@ -236,7 +236,7 @@ const HorduSmartLotMapScreen: React.FC = () => {
                     className="hordu-btn-primary disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <span className="mr-2">🛺</span>
-                    Select Auto
+                    Schedule Auto
                   </button>
                 </div>
               </div>

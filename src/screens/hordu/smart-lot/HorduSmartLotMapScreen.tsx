@@ -20,7 +20,7 @@ L.Icon.Default.mergeOptions({
 const HorduSmartLotMapScreen: React.FC = () => {
   const navigate = useNavigate();
   const { isDarkMode, toggleTheme } = useTheme();
-  const [selectedLot, setSelectedLot] = useState<string | null>(null);
+  
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<L.Map | null>(null);
 
@@ -73,7 +73,6 @@ const HorduSmartLotMapScreen: React.FC = () => {
   ];
 
   const handleLotSelect = (lotId: string) => {
-    setSelectedLot(lotId);
     navigate(`/hordu/schedule-car/${lotId}`);
   };
 

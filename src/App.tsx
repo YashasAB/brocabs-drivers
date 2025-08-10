@@ -47,10 +47,10 @@ import MapViewScreen from './screens/navigation/MapViewScreen';
 
 // Hordu Screens (New Folder)
 import HorduLandingScreen from './screens/hordu/HorduLandingScreen';
-import HorduHomeScreen from './screens/hordu/HorduHomeScreen';
+import HorduHomeScreen from './screens/hordu/dashboard/HorduHomeScreen';
 import HorduBookRideScreen from './screens/hordu/HorduBookRideScreen';
-import HorduSmartLotMapScreen from './screens/hordu/HorduSmartLotMapScreen';
-import HorduScheduleAutoScreen from './screens/hordu/HorduScheduleAutoScreen';
+import HorduSmartLotMapScreen from './screens/hordu/smart-lot/HorduSmartLotMapScreen';
+import HorduScheduleAutoScreen from './screens/hordu/scheduling/HorduScheduleAutoScreen';
 
 
 function App() {

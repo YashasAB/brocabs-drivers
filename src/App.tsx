@@ -45,6 +45,14 @@ import LotNavigationScreen from './screens/car-management/LotNavigationScreen';
 import NavigationScreen from './screens/navigation/NavigationScreen';
 import MapViewScreen from './screens/navigation/MapViewScreen';
 
+// Hordu Screens (New Folder)
+import HorduLandingScreen from './screens/hordu/HorduLandingScreen';
+import HorduHomeScreen from './screens/hordu/HorduHomeScreen';
+import HorduBookRideScreen from './screens/hordu/HorduBookRideScreen';
+import HorduSmartLotMapScreen from './screens/hordu/HorduSmartLotMapScreen';
+import HorduScheduleAutoScreen from './screens/hordu/HorduScheduleAutoScreen';
+
+
 function App() {
   return (
     <ErrorBoundary>
@@ -93,6 +101,13 @@ function App() {
             {/* Navigation Routes */}
             <Route path="/navigation" element={<NavigationScreen />} />
             <Route path="/map-view" element={<MapViewScreen />} />
+
+            {/* Hordu Routes - Bengaluru Auto Rickshaw Version */}
+            <Route path="/hordu" element={<HorduLandingScreen />} />
+            <Route path="/hordu/driver-home" element={<HorduHomeScreen />} />
+            <Route path="/hordu/book-ride" element={<HorduBookRideScreen />} />
+            <Route path="/hordu/smart-lot-map" element={<HorduSmartLotMapScreen />} />
+            <Route path="/hordu/schedule-car/:lotId" element={<HorduScheduleAutoScreen />} />
           </Routes>
           </div>
         </Router>
